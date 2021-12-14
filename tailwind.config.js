@@ -33,6 +33,11 @@ module.exports = {
       current: 'currentColor',
       black: colors.black,
       white: colors.white,
+      alto: '#e0e0e0',
+      paarl: '#9C622E',
+      corvette: '#FACB99',
+      rope: '#8D531F',
+
     },
     spacing: {
       ...range(minSpacingPixel, maxSpacingPixel, spacingPixelIncrement).reduce((merged, f) => ({ ...merged, [f]: `${f}px` }), {})
