@@ -1,36 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="689992e4-636f-4e14-b3eb-bfbc758ff103" name="Default Changelist" comment="initial commit">
-      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Bond.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Calculator.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Collapse.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Dashboard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Discord.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Docs.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Gov.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Logo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Medium.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Stake.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Twitter.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Nav/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/data/Sidebar.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/interfaces/Sidebar.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/interfaces/Svg.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/utils/theme.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/layout/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Bond/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Calculator/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Dashboard/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Stake/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/slices/CollapseSlice.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/cerberus_flat_black.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reportWebVitals.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nav/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +64,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.TypeScript" />
     <property name="ts.external.directory.path" value="E:\Project\cerberusDao\cerberus-v2\node_modules\typescript\lib" />
@@ -93,11 +72,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Project\cerberusDao\cerberus-v2\public" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\assets\images" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\pages" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\components\CustomSvg\Icons" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\components\Sidebar" />
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\components" />
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\core\data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\components" />
@@ -118,7 +97,7 @@
       <workItem from="1639405145370" duration="3612000" />
       <workItem from="1639408806557" duration="5058000" />
       <workItem from="1639414975528" duration="19440000" />
-      <workItem from="1639439041160" duration="4485000" />
+      <workItem from="1639439041160" duration="9299000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1639405494097</created>
