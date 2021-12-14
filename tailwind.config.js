@@ -33,6 +33,12 @@ module.exports = {
       current: 'currentColor',
       black: colors.black,
       white: colors.white,
+      alto: '#e0e0e0',
+      paarl: '#9C622E',
+      corvette: '#FACB99',
+      rope: '#8D531F',
+      codgray1: '#060606',
+      codgray2: '#141414'
     },
     spacing: {
       ...range(minSpacingPixel, maxSpacingPixel, spacingPixelIncrement).reduce((merged, f) => ({ ...merged, [f]: `${f}px` }), {})
@@ -56,6 +62,7 @@ module.exports = {
     backgroundColor: (theme) => theme('colors'),
     backgroundImage: {
       none: 'none',
+      'background-cerberus-flat': 'url(\'../assets/images/cerberus_flat_black.png\')',
       'gradient-to-t': 'linear-gradient(to top, var(--tw-gradient-stops))',
       'gradient-to-tr': 'linear-gradient(to top right, var(--tw-gradient-stops))',
       'gradient-to-r': 'linear-gradient(to right, var(--tw-gradient-stops))',
@@ -81,6 +88,8 @@ module.exports = {
       auto: 'auto',
       cover: 'cover',
       contain: 'contain',
+      '50%': '50%',
+      '85%': '85%',
     },
     blur: {
       0: '0',
