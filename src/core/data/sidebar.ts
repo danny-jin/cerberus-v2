@@ -1,4 +1,4 @@
-import { SidebarItem } from '../interfaces/Sidebar';
+import { SidebarItem } from '../interfaces/sidebar';
 
 export const menuItems: SidebarItem[] = [
   {

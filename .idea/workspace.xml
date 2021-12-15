@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="689992e4-636f-4e14-b3eb-bfbc758ff103" name="Default Changelist" comment="fix: external link&#10;feat: background image">
-      <change beforePath="$PROJECT_DIR$/src/slices/CollapseSlice.ts" beforeDir="false" />
+    <list default="true" id="689992e4-636f-4e14-b3eb-bfbc758ff103" name="Default Changelist" comment="issue #002 - implement dashboard&#10;fix: layout">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nav/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/store/slices/appSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/store/slices/appSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,11 +43,19 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/style/index.scss" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/tailwind.config.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/App.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Nav/index.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/public/index.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/hooks/web3Context.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/node_modules/@material-ui/core/Typography/Typography.d.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/App.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/style/index.scss" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/Graph.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tailwind.config.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Expand.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Chart/Chart.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/index.tsx" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="eyz47um4" />
@@ -59,21 +72,22 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.TypeScript" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="E:\Project\cerberusDao\cerberus-v2\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Project\cerberusDao\cerberus-v2\public" />
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\assets\images" />
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\pages" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\components" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\components\CustomSvg\Icons" />
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\components\Sidebar" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\core\utils" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\hooks" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\typechain\factories" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\core\store" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\components" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\components\SideBar" />
     </key>
@@ -93,6 +107,12 @@
       <workItem from="1639408806557" duration="5058000" />
       <workItem from="1639414975528" duration="19440000" />
       <workItem from="1639439041160" duration="9758000" />
+      <workItem from="1639453682350" duration="35125000" />
+      <workItem from="1639511530203" duration="3953000" />
+      <workItem from="1639518377218" duration="1337000" />
+      <workItem from="1639519730612" duration="12161000" />
+      <workItem from="1639532906948" duration="14416000" />
+      <workItem from="1639548586514" duration="4228000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1639405494097</created>
@@ -108,7 +128,21 @@
       <option name="project" value="LOCAL" />
       <updated>1639448655438</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="issue #002 - implement dashboard">
+      <created>1639549145688</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1639549145688</updated>
+    </task>
+    <task id="LOCAL-00004" summary="issue #002 - implement dashboard&#10;fix: layout">
+      <created>1639549337247</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1639549337247</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,7 +159,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="issue_001_add_layout" />
+                        <option value="issue-002-implement-dashboard" />
                       </list>
                     </value>
                   </entry>
@@ -141,6 +175,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="fix: external link&#10;feat: background image" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: external link&#10;feat: background image" />
+    <MESSAGE value="issue #002 - implement dashboard" />
+    <MESSAGE value="issue #002 - implement dashboard&#10;fix: layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="issue #002 - implement dashboard&#10;fix: layout" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/InfoTooltip/index.tsx</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -2,19 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
+import { Web3ContextProvider } from './hooks/web3Context';
 import App from './App';
-import '../src/style/index.scss';
-import store from './store'
+
+import './style/index.scss';
+import store from './core/store/store'
+
+const queryClient = new QueryClient();
 
 ReactDOM.render(
-  <Provider store={ store }>
-    <React.StrictMode>
-      <BrowserRouter basename={ '/#' }>
-        <App/>
-      </BrowserRouter>
-    </React.StrictMode>
-  </Provider>,
+  <Web3ContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <BrowserRouter basename={'/#'}>
+          <App/>
+        </BrowserRouter>
+      </Provider>
+    </QueryClientProvider>
+  </Web3ContextProvider>,
   document.getElementById('root')
 );
 

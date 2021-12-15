@@ -1,15 +1,24 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
 
+import ConnectWalletButton from './ConnectWalletButton';
 import { CollapseIcon } from '../CustomSvg';
+import { toggleSidebar } from '../../core/store/slices/appSlice';
 
 const Nav = () => {
+  const dispatch = useDispatch();
+
+  const openSidebar = () => {
+    dispatch(toggleSidebar())
+  }
 
   return (
-    <div className="flex flex-row justify-between items-center w-full bg-transparent h-55 md:h-85 md:p-10">
-      <div className="flex justify-center items-center cursor-pointer bg-gradient-to-b to-paarl from-corvette w-45 h-40 rounded m-5">
+    <div className="flex flex-row justify-between items-center w-full bg-black h-55 md:h-85 md:p-10">
+      <div onClick={openSidebar}
+        className="flex justify-center items-center cursor-pointer bg-gradient-to-b to-paarl from-corvette w-45 h-40 rounded m-5">
         <CollapseIcon width="20px" fill="black"/>
       </div>
-      <button className="rounded-md bg-gradient-to-r to-paarl from-corvette w-155 h-40 text-white font-semibold m-5">Connect Wallet</button>
+      <ConnectWalletButton/>
     </div>
   )
 }

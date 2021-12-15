@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors')
+const scrollbarHide = require('tailwind-scrollbar-hide')
 
 function range(start, end, increment = 1) {
   const count = Math.floor((end - start + 1) / increment);
@@ -16,6 +17,7 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   presets: [],
   darkMode: false,
+  important: true,
   theme: {
     screens: {
       'msm': '320px',
@@ -38,7 +40,9 @@ module.exports = {
       corvette: '#FACB99',
       rope: '#8D531F',
       codgray1: '#060606',
-      codgray2: '#141414'
+      codgray2: '#141414',
+      goldsand: '#E8B580',
+      slategray: '#768299',
     },
     spacing: {
       ...range(minSpacingPixel, maxSpacingPixel, spacingPixelIncrement).reduce((merged, f) => ({ ...merged, [f]: `${f}px` }), {})
@@ -135,6 +139,7 @@ module.exports = {
       DEFAULT: '1px',
       0: '0px',
       2: '2px',
+      3: '3px',
       4: '4px',
       8: '8px',
     },
@@ -487,6 +492,7 @@ module.exports = {
       screen: '100vh',
     }),
     maxWidth: (theme, { breakpoints }) => ({
+      ...theme('spacing'),
       none: 'none',
       0: '0rem',
       xs: '20rem',
@@ -506,17 +512,20 @@ module.exports = {
       prose: '65ch',
       ...breakpoints(theme('screens')),
     }),
-    minHeight: {
+    maxHeight: (theme) => ({
+      ...theme('spacing'),
       0: '0px',
       full: '100%',
       screen: '100vh',
-    },
-    minWidth: {
+    }),
+    minxWidth: (theme, { breakpoints }) => ({
+      ...theme('spacing'),
       0: '0px',
       full: '100%',
       min: 'min-content',
       max: 'max-content',
-    },
+      ...breakpoints(theme('screens')),
+    }),
     objectPosition: {
       bottom: 'bottom',
       center: 'center',
@@ -759,6 +768,7 @@ module.exports = {
       '9/12': '75%',
       '10/12': '83.333333%',
       '11/12': '91.666667%',
+      '9/10': '90%',
       full: '100%',
       screen: '100vw',
       min: 'min-content',
@@ -937,5 +947,7 @@ module.exports = {
     wordBreak: ['responsive'],
     zIndex: ['responsive', 'focus-within', 'focus'],
   },
-  plugins: [],
+  plugins: [
+    scrollbarHide
+  ],
 }
