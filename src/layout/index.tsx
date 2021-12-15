@@ -11,7 +11,7 @@ const Layout = ({children}) => {
       <div className="w-full fixed top-0 left-0 z-10">
         <Navbar/>
       </div>
-      <div className="flex flex-grow">
+      <div className="flex flex-grow overflow-hidden">
         <div className="hidden md:block z-20">
           <Sidebar menuItems={menuItems} socialItems={socialItems} externalItems={externalItems}/>
         </div>
