@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { ethers } from 'ethers';
 
 import { apolloClient } from '../../apollo/client';
-import { NetworkConfig } from '../../interfaces/network';
+import { IBaseAsyncThunk } from '../../interfaces/base';
 import { getTokenPrice } from '../../utils/price';
 import { boundObject } from '../../utils/base';
 import { protocolMetricsQuery } from '../../data/query';
@@ -12,7 +12,7 @@ import { OlympusStaking, SOhm } from '../../../typechain';
 import { abi as OlympusStakingAbi } from '../../../abis/OlympusStaking.json';
 import { abi as SOhmAbi } from '../../../abis/SOhm.json';
 
-export interface AppData {
+interface AppSlice {
   readonly currentIndex?: string;
   readonly circulatingSupply: number;
   readonly currentBlock?: number;
@@ -29,8 +29,7 @@ export interface AppData {
 }
 
 const initialState = {
-  appDetailLoading: false,
-  marketPriceLoading: false,
+  loading: false,
   currentIndex: null,
   circulatingSupply: null,
   currentBlock: null,
@@ -46,7 +45,7 @@ const initialState = {
   isCollapsed: true
 }
 
-const getMarketPrice = createAsyncThunk('getMarketPrice', async () => {
+const getMarketPrice = createAsyncThunk('app/getMarketPrice', async () => {
   let marketPrice: number;
   try {
     marketPrice = await getTokenPrice('cerberus');
@@ -56,7 +55,7 @@ const getMarketPrice = createAsyncThunk('getMarketPrice', async () => {
   return {marketPrice};
 });
 
-export const fetchAppDetails = createAsyncThunk('fetchAppDetails', async ({networkID, provider}: NetworkConfig, {}) => {
+export const loadAppDetails = createAsyncThunk('app/loadAppDetails', async ({networkID, provider}: IBaseAsyncThunk, {}) => {
   const result = await apolloClient(protocolMetricsQuery);
   if (!result) {
     console.log('returned a null response when querying graph server.');
@@ -117,12 +116,12 @@ export const fetchAppDetails = createAsyncThunk('fetchAppDetails', async ({netwo
     circulatingSupply,
     totalSupply,
     treasuryMarketValue,
-  } as AppData;
+  } as AppSlice;
 });
 
-export const fetchMarketPrice = createAsyncThunk(
-  'fetchMarketPrice',
-  async ({networkID, provider}: NetworkConfig, {dispatch, getState}) => {
+export const loadMarketPrice = createAsyncThunk(
+  'app/loadMarketPrice',
+  async ({networkID, provider}: IBaseAsyncThunk, {dispatch, getState}) => {
     const state: any = getState();
     let marketPrice;
     // check if we already have loaded market price
@@ -157,26 +156,26 @@ const appSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(fetchAppDetails.pending, state => {
-        state.appDetailLoading = true;
+      .addCase(loadAppDetails.pending, state => {
+        state.loading = true;
       })
-      .addCase(fetchAppDetails.fulfilled, (state, action) => {
+      .addCase(loadAppDetails.fulfilled, (state, action) => {
         boundObject(state, action.payload);
-        state.appDetailLoading = false;
+        state.loading = false;
       })
-      .addCase(fetchAppDetails.rejected, (state, {error}) => {
-        state.appDetailLoading = false;
+      .addCase(loadAppDetails.rejected, (state, {error}) => {
+        state.loading = false;
         console.error(error.name, error.message, error.stack);
       })
-      .addCase(fetchMarketPrice.pending, (state, action) => {
-        state.marketPriceLoading = true;
+      .addCase(loadMarketPrice.pending, (state, action) => {
+        state.loading = true;
       })
-      .addCase(fetchMarketPrice.fulfilled, (state, action) => {
+      .addCase(loadMarketPrice.fulfilled, (state, action) => {
         boundObject(state, action.payload);
-        state.marketPriceLoading = false;
+        state.loading = false;
       })
-      .addCase(fetchMarketPrice.rejected, (state, {error}) => {
-        state.marketPriceLoading = false;
+      .addCase(loadMarketPrice.rejected, (state, {error}) => {
+        state.loading = false;
         console.error(error.name, error.message, error.stack);
       });
   },

@@ -1,5 +1,5 @@
 import { AddressGroup } from '../interfaces/address';
-import { NetworkID } from '../interfaces/network';
+import { NetworkID } from '../interfaces/base';
 
 export const addressGroup: AddressGroup = {
   [NetworkID.Testnet]: {
@@ -21,6 +21,7 @@ export const addressGroup: AddressGroup = {
     SOHM_ADDRESS: "0xA552f061d8962BE4c1f6BC6B0403Ca620F569330",
     DISTRIBUTOR_ADDRESS: "0x3878dB57d6E1c15A3670d32ED15d3853Bd5C6fde",
     BONDING_CALCULATOR_ADDRESS: "0xf558b05583e7306f93a199c6699bdf0EC714763A",
+    SPECIAL_BONDING_CALCULATOR_ADDRESS: "0x29d6f2fF916f7847Ba5c086BaEef36A09187f5C9",
     TREASURY_ADDRESS: "0x56D595ea5591D264bc1Ef9E073aF66685F0bFD31",
     REDEEM_HELPER_ADDRESS: "0x84E976a31E1B9A8F694A87D179685c6C53Ab1b72",
   }
