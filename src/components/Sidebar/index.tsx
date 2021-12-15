@@ -13,7 +13,6 @@ const Sidebar = (props: SidebarProps) => {
   const navigation = (item: SidebarItem) => {
     return history.push(`${item.url}`)
   }
-
   const IconSVG = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> };
 
   return (<>

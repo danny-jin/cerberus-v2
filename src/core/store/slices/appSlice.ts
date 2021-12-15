@@ -25,6 +25,7 @@ export interface AppData {
   readonly stakingTvl: number;
   readonly totalSupply: number;
   readonly treasuryMarketValue?: number;
+  readonly isCollapsed?: Boolean;
 }
 
 const initialState = {
@@ -42,6 +43,7 @@ const initialState = {
   stakingTvl: null,
   totalSupply: null,
   treasuryMarketValue: null,
+  isCollapsed: true
 }
 
 const getMarketPrice = createAsyncThunk('getMarketPrice', async () => {
@@ -149,6 +151,9 @@ const appSlice = createSlice({
     fetchAppSuccess(state, action) {
       boundObject(state, action.payload);
     },
+    toggleSidebar(state) {
+      state.isCollapsed = !state.isCollapsed;
+    }
   },
   extraReducers: builder => {
     builder
@@ -176,6 +181,8 @@ const appSlice = createSlice({
       });
   },
 });
+
+export const { toggleSidebar } = appSlice.actions;
 
 export default appSlice.reducer;
 
