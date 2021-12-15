@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom';
 import * as IconModule from '../../components/CustomSvg'
 import { LogoIcon } from '../../components/CustomSvg';
 
-import { SvgProps } from '../../core/interfaces/Svg';
-import { SidebarItem, SidebarProps } from '../../core/interfaces/Sidebar';
+import { SvgProps } from '../../core/interfaces/svg';
+import { SidebarItem, SidebarProps } from '../../core/interfaces/sidebar';
 
 const Sidebar = (props: SidebarProps) => {
   let history = useHistory();

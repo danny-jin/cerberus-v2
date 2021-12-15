@@ -2,5 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-
-
+.MuiSkeleton-root {
+  background: #ffffff1c !important;
+}

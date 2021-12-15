@@ -2,7 +2,7 @@ import React from 'react';
 
 import Navbar from '../components/Nav'
 import Sidebar from '../components/Sidebar';
-import { menuItems, socialItems, externalItems } from '../core/data/Sidebar';
+import { menuItems, socialItems, externalItems } from '../core/data/sidebar';
 
 const Layout = ({children}) => {
 
@@ -16,7 +16,7 @@ const Layout = ({children}) => {
           <Sidebar menuItems={menuItems} socialItems={socialItems} externalItems={externalItems}/>
         </div>
         <div
-          className="flex-grow w-full h-full bg-background-cerberus-flat bg-no-repeat bg-85% bg-center pt-55 md:pt-85 px-10 pb-10">{children}</div>
+          className="flex-grow w-full h-full bg-background-cerberus-flat bg-no-repeat bg-85% bg-center pt-55 md:pt-85 px-10 pb-10 overflow-y-auto scrollbar-hide">{children}</div>
       </div>
     </div>
 

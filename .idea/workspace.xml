@@ -4,8 +4,68 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="689992e4-636f-4e14-b3eb-bfbc758ff103" name="Default Changelist" comment="fix: external link&#10;feat: background image">
-      <change beforePath="$PROJECT_DIR$/src/slices/CollapseSlice.ts" beforeDir="false" />
+    <list default="true" id="689992e4-636f-4e14-b3eb-bfbc758ff103" name="Default Changelist" comment="issue #001 - add layout&#10;remove: slice">
+      <change afterPath="$PROJECT_DIR$/src/abis/OlympusStaking.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/abis/SOhm.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Chart/Chart.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Chart/CustomTooltip.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Chart/ExpandedChart.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Close.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Expand.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Info.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/InfoTooltip/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/apollo/client.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/data/address.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/data/base.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/data/chart.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/data/dashboard.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/data/query.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/interfaces/address.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/interfaces/chart.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/interfaces/dashboard.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/interfaces/network.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/interfaces/typechain.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/store/slices/appSlice.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/utils/base.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/utils/environmentHelper.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/utils/nodeHelper.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/utils/price.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useTreasury.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/web3Context.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Dashboard/Graph.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/typechain/OlympusStaking.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/typechain/SOhm.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/typechain/factories/OlympusStaking__factory.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/typechain/factories/SOhm__factory.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/typechain/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Bond.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Bond.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Calculator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Calculator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Collapse.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Collapse.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Discord.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Discord.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Docs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Docs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Gov.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Gov.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Logo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Logo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Medium.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Medium.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Stake.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Stake.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Twitter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Twitter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nav/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/data/Sidebar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/data/sidebar.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/interfaces/Sidebar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/interfaces/sidebar.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/interfaces/Svg.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/interfaces/svg.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Dashboard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Dashboard/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/store/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,11 +98,19 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/style/index.scss" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/tailwind.config.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/App.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Nav/index.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/public/index.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/hooks/web3Context.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/node_modules/@material-ui/core/Typography/Typography.d.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/App.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/style/index.scss" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/Graph.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tailwind.config.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Expand.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Chart/Chart.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/index.tsx" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="eyz47um4" />
@@ -59,21 +127,22 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.TypeScript" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="E:\Project\cerberusDao\cerberus-v2\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Project\cerberusDao\cerberus-v2\public" />
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\assets\images" />
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\pages" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\components" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\components\CustomSvg\Icons" />
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\components\Sidebar" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\core\utils" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\hooks" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\typechain\factories" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\core\store" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\components" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\components\SideBar" />
     </key>
@@ -93,6 +162,12 @@
       <workItem from="1639408806557" duration="5058000" />
       <workItem from="1639414975528" duration="19440000" />
       <workItem from="1639439041160" duration="9758000" />
+      <workItem from="1639453682350" duration="35125000" />
+      <workItem from="1639511530203" duration="3953000" />
+      <workItem from="1639518377218" duration="1337000" />
+      <workItem from="1639519730612" duration="12161000" />
+      <workItem from="1639532906948" duration="14416000" />
+      <workItem from="1639548586514" duration="456000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1639405494097</created>
@@ -142,5 +217,15 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="fix: external link&#10;feat: background image" />
     <option name="LAST_COMMIT_MESSAGE" value="fix: external link&#10;feat: background image" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/InfoTooltip/index.tsx</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

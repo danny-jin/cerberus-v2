@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { CustomSvg } from '../index';
-import { SvgProps } from '../../../core/interfaces/Svg';
+import { SvgProps } from '../../../core/interfaces/svg';
 
 const Icon: React.FC<SvgProps> = (props) => {
   return (
