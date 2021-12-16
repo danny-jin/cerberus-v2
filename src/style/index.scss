@@ -2,9 +2,45 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-.MuiSkeleton-root {
-  background: #ffffff1c !important;
+@font-face {
+  font-family: 'Square';
+  src: local('EuclidSquare-Regular'), url(../assets/fonts/EuclidSquare-Regular.woff) format('woff');
 }
+
 .web3modal-modal-lightbox {
   z-index: 30 !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+span.MuiSlider-rail {
+  height: 10px;
+  background: #232323;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border: 1px solid #64C9FC;
+}
+
+span.MuiSlider-track {
+  height: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background: linear-gradient(90deg, #64C9FC 0%, #446CF6 90%);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+span.MuiSlider-thumb {
+  width: 20px;
+  height: 20px;
+  background: #232323;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border: 2px solid #446CF6;
 }

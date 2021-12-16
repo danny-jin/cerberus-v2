@@ -1,4 +1,4 @@
-import { Paper, Grid, Zoom } from '@material-ui/core';
+import { Paper, Grid, Zoom, Typography } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import { useSelector } from 'react-redux';
 import React, { useEffect, useState, memo } from 'react';
@@ -61,7 +61,7 @@ const Dashboard = memo(() => {
             return (
               <div className="flex flex-col items-start md:items-center" key={index}>
                 <div className="flex items-center">
-                  <span className="text-16 text-center font-semibold text-white">{info.name}</span>
+                  <Typography variant="h6" color="primary" className="text-center">{info.name}</Typography>
                   {info?.hasTooltip &&
                   <div className="ml-5">
                     <InfoTooltip message={info?.message || ''}/>
@@ -70,7 +70,7 @@ const Dashboard = memo(() => {
                 </div>
                 {!info.value ?
                   <Skeleton className="w-full h-30"/> :
-                  <span className="text-18 text-center font-bold text-white">{info.value}</span>
+                  <Typography variant="h5" color="primary" className="text-center">{info.value}</Typography>
                 }
               </div>
             )

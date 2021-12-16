@@ -17,6 +17,9 @@ export function formatCurrency(c: number, precision = 0) {
 }
 
 export function formatNumber(number = 0, precision = 0) {
+  if (!number) {
+    return null;
+  }
   const array = number.toString().split('.');
   if (array.length === 1) return number.toString();
   if (precision === 0) return array[0].toString();
@@ -51,4 +54,9 @@ export function prettifySeconds(seconds: number, resolution?: string) {
     result = result.slice(0, result.length - 2);
   }
   return result;
+}
+
+export function shorten(str: string) {
+  if (str.length < 10) return str;
+  return `${str.slice(0, 6)}...${str.slice(str.length - 4)}`;
 }

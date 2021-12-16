@@ -1,4 +1,5 @@
 import { Skeleton } from '@material-ui/lab';
+import { Typography } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -66,8 +67,9 @@ const RebaseTimer = () => {
     <div className="flex">
       {
         currentBlock ? (
-          secondsToRebase > 0 ? (<div className="text-white text-12"><span className="font-bold">{rebaseString}</span> to next rebase</div>) : (
-            <span className="text-white text-12 font-bold">rebasing</span>
+          secondsToRebase > 0 ? (
+            <Typography variant="body2" color="primary"><strong>{rebaseString}</strong> to next rebase</Typography>) : (
+            <strong>rebasing</strong>
           )
         ) : (
           <Skeleton className="w-155"></Skeleton>

@@ -1,5 +1,5 @@
 import { Skeleton } from '@material-ui/lab';
-import { Tabs, Tab } from '@material-ui/core';
+import { Tabs, Tab, Typography } from '@material-ui/core';
 import React, { useEffect, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -142,14 +142,14 @@ const Stake = () => {
           break;
       }
     });
-    setNetworkBaseInfos(infos);
+    setNetworkBaseInfos([...infos]);
   }, [appData, accountData]);
 
   return (
     <div className="flex justify-center items-center w-full h-full">
-      <div className="rounded-md border-goldsand border-3 w-full md:w-800 p-15 sm:p-30">
+      <div className="rounded-2xl border-goldsand border-3 w-full md:w-800 p-15 sm:p-30">
         <div className="flex">
-          <span className="text-18 text-white font-bold">Single Stake (🐶,🐶,🐶)</span>
+          <Typography variant="h5" color="primary" className="font-semibold">Single Stake (🐶,🐶,🐶)</Typography>
         </div>
         <div className="flex">
           <RebaseTimer></RebaseTimer>
@@ -160,7 +160,7 @@ const Stake = () => {
               return (
                 index < 3 && (<div className="flex flex-col justify-end items-start md:items-center" key={index}>
                   <div className="flex items-center">
-                    <span className="text-17 text-center font-semibold text-white">{info.name}</span>
+                    <Typography variant="h5" color="primary" className="text-center">{info.name}</Typography>
                     {info?.hasTooltip &&
                     <div className="ml-5">
                       <InfoTooltip message={info?.message || ''}/>
@@ -169,7 +169,7 @@ const Stake = () => {
                   </div>
                   {!info.value ?
                     <Skeleton className="w-full h-30"/> :
-                    <span className="text-18 text-center font-bold text-white">{info.value}</span>
+                    <Typography variant="h6" color="primary" className="text-center font-bold">{info.value}</Typography>
                   }
                 </div>)
               )
@@ -185,7 +185,7 @@ const Stake = () => {
                 {connected ? 'Disconnect' : 'Connect Wallet'}
               </button>
               <div className="flex justify-center mt-15">
-                <span className="text-white text-16 font-semibold">Connect your wallet to stake 3DOG</span>
+                <Typography variant="h6" color="primary" className="font-semibold">Connect your wallet to stake 3DOG</Typography>
               </div>
             </div>
           ) : (
@@ -199,8 +199,8 @@ const Stake = () => {
                   onChange={toggleStake}
                   aria-label="stake tabs"
                 >
-                  <Tab label="Stake" id="simple-tab-0" className="text-20 font-medium"/>
-                  <Tab label="UnStake" id="simple-tab-1" className="text-20 font-medium"/>
+                  <Tab label="Stake" id="simple-tab-0"/>
+                  <Tab label="UnStake" id="simple-tab-1"/>
                 </Tabs>
               </div>
               <div className="flex items-center">
@@ -210,11 +210,11 @@ const Stake = () => {
                 {
                   networkBaseInfos.map((info: BaseInfo, index) => {
                     return (
-                      index >= 3 && (<div className="flex items-center justify-between" key={index}>
-                        <span className="text-17 text-center font-semibold text-white">{info.name}</span>
+                      index >= 3 && (<div className="flex items-center justify-between mb-10" key={index}>
+                        <Typography variant="body1" color="primary" className="text-center font-medium">{info.name}</Typography>
                         {!info.value ?
                           <Skeleton className="w-80"/> :
-                          <span className="text-18 text-center font-bold text-white">{info.value}</span>
+                          <Typography variant="body1" color="primary" className="text-center font-medium">{info.value}</Typography>
                         }
                       </div>)
                     )

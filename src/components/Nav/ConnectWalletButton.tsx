@@ -26,7 +26,7 @@ const ConnectWalletButton = () => {
   }, [connected]);
 
   return (
-    <button className="rounded-md bg-gradient-to-r from-paarl to-corvette w-155 h-40 text-white font-semibold m-5"
+    <button className={`rounded-md bg-gradient-to-r from-paarl to-corvette ${isConnected ? 'w-125' : 'w-155'} h-40 font-12 text-white font-medium m-5`}
             onClick={() => connectWallet()}>
       {isConnected ? 'Disconnect' : 'Connect Wallet'}
     </button>

@@ -428,12 +428,12 @@ function Chart({type, data, scale, dataKey, color, stopColor, stroke, headerText
     </Box>
   ) : (
     <Box className="w-full h-full">
-      <div className="text-white px-20 mb-20">
+      <div className="px-20 mb-20">
         <Box className="flex justify-between items-center w-full overflow-hidden">
           <Box className="flex items-center w-9/10">
             <Typography
               variant="h6"
-              className="font-normal truncate font-normal mr-10"
+              className="truncate mr-10"
             >
               {headerText}
             </Typography>

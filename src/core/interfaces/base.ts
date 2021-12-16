@@ -25,7 +25,8 @@ export interface IBaseBondAsyncThunk extends IBaseAsyncThunk {
   readonly bond: Bond;
 }
 
-export interface ICalcUserBondDetailsAsyncThunk extends IBaseAddressAsyncThunk, IBaseBondAsyncThunk {}
+export interface ICalcUserBondDetailsAsyncThunk extends IBaseAddressAsyncThunk, IBaseBondAsyncThunk {
+}
 
 export interface IPendingTx {
   readonly txHash: string;
@@ -45,7 +46,8 @@ export enum BaseInfoKey {
   StakedBalance = 'STAKED_BALANCE',
   NextRewardAmount = 'NEXT_REWARD_AMOUNT',
   NextRewardYield = 'NEXT_REWARD_YIELD',
-  FiveDaysRate = 'FIVE_DAYS_RATE'
+  FiveDaysRate = 'FIVE_DAYS_RATE',
+  ThreeDogsBalance = 'DOG_BALANCE',
 }
 
 export interface BaseInfo {

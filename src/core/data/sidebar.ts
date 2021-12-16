@@ -9,7 +9,7 @@ export const menuItems: SidebarItem[] = [
   {
     name: 'Stake',
     icon: 'StakeIcon',
-    url: '/'
+    url: '/stake'
   },
   {
     name: 'Calculator',
