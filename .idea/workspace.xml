@@ -4,31 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="689992e4-636f-4e14-b3eb-bfbc758ff103" name="Default Changelist" comment="#issue 003 - implement stake[WIP]">
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/EuclidSquare-Bold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/EuclidSquare-Italic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/EuclidSquare-Light.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/EuclidSquare-Medium.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/EuclidSquare-Regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/EuclidSquare-SemiBold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/themes/fonts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/themes/global.js" afterDir="false" />
+    <list default="true" id="689992e4-636f-4e14-b3eb-bfbc758ff103" name="Default Changelist" comment="#issue 003 - implement stake and calculator&#10;complete: calculator">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Chart/Chart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Chart/Chart.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Chart/ExpandedChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Chart/ExpandedChart.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RebaseTimer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RebaseTimer/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/data/base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/data/base.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/data/sidebar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/data/sidebar.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/interfaces/base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/interfaces/base.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/themes/light.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/themes/light.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/utils/base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/utils/base.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Calculator/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Calculator/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Dashboard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Dashboard/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Stake/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Stake/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/style/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +119,7 @@
       <workItem from="1639616832771" duration="637000" />
       <workItem from="1639618117710" duration="2197000" />
       <workItem from="1639621173720" duration="5084000" />
-      <workItem from="1639642245287" duration="14555000" />
+      <workItem from="1639642245287" duration="15148000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1639405494097</created>
@@ -185,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639587484038</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="#issue 003 - implement stake and calculator&#10;complete: calculator">
+      <created>1639663999568</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1639663999569</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,7 +207,8 @@
     <MESSAGE value="issue #002 - implement dashboard&#10;fix: layout" />
     <MESSAGE value="fix: tailwind config" />
     <MESSAGE value="#issue 003 - implement stake[WIP]" />
-    <option name="LAST_COMMIT_MESSAGE" value="#issue 003 - implement stake[WIP]" />
+    <MESSAGE value="#issue 003 - implement stake and calculator&#10;complete: calculator" />
+    <option name="LAST_COMMIT_MESSAGE" value="#issue 003 - implement stake and calculator&#10;complete: calculator" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

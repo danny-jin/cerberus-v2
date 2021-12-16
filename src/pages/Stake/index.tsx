@@ -154,7 +154,7 @@ const Stake = () => {
         <div className="flex">
           <RebaseTimer></RebaseTimer>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full p-20 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full mt-20 mb-40">
           {
             networkBaseInfos.map((info: BaseInfo, index) => {
               return (
