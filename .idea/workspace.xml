@@ -4,9 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="689992e4-636f-4e14-b3eb-bfbc758ff103" name="Default Changelist" comment="#issue 003 - implement stake and calculator&#10;complete: calculator">
+    <list default="true" id="689992e4-636f-4e14-b3eb-bfbc758ff103" name="Default Changelist" comment="#issue 003 - implement stake and calculator&#10;fix: stake layout">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Collapse.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Collapse.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Gov.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Governance.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nav/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/data/sidebar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/data/sidebar.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/interfaces/sidebar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/interfaces/sidebar.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/interfaces/svg.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/interfaces/svg.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/utils/theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/utils/theme.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Bond/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Calculator/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Calculator/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Dashboard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Dashboard/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Stake/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Stake/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/react-app-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/react-app-env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routerHistory.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routerHistory.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/setupTests.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/setupTests.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/index.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +64,6 @@
     <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/index.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/Nav/index.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/core/themes/light.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/App.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/hooks/web3Context.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/style/index.scss" root0="FORCE_HIGHLIGHTING" />
@@ -56,7 +75,6 @@
     <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/Graph.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/index.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Calculator.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/core/themes/global.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Stake.tsx" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
@@ -74,7 +92,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/icons" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="E:\Project\cerberusDao\cerberus-v2\node_modules\typescript\lib" />
@@ -120,6 +138,9 @@
       <workItem from="1639618117710" duration="2197000" />
       <workItem from="1639621173720" duration="5084000" />
       <workItem from="1639642245287" duration="15148000" />
+      <workItem from="1639666188538" duration="528000" />
+      <workItem from="1639667941707" duration="328000" />
+      <workItem from="1639668277959" duration="145000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1639405494097</created>

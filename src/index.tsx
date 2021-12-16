@@ -9,7 +9,7 @@ import { Web3ContextProvider } from './hooks/web3Context';
 import App from './App';
 
 import store from './core/store/store'
-import { light } from './core/themes/light';
+import { light } from './core/themes/light.js';
 import './style/index.scss';
 
 const queryClient = new QueryClient();
