@@ -30,17 +30,17 @@ const ExpandedChart = ({open, handleClose, renderChart, data, infoTooltipMessage
                 </Box>
               </Box>
               <Box display="flex">
-                <Typography variant="h5" className="font-semibold mr-5 text-white">
+                <Typography variant="h5" color="primary" className="font-semibold mr-5">
                   {headerSubText}
                 </Typography>
                 {runwayExtraInfo}
-                <Typography variant="h5" className="font-normal text-white">
+                <Typography variant="h5" color="primary" className="font-normal">
                   Today
                 </Typography>
               </Box>
             </div>
 
-            <Box className="px-10 w-full min-h-360 min-w-300">
+            <Box className="px-10 w-full min-h-260 min-w-300">
               {data && data.length > 0 && (
                 <ResponsiveContainer className="min-w-300 h-260">
                   {renderChart}
@@ -48,7 +48,7 @@ const ExpandedChart = ({open, handleClose, renderChart, data, infoTooltipMessage
               )}
             </Box>
             <Box className="flex w-full px-20">
-              <Typography variant="h6" className="text-white">{infoTooltipMessage}</Typography>
+              <Typography variant="h6" color="primary">{infoTooltipMessage}</Typography>
             </Box>
           </Paper>
         </Fade>

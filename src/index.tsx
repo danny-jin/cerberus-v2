@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@material-ui/core/styles";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
@@ -7,19 +8,22 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { Web3ContextProvider } from './hooks/web3Context';
 import App from './App';
 
-import './style/index.scss';
 import store from './core/store/store'
+import { light } from './core/themes/light.js';
+import './style/index.scss';
 
 const queryClient = new QueryClient();
 
 ReactDOM.render(
   <Web3ContextProvider>
     <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
-        <BrowserRouter basename={'/#'}>
-          <App/>
-        </BrowserRouter>
-      </Provider>
+      <ThemeProvider theme={light}>
+        <Provider store={store}>
+          <BrowserRouter basename={'/#'}>
+            <App/>
+          </BrowserRouter>
+        </Provider>
+      </ThemeProvider>
     </QueryClientProvider>
   </Web3ContextProvider>,
   document.getElementById('root')

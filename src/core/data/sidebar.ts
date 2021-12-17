@@ -9,7 +9,7 @@ export const menuItems: SidebarItem[] = [
   {
     name: 'Stake',
     icon: 'StakeIcon',
-    url: '/'
+    url: '/stake'
   },
   {
     name: 'Calculator',
@@ -49,7 +49,7 @@ export const externalItems: SidebarItem[] = [
   },
   {
     name: 'DEX Screener',
-    icon: 'GovIcon',
+    icon: 'GovernanceIcon',
     url: 'https://dexscreener.com/ethereum/0xb5b6c3816c66fa6bc5b189f49e5b088e2de5082a'
   },
 ]

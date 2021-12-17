@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom'
 
 import Layout from './layout';
-import { fetchAppDetails } from './core/store/slices/appSlice';
-import { useWeb3Context } from './hooks/web3Context';
+import { loadAppDetails } from './core/store/slices/appSlice';
+import { loadAccountDetails } from './core/store/slices/accountSlice';
+import { useWeb3Context, useAddress } from './hooks/web3Context';
 
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Stake = lazy(() => import('./pages/Stake'));
@@ -14,9 +15,21 @@ const Calculator = lazy(() => import('./pages/Calculator'));
 const App: React.FC = () => {
   const dispatch = useDispatch();
   const { connect, hasCachedProvider, provider, chainID, connected } = useWeb3Context();
+  const address = useAddress();
 
   useEffect(() => {
-    dispatch(fetchAppDetails({networkID: chainID, provider}));
+    dispatch(loadAppDetails({networkID: chainID, provider}));
+  }, []);
+
+  useEffect(() => {
+    dispatch(loadAccountDetails({networkID: chainID, address, provider}))
+  }, [connected]);
+
+  useEffect(() => {
+    // @ts-ignore
+    if (hasCachedProvider()) {
+      connect();
+    }
   }, []);
 
   return (

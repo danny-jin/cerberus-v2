@@ -4,13 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="689992e4-636f-4e14-b3eb-bfbc758ff103" name="Default Changelist" comment="issue #002 - implement dashboard&#10;fix: layout">
+    <list default="true" id="689992e4-636f-4e14-b3eb-bfbc758ff103" name="Default Changelist" comment="#issue 003 - implement stake and calculator&#10;fix: file system issue">
+      <change afterPath="$PROJECT_DIR$/src/abis/StakingHelper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/ArrowUp.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/CaretDown.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Message/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/TabPanel/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/store/slices/messageSlice.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/store/thunks/stakeThunk.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/typechain/StakingHelper.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/typechain/factories/StakingHelper__factory.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Bond.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Bond.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Calculator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Calculator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Close.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Close.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Discord.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Discord.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Docs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Docs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Expand.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Expand.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Medium.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Medium.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Stake.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Stake.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Twitter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Twitter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nav/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/store/slices/appSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/store/slices/appSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/interfaces/base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/interfaces/base.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/store/slices/pendingTxSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/store/slices/pendingTxSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/store/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Stake/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Stake/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/typechain/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/typechain/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +43,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -43,19 +66,23 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/index.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/Nav/index.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/public/index.html" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/hooks/web3Context.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/node_modules/@material-ui/core/Typography/Typography.d.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/App.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/style/index.scss" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/Graph.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/tailwind.config.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Expand.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/Chart/Chart.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Stake/index.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Nav/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/App.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/hooks/web3Context.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/style/index.scss" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tailwind.config.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Chart/Chart.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Calculator/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Expand.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/node_modules/@material-ui/core/Typography/Typography.d.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/Graph.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Calculator.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Stake.tsx" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="eyz47um4" />
@@ -72,7 +99,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="E:\Project\cerberusDao\cerberus-v2\node_modules\typescript\lib" />
@@ -80,13 +107,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\components" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\components\CustomSvg\Icons" />
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\core\utils" />
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\hooks" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\core\store\slices" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\typechain\factories" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\typechain" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\abis" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\core\store\thunks" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\core\store" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\components" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\components\SideBar" />
@@ -113,6 +141,18 @@
       <workItem from="1639519730612" duration="12161000" />
       <workItem from="1639532906948" duration="14416000" />
       <workItem from="1639548586514" duration="4228000" />
+      <workItem from="1639573699425" duration="35173000" />
+      <workItem from="1639616832771" duration="637000" />
+      <workItem from="1639618117710" duration="2197000" />
+      <workItem from="1639621173720" duration="5084000" />
+      <workItem from="1639642245287" duration="15148000" />
+      <workItem from="1639666188538" duration="528000" />
+      <workItem from="1639667941707" duration="328000" />
+      <workItem from="1639668277959" duration="145000" />
+      <workItem from="1639669114487" duration="3668000" />
+      <workItem from="1639672814343" duration="11098000" />
+      <workItem from="1639743444528" duration="4370000" />
+      <workItem from="1639747997595" duration="1835000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1639405494097</created>
@@ -142,7 +182,28 @@
       <option name="project" value="LOCAL" />
       <updated>1639549337247</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix: tailwind config">
+      <created>1639572836245</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1639572836245</updated>
+    </task>
+    <task id="LOCAL-00006" summary="#issue 003 - implement stake[WIP]">
+      <created>1639587484038</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1639587484038</updated>
+    </task>
+    <task id="LOCAL-00007" summary="#issue 003 - implement stake and calculator&#10;complete: calculator">
+      <created>1639663999568</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1639663999569</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,7 +238,10 @@
     <MESSAGE value="fix: external link&#10;feat: background image" />
     <MESSAGE value="issue #002 - implement dashboard" />
     <MESSAGE value="issue #002 - implement dashboard&#10;fix: layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="issue #002 - implement dashboard&#10;fix: layout" />
+    <MESSAGE value="fix: tailwind config" />
+    <MESSAGE value="#issue 003 - implement stake[WIP]" />
+    <MESSAGE value="#issue 003 - implement stake and calculator&#10;complete: calculator" />
+    <option name="LAST_COMMIT_MESSAGE" value="#issue 003 - implement stake and calculator&#10;complete: calculator" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

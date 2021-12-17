@@ -1,13 +1,17 @@
+import { Link, Typography } from '@material-ui/core';
 import React from 'react'
-import { useHistory } from 'react-router-dom';
-
+import { useHistory, NavLink } from 'react-router-dom';
 import * as IconModule from '../../components/CustomSvg'
-import { LogoIcon } from '../../components/CustomSvg';
 
+import { LogoIcon } from '../../components/CustomSvg';
+import { useWeb3Context } from '../../hooks/web3Context';
 import { SvgProps } from '../../core/interfaces/svg';
 import { SidebarItem, SidebarProps } from '../../core/interfaces/sidebar';
+import { shorten } from 'core/utils/base';
+import { LANDING_URL } from '../../core/data/base';
 
 const Sidebar = (props: SidebarProps) => {
+  const { provider, address, chainID } = useWeb3Context();
   let history = useHistory();
 
   const navigation = (item: SidebarItem) => {
@@ -15,25 +19,40 @@ const Sidebar = (props: SidebarProps) => {
   }
   const IconSVG = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> };
 
+  const checkUrl = (match, location, page) => {
+    return location.pathname.indexOf(page) >= 0;
+  };
+
   return (<>
     <div className="flex flex-col items-between w-280 h-screen bg-gradient-to-b from-corvette to-rope">
       <div className="header flex flex-grow flex-col">
-        <div className="logo m-35 flex justify-center">
-          <LogoIcon width="200px" height="200px"/>
+        <div className="logo mt-30 flex justify-center">
+          <Link href={LANDING_URL} target="_blank">
+            <LogoIcon width="200px" height="200px"/>
+          </Link>
         </div>
+        {
+          address && (
+            <div className="flex justify-center">
+              <Link href={`https://etherscan.io/address/${address}`} className="text-12 mt-5 mb-15" target="_blank">
+                {shorten(address)}
+              </Link>
+            </div>
+          )
+        }
         <div className="menuItems ml-30 mb-30">
           {
             props.menuItems.map((item: SidebarItem, index) => {
               const Icon = IconSVG[`${item.icon}`];
 
               return (
-                <div className="flex items-center my-10 cursor-pointer grab hover:text-alto" key={index}
-                     onClick={() => {
-                       navigation(item)
-                     }}>
-                  <Icon width="20px" fill="white" className="mr-10"/>
-                  <span className="text-white text-17 font-semibold">{item.name}</span>
-                </div>
+                <Link component={NavLink} to={item.url} className="flex items-center my-10 cursor-pointer group my-15" key={index}
+                      isActive={(match, location) => {
+                        return checkUrl(match, location, item.url);
+                      }}>
+                  <Icon width="20px" fill="white" className="mr-10 group-hover:fill-alto"/>
+                  <Typography variant="h6" className="group-hover:text-alto">{item.name}</Typography>
+                </Link>
               )
             })
           }
@@ -44,10 +63,10 @@ const Sidebar = (props: SidebarProps) => {
               const Icon = IconSVG[`${item.icon}`];
 
               return (
-                <a href={item.url} className="flex items-center my-10 cursor-pointer grab hover:text-alto" key={index} target="_blank">
-                  <Icon width="20px" fill="white" className="mr-10"/>
-                  <span className="text-white text-17 font-semibold">{item.name}</span>
-                </a>
+                <Link href={item.url} className="flex items-center my-15 cursor-pointer group" key={index} target="_blank">
+                  <Icon width="20px" fill="white" className="mr-10 group-hover:fill-alto"/>
+                  <Typography variant="h6" className="group-hover:text-alto">{item.name}</Typography>
+                </Link>
               )
             })
           }
@@ -60,9 +79,9 @@ const Sidebar = (props: SidebarProps) => {
 
             return (
               <a href={item.url}
-                 className="flex items-center my-10 cursor-pointer grab hover:text-alto"
+                 className="flex items-center my-10 cursor-pointer group"
                  key={index} target="_blank">
-                <Icon width="20px" fill="white" className="mr-10"/>
+                <Icon width="20px" fill="white" className="mr-10 group-hover:fill-alto group-hover:scale-110"/>
               </a>
             )
           })

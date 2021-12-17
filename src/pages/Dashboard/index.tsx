@@ -1,4 +1,4 @@
-import { Paper, Grid, Zoom } from '@material-ui/core';
+import { Paper, Grid, Zoom, Typography } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import { useSelector } from 'react-redux';
 import React, { useEffect, useState, memo } from 'react';
@@ -9,12 +9,10 @@ import {
   RiskFreeValueGraph,
   ProtocolOwnedLiquidityGraph,
   OHMStakedGraph,
-  APYOverTimeGraph,
-  RunwayAvailableGraph,
 } from './Graph';
 import InfoTooltip from '../../components/InfoTooltip';
 import { RootState } from '../../core/store/store';
-import { NetworkBaseInfo, NetworkBaseInfoKey } from '../../core/interfaces/dashboard';
+import { BaseInfo, BaseInfoKey } from '../../core/interfaces/base';
 import { formatCurrency, formatNumber } from '../../core/utils/base';
 import { defaultNetworkBaseInfos } from '../../core/data/dashboard';
 
@@ -28,24 +26,24 @@ const Dashboard = memo(() => {
       return;
     }
     const infos = defaultNetworkBaseInfos;
-    infos.forEach((info: NetworkBaseInfo) => {
+    infos.forEach((info: BaseInfo) => {
       switch (info.key) {
-        case NetworkBaseInfoKey.MarketCap:
+        case BaseInfoKey.MarketCap:
           info.value = formatCurrency(appData.marketCap, 0);
           break;
-        case NetworkBaseInfoKey.ThreeDogPrice:
+        case BaseInfoKey.ThreeDogPrice:
           info.value = formatCurrency(appData.marketPrice, 4);
           break;
-        case NetworkBaseInfoKey.Apy:
+        case BaseInfoKey.Apy:
           info.value = `${new Intl.NumberFormat('en-US').format(Number(formatNumber(appData.stakingApy * 100, 1)))}%`;
           break;
-        case NetworkBaseInfoKey.CirculatingSupply:
+        case BaseInfoKey.CirculatingSupply:
           info.value = new Intl.NumberFormat('en-US').format(parseInt(appData.circulatingSupply));
           break;
-        case NetworkBaseInfoKey.BackingPerThreeDog:
+        case BaseInfoKey.BackingPerThreeDog:
           info.value = formatCurrency(appData.treasuryMarketValue / appData.circulatingSupply, 4);
           break;
-        case NetworkBaseInfoKey.CurrentIndex:
+        case BaseInfoKey.CurrentIndex:
           info.value = `${formatNumber(appData.currentIndex, 2)} 3DOGS`;
           break;
         default:
@@ -57,13 +55,13 @@ const Dashboard = memo(() => {
 
   return (
     <div className="w-full md:px-30 h-full">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md rounded-md border-goldsand border-3 w-full p-20 mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 rounded-md border-goldsand border-3 w-full p-20 mb-20">
         {
-          networkBaseInfos.map((info: NetworkBaseInfo, index) => {
+          networkBaseInfos.map((info: BaseInfo, index) => {
             return (
-              <div className="flex flex-col items-center bg-red" key={index}>
+              <div className="flex flex-col items-start md:items-center" key={index}>
                 <div className="flex items-center">
-                  <span className="text-16 text-center font-semibold text-white">{info.name}</span>
+                  <Typography variant="h6" color="primary" className="text-center">{info.name}</Typography>
                   {info?.hasTooltip &&
                   <div className="ml-5">
                     <InfoTooltip message={info?.message || ''}/>
@@ -72,7 +70,7 @@ const Dashboard = memo(() => {
                 </div>
                 {!info.value ?
                   <Skeleton className="w-full h-30"/> :
-                  <span className="text-18 font-bold text-white">{info.value}</span>
+                  <Typography variant="h5" color="primary" className="text-center">{info.value}</Typography>
                 }
               </div>
             )
