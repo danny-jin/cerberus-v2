@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { IPendingTx } from '../../interfaces/base';
 
-
 const initialState: Array<IPendingTx> = [];
 
 const pendingTxSlice = createSlice({

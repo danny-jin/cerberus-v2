@@ -1,11 +1,25 @@
 import { Skeleton } from '@material-ui/lab';
-import { Tabs, Tab, Typography } from '@material-ui/core';
+import {
+  Tabs,
+  Tab,
+  Typography,
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  InputAdornment,
+  Button,
+} from '@material-ui/core';
 import React, { useEffect, useState, useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { ethers } from 'ethers';
 
+import TabPanel from '../../components/TabPanel';
 import RebaseTimer from '../../components/RebaseTimer';
 import InfoTooltip from '../../components/InfoTooltip';
 import { useWeb3Context } from '../../hooks/web3Context';
+import { changeApproval, changeStake } from '../../core/store/thunks/stakeThunk';
+import { error } from '../../core/store/slices/messageSlice';
+import { isPendingTxn, txnButtonText } from '../../core/store/slices/pendingTxSlice';
 import { RootState } from '../../core/store/store';
 import { BaseInfo, BaseInfoKey } from '../../core/interfaces/base';
 import { formatNumber } from '../../core/utils/base';
@@ -54,10 +68,11 @@ const defaultNetworkBaseInfos: BaseInfo[] = [
 ];
 
 const Stake = () => {
-
-  const {address, connect, disconnect, connected, chainID} = useWeb3Context();
+  const dispatch = useDispatch();
+  const {address, connect, disconnect, connected, chainID, provider} = useWeb3Context();
   const [networkBaseInfos, setNetworkBaseInfos] = useState(defaultNetworkBaseInfos);
   const [isUnStaked, setIsUnStaked] = useState(0);
+  const [quantity, setQuantity] = useState('');
 
   const appData = useSelector((state: RootState) => state.app);
   const accountData = useSelector((state: RootState) => state.account);
@@ -82,10 +97,41 @@ const Stake = () => {
     [accountData.staking.ohmStake, accountData.staking.ohmUnStake],
   );
 
+  const setMaxQuantity = () => {
+    if (isUnStaked === 0) {
+      setQuantity(accountData.balances.ohm);
+    } else {
+      setQuantity(accountData.balances.sOhm);
+    }
+  };
+
   const isAllowanceDataLoading = (accountData.staking.ohmStake == null && isUnStaked === 0) || (accountData.staking.ohmUnStake == null && isUnStaked === 1);
 
   const toggleStake = (event, value) => {
     setIsUnStaked(value);
+  };
+
+  const onChangeStake = async action => {
+    if (isNaN(Number(quantity)) || Number(quantity) === 0 || quantity === '') {
+      return dispatch(error('Please enter a value!'));
+    }
+
+    // 1st catch if quantity > balance
+    let gweiValue = ethers.utils.parseUnits(quantity, 'gwei');
+    if (action === 'stake' && gweiValue.gt(ethers.utils.parseUnits(accountData.balances.ohm, 'gwei'))) {
+      return dispatch(error('You cannot stake more than your OHM balance.'));
+    }
+
+    if (action === 'unStake' && gweiValue.gt(ethers.utils.parseUnits(accountData.balances.sOhm, 'gwei'))) {
+      return dispatch(error('You cannot unstake more than your 3DOGs balance.'));
+    }
+
+    await dispatch(changeStake({address, action, value: quantity.toString(), provider, networkID: chainID}));
+    setQuantity('');
+  };
+
+  const onSeekApproval = async token => {
+    await dispatch(changeApproval({ address, token, provider, networkID: chainID }));
   };
 
   useEffect(() => {
@@ -185,7 +231,8 @@ const Stake = () => {
                 {connected ? 'Disconnect' : 'Connect Wallet'}
               </button>
               <div className="flex justify-center mt-15">
-                <Typography variant="h6" color="primary" className="font-semibold">Connect your wallet to stake 3DOG</Typography>
+                <Typography variant="h6" color="primary" className="font-semibold">Connect your wallet to stake
+                  3DOG</Typography>
               </div>
             </div>
           ) : (
@@ -203,18 +250,126 @@ const Stake = () => {
                   <Tab label="UnStake" id="simple-tab-1"/>
                 </Tabs>
               </div>
-              <div className="flex items-center">
-
+              <div className="flex flex-col md:flex-row items-center mt-10 my-20">
+                <div className="flex flex-grow justify-center">
+                  {
+                    address && !isAllowanceDataLoading ? (
+                      (!hasAllowance('ohm') && isUnStaked === 0) || (!hasAllowance('sOhm') && isUnStaked === 1) ? (
+                        <div className="mx-10">
+                          <Typography variant="body1" color="primary" className="text-center font-italic">
+                            {isUnStaked === 0 ? (
+                              <>
+                                First time staking <b>3DOG</b>?
+                                <br/>
+                                Please approve Cerberus Dao to use your <b>3DOG</b> for staking.
+                              </>
+                            ) : (
+                              <>
+                                First time unstaking <b>3DOGs</b>?
+                                <br/>
+                                Please approve Cerberus Dao to use your <b>3DOGs</b> for unstaking.
+                              </>
+                            )}
+                          </Typography>
+                        </div>
+                      ) : (
+                        <FormControl className="w-full max-w-540 m-5" variant="outlined" color="primary">
+                          <InputLabel htmlFor="amount-input"></InputLabel>
+                          <OutlinedInput
+                            id="amount-input"
+                            type="number"
+                            placeholder="Enter an amount"
+                            className="rounded-md border-white border"
+                            value={quantity}
+                            onChange={e => setQuantity(e.target.value)}
+                            labelWidth={0}
+                            endAdornment={
+                              <InputAdornment position="end">
+                                <Button variant="text" className="text-white font-medium" onClick={setMaxQuantity}>
+                                  Max
+                                </Button>
+                              </InputAdornment>
+                            }
+                          />
+                        </FormControl>
+                      )
+                    ) : (
+                      <Skeleton className="w-150"/>
+                    )
+                  }
+                </div>
+                <div className="flex w-full md:w-220 items-center p-5">
+                  <TabPanel value={isUnStaked} index={0}>
+                    {isAllowanceDataLoading ? (
+                      <Skeleton/>
+                    ) : address && hasAllowance('ohm') ? (
+                      <Button
+                        className="w-full"
+                        variant="contained"
+                        color="primary"
+                        disabled={isPendingTxn(pendingTransactions, 'staking')}
+                        onClick={() => {
+                          onChangeStake('stake').then();
+                        }}
+                      >
+                        {txnButtonText(pendingTransactions, 'staking', 'Stake 3DOG')}
+                      </Button>
+                    ) : (
+                      <Button
+                        className="w-full"
+                        variant="contained"
+                        color="primary"
+                        disabled={isPendingTxn(pendingTransactions, 'approve_staking')}
+                        onClick={() => {
+                          onSeekApproval('ohm').then();
+                        }}
+                      >
+                        {txnButtonText(pendingTransactions, 'approve_staking', 'Approve')}
+                      </Button>
+                    )}
+                  </TabPanel>
+                  <TabPanel value={isUnStaked} index={1}>
+                    {isAllowanceDataLoading ? (
+                      <Skeleton/>
+                    ) : address && hasAllowance('sOhm') ? (
+                      <Button
+                        className="w-full"
+                        variant="contained"
+                        color="primary"
+                        disabled={isPendingTxn(pendingTransactions, 'unstaking')}
+                        onClick={() => {
+                          onChangeStake('unStake').then();
+                        }}
+                      >
+                        {txnButtonText(pendingTransactions, 'unstaking', 'Unstake 3DOG')}
+                      </Button>
+                    ) : (
+                      <Button
+                        className="w-full"
+                        variant="contained"
+                        color="primary"
+                        disabled={isPendingTxn(pendingTransactions, 'approve_unstaking')}
+                        onClick={() => {
+                          onSeekApproval('sOhm').then();
+                        }}
+                      >
+                        {txnButtonText(pendingTransactions, 'approve_unstaking', 'Approve')}
+                      </Button>
+                    )}
+                  </TabPanel>
+                </div>
               </div>
               <div className="flex flex-col">
                 {
                   networkBaseInfos.map((info: BaseInfo, index) => {
                     return (
                       index >= 3 && (<div className="flex items-center justify-between mb-10" key={index}>
-                        <Typography variant="body1" color="primary" className="text-center font-medium">{info.name}</Typography>
+                        <Typography variant="body1" color="primary"
+                                    className="text-center font-medium">{info.name}</Typography>
                         {!info.value ?
                           <Skeleton className="w-80"/> :
-                          <Typography variant="body1" color="primary" className="text-center font-medium">{info.value}</Typography>
+                          <Typography variant="body1" color="primary"
+                                      className="text-center font-medium">{info.value}</Typography>
                         }
                       </div>)
                     )

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Navbar from '../components/Nav'
 import Sidebar from '../components/Sidebar';
+import Message from '../components/Message';
 import { RootState } from '../core/store/store';
 import { toggleSidebar } from '../core/store/slices/appSlice';
 import { menuItems, socialItems, externalItems } from '../core/data/sidebar';
@@ -20,6 +21,7 @@ const Layout = ({children}) => {
 
   return (
     <div className="flex flex-col w-full h-screen bg-gradient-to-b from-codgray1 to-codgray2" onClick={closeSidebar}>
+      <Message/>
       <div className="w-full fixed z-10">
         <Navbar/>
       </div>

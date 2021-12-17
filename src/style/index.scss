@@ -6,6 +6,12 @@
   font-family: 'Square';
   src: local('EuclidSquare-Regular'), url(../assets/fonts/EuclidSquare-Regular.woff) format('woff');
 }
+.group:hover .group-hover\:fill-alto, .hover\:fill-alto {
+  fill: #e0e0e0 !important;
+}
+.group:hover .group-hover\:scale-110 {
+  transform: scale(1.1) !important;
+}
 
 .web3modal-modal-lightbox {
   z-index: 30 !important;

@@ -25,3 +25,5 @@ export { default as GovernanceIcon } from './Icons/Governance';
 export { default as InfoIcon } from './Icons/Info';
 export { default as ExpandIcon } from './Icons/Expand';
 export { default as CloseIcon } from './Icons/Close';
+export { default as ArrowUpIcon } from './Icons/ArrowUp';
+export { default as CaretDownIcon } from './Icons/CaretDown';

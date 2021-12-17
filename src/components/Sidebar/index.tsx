@@ -46,12 +46,12 @@ const Sidebar = (props: SidebarProps) => {
               const Icon = IconSVG[`${item.icon}`];
 
               return (
-                <Link component={NavLink} to={item.url} className="flex items-center my-10 cursor-pointer grab hover:text-alto my-15" key={index}
+                <Link component={NavLink} to={item.url} className="flex items-center my-10 cursor-pointer group my-15" key={index}
                       isActive={(match, location) => {
                         return checkUrl(match, location, item.url);
                       }}>
-                  <Icon width="20px" fill="white" className="mr-10"/>
-                  <Typography variant="h6">{item.name}</Typography>
+                  <Icon width="20px" fill="white" className="mr-10 group-hover:fill-alto"/>
+                  <Typography variant="h6" className="group-hover:text-alto">{item.name}</Typography>
                 </Link>
               )
             })
@@ -63,9 +63,9 @@ const Sidebar = (props: SidebarProps) => {
               const Icon = IconSVG[`${item.icon}`];
 
               return (
-                <Link href={item.url} className="flex items-center my-15 cursor-pointer grab hover:text-alto" key={index} target="_blank">
-                  <Icon width="20px" fill="white" className="mr-10"/>
-                  <Typography variant="h6">{item.name}</Typography>
+                <Link href={item.url} className="flex items-center my-15 cursor-pointer group" key={index} target="_blank">
+                  <Icon width="20px" fill="white" className="mr-10 group-hover:fill-alto"/>
+                  <Typography variant="h6" className="group-hover:text-alto">{item.name}</Typography>
                 </Link>
               )
             })
@@ -79,9 +79,9 @@ const Sidebar = (props: SidebarProps) => {
 
             return (
               <a href={item.url}
-                 className="flex items-center my-10 cursor-pointer grab hover:text-alto"
+                 className="flex items-center my-10 cursor-pointer group"
                  key={index} target="_blank">
-                <Icon width="20px" fill="white" className="mr-10"/>
+                <Icon width="20px" fill="white" className="mr-10 group-hover:fill-alto group-hover:scale-110"/>
               </a>
             )
           })

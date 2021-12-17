@@ -28,6 +28,25 @@ export interface IBaseBondAsyncThunk extends IBaseAsyncThunk {
 export interface ICalcUserBondDetailsAsyncThunk extends IBaseAddressAsyncThunk, IBaseBondAsyncThunk {
 }
 
+export interface IChangeApprovalAsyncThunk extends IBaseAsyncThunk {
+  readonly token: string;
+  readonly address: string;
+}
+
+export interface IActionAsyncThunk extends IBaseAsyncThunk {
+  readonly action: string;
+  readonly address: string;
+}
+
+export interface IValueAsyncThunk extends IBaseAsyncThunk {
+  readonly value: string;
+  readonly address: string;
+}
+
+export interface IActionValueAsyncThunk extends IValueAsyncThunk {
+  readonly action: string;
+}
+
 export interface IPendingTx {
   readonly txHash: string;
   readonly text: string;

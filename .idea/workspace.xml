@@ -4,29 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="689992e4-636f-4e14-b3eb-bfbc758ff103" name="Default Changelist" comment="#issue 003 - implement stake and calculator&#10;fix: stake layout">
+    <list default="true" id="689992e4-636f-4e14-b3eb-bfbc758ff103" name="Default Changelist" comment="#issue 003 - implement stake and calculator&#10;fix: file system issue">
+      <change afterPath="$PROJECT_DIR$/src/abis/StakingHelper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/ArrowUp.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/CaretDown.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Message/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/TabPanel/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/store/slices/messageSlice.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/store/thunks/stakeThunk.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/typechain/StakingHelper.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/typechain/factories/StakingHelper__factory.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Collapse.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Collapse.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Gov.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Governance.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Bond.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Bond.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Calculator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Calculator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Close.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Close.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Discord.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Discord.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Docs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Docs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Expand.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Expand.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Medium.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Medium.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Stake.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Stake.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Twitter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Twitter.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nav/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/data/sidebar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/data/sidebar.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/interfaces/sidebar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/interfaces/sidebar.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/interfaces/svg.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/interfaces/svg.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/utils/theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/utils/theme.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/interfaces/base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/interfaces/base.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/store/slices/pendingTxSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/store/slices/pendingTxSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/store/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Bond/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Calculator/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Calculator/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Dashboard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Dashboard/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Stake/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Stake/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/react-app-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/react-app-env.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routerHistory.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routerHistory.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupTests.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/setupTests.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/style/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/typechain/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/typechain/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,13 +107,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\assets\icons" />
-      <recent name="bond.svg calculator.svg docs.svg twitter.svg stake.svg medium.svg github.svg governance.svg info.svg x.svg discord.svg dashboard.svg fullscreen.svg" />
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\assets\fonts" />
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\core\themes" />
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\assets" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\components\CustomSvg\Icons" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\core\store\slices" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\typechain\factories" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\typechain" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\abis" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\core\store\thunks" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\core\store" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\components" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\components\SideBar" />
@@ -141,6 +149,10 @@
       <workItem from="1639666188538" duration="528000" />
       <workItem from="1639667941707" duration="328000" />
       <workItem from="1639668277959" duration="145000" />
+      <workItem from="1639669114487" duration="3668000" />
+      <workItem from="1639672814343" duration="11098000" />
+      <workItem from="1639743444528" duration="4370000" />
+      <workItem from="1639747997595" duration="1835000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1639405494097</created>
