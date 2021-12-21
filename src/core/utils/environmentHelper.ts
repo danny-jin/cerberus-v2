@@ -21,11 +21,7 @@ export class EnvironmentHelper {
   }
 
   static isNotEmpty(envVariable: string) {
-    if (envVariable.length > 10) {
-      return true;
-    } else {
-      return false;
-    }
+    return envVariable.length > 10;
   }
 
   /**
@@ -97,26 +93,27 @@ export class EnvironmentHelper {
    */
   static getAPIUris() {
     let allNodeUris = EnvironmentHelper.getSelfHostedNode();
-    if (EnvironmentHelper.env.NODE_ENV === "development" && allNodeUris.length === 0) {
+    if (EnvironmentHelper.env.NODE_ENV === 'development' && allNodeUris.length === 0) {
       // push in the common ethers key in development
-      allNodeUris.push("https://eth-mainnet.alchemyapi.io/v2/_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC");
+      allNodeUris.push('https://eth-mainnet.alchemyapi.io/v2/_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC');
     }
-    if (allNodeUris.length === 0) console.error("API keys must be set in the .env");
+    if (allNodeUris.length === 0) console.error('API keys must be set in the .env');
     return allNodeUris;
   }
 
   static getFallbackURIs() {
-    const allNodeUris = [...EnvironmentHelper.getAlchemyAPIKeyList(), ...EnvironmentHelper.getInfuraIdList()];
-    return allNodeUris;
+    return [...EnvironmentHelper.getAlchemyAPIKeyList(), ...EnvironmentHelper.getInfuraIdList()];
   }
 
   static getGeoapifyAPIKey() {
-    var apiKey = EnvironmentHelper.env.REACT_APP_GEOAPIFY_API_KEY;
+    const apiKey = EnvironmentHelper.env.REACT_APP_GEOAPIFY_API_KEY;
     if (!apiKey) {
-      console.warn("Missing REACT_APP_GEOAPIFY_API_KEY environment variable");
+      console.warn('Missing REACT_APP_GEOAPIFY_API_KEY environment variable');
       return null;
     }
 
     return apiKey;
   }
 }
+
+

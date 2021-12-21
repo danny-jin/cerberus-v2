@@ -25,6 +25,45 @@ export interface BondAddressGroup {
   bondAddress: string;
 }
 
+export interface IBondingStateView {
+  account: {
+    bonds: {
+      [key: string]: IUserBondDetails;
+    };
+  };
+  bonding: {
+    loading: Boolean;
+    [key: string]: any;
+  };
+}
+
+export interface IUserBondDetails {
+  allowance: number;
+  interestDue: number;
+  bondMaturationBlock: number;
+  pendingPayout: string; //Payout formatted in gwei.
+}
+
+export interface IBondSlice {
+  status: string;
+  [key: string]: any;
+}
+
+export interface IBondDetails {
+  bond: string;
+  bondDiscount: number;
+  debtRatio: number;
+  bondQuote: number;
+  purchased: number;
+  vestingTerm: number;
+  maxBondPrice: number;
+  bondPrice: number;
+  marketPrice: number;
+}
+
+export interface IAllBondData extends Bond, IBondDetails, IUserBondDetails {
+}
+
 export interface NetworkBondAddressGroup {
   [NetworkID.Mainnet]: BondAddressGroup;
   [NetworkID.Testnet]: BondAddressGroup;
@@ -50,7 +89,7 @@ export abstract class Bond {
   readonly bondContractABI: ethers.ContractInterface; // Bond ABI
   readonly networkBondAddressGroup: NetworkBondAddressGroup;
   readonly bondToken: string;
-
+  readonly price: number;
   // The following two fields will differ on how they are set depending on bond type
   abstract isLp: Boolean;
   abstract reserveContract: ethers.ContractInterface; // Token ABI
@@ -193,11 +232,7 @@ export class CustomBond extends Bond {
   constructor(customBondOption: CustomBondOption) {
     super(customBondOption.bondType, customBondOption);
 
-    if (customBondOption.bondType === BondType.LP) {
-      this.isLp = true;
-    } else {
-      this.isLp = false;
-    }
+    this.isLp = customBondOption.bondType === BondType.LP;
     this.lpUrl = customBondOption.lpUrl;
     // For stable bonds the display units are the same as the actual token
     this.displayUnits = customBondOption.displayName;

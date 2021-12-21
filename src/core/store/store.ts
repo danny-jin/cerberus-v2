@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import appSliceReducer from './slices/appSlice';
 import accountSliceReducer from './slices/accountSlice';
+import bondingReducer from './slices/bondSlice';
 import pendingTxSliceReducer from './slices/pendingTxSlice';
 import messageSliceReducer from './slices/messageSlice';
 
@@ -10,6 +11,7 @@ const store = configureStore({
     app: appSliceReducer,
     account: accountSliceReducer,
     pendingTx: pendingTxSliceReducer,
+    bonding: bondingReducer,
     message: messageSliceReducer
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }),

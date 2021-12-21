@@ -1,3 +1,5 @@
+import { BLOCK_RATE_SECONDS } from '../data/base';
+
 export function boundObject(state: any, payload: any) {
   if (payload) {
     const keys = Object.keys(payload);
@@ -26,8 +28,7 @@ export function formatNumber(number = 0, precision = 0) {
 
   const poppedNumber = array.pop() || '0';
   array.push(poppedNumber.substring(0, precision));
-  const result = array.join('.');
-  return result;
+  return array.join('.');
 }
 
 export const minutesAgo = (x: number) => {
@@ -54,6 +55,23 @@ export function prettifySeconds(seconds: number, resolution?: string) {
     result = result.slice(0, result.length - 2);
   }
   return result;
+}
+
+export function secondsUntilBlock(startBlock: number, endBlock: number): number {
+  const blocksAway = endBlock - startBlock;
+  return blocksAway * BLOCK_RATE_SECONDS;
+}
+
+export function prettyVestingPeriod(currentBlock: number, vestingBlock: number): string {
+  if (vestingBlock === 0) {
+    return '';
+  }
+
+  const seconds = secondsUntilBlock(currentBlock, vestingBlock);
+  if (seconds < 0) {
+    return 'Fully Vested';
+  }
+  return prettifySeconds(seconds);
 }
 
 export function shorten(str: string) {

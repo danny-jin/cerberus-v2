@@ -47,6 +47,34 @@ export interface IActionValueAsyncThunk extends IValueAsyncThunk {
   readonly action: string;
 }
 
+export interface IApproveBondAsyncThunk extends IBaseBondAsyncThunk {
+  readonly address: string;
+}
+
+export interface IBondAssetAsyncThunk extends IBaseBondAsyncThunk, IValueAsyncThunk {
+  readonly slippage: number;
+}
+
+export interface ICalcBondDetailsAsyncThunk extends IBaseBondAsyncThunk {
+  readonly value: string;
+}
+
+export interface IJsonRPCError {
+  readonly message: string;
+  readonly code: number;
+}
+
+export interface IRedeemAllBondsAsyncThunk extends IBaseAsyncThunk {
+  readonly bonds: Bond[];
+  readonly address: string;
+  readonly autostake: boolean;
+}
+
+export interface IRedeemBondAsyncThunk extends IBaseBondAsyncThunk {
+  readonly address: string;
+  readonly autostake: boolean;
+}
+
 export interface IPendingTx {
   readonly txHash: string;
   readonly text: string;
@@ -67,6 +95,14 @@ export enum BaseInfoKey {
   NextRewardYield = 'NEXT_REWARD_YIELD',
   FiveDaysRate = 'FIVE_DAYS_RATE',
   ThreeDogsBalance = 'DOG_BALANCE',
+  TreasuryBalance = 'TREASURY_BALANCE',
+  OwnerBalance = 'OWNER_BALANCE',
+  Roi = 'ROI',
+  DebtRate = 'DEBT_RATE',
+  PendingRewardAmount = 'PENDING_REWARD_AMOUNT',
+  ClaimRewardAmount = 'CLAIM_REWARD_AMOUNT',
+  RestVestingTime = 'REST_VESTING_TIME',
+  VestingTerm = 'VESTING_TERM'
 }
 
 export interface BaseInfo {
@@ -75,4 +111,12 @@ export interface BaseInfo {
   key?: string;
   hasTooltip?: Boolean;
   message?: string;
+}
+
+export interface BondInfo {
+  bond: string;
+  price: string;
+  roi: string;
+  purchased: string;
+  state: boolean;
 }

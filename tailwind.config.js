@@ -23,7 +23,7 @@ module.exports = {
       'msm': '320px',
       'mmd': '375px',
       'mlg': '425px',
-      'lap': '890px',
+      'lap': '980px',
       sm: '640px',
       md: '768px',
       lg: '1024px',
@@ -48,6 +48,7 @@ module.exports = {
       slategray: '#768299',
     },
     spacing: {
+      '2': '2px',
       ...range(minSpacingPixel, maxSpacingPixel, spacingPixelIncrement).reduce((merged, f) => ({ ...merged, [f]: `${f}px` }), {})
     },
     animation: {
@@ -233,6 +234,7 @@ module.exports = {
     },
     fontSize: {
       ...range(minFontSize, maxFontSize).reduce((merged, f) => ({ ...merged, [f]: `${f}px`}), {}),
+      2: '2px',
     },
     fontWeight: {
       thin: '100',
@@ -244,6 +246,7 @@ module.exports = {
       bold: '700',
       extrabold: '800',
       black: '900',
+      ...range(minFontSize, maxFontSize).reduce((merged, f) => ({ ...merged, [f]: `${f}px`}), {}),
     },
     gap: (theme) => theme('spacing'),
     gradientColorStops: (theme) => theme('colors'),

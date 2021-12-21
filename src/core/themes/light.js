@@ -29,6 +29,7 @@ const lightTheme = {
   outlinedSecondaryButtonHoverColor: '#333333',
   containedSecondaryButtonHoverBG: '#33333333',
   graphStrokeColor: 'rgba(37, 52, 73, .2)',
+  slippageBackgroundColor: '#5555553a',
 };
 
 export const light = responsiveFontSizes(

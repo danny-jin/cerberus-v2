@@ -26,7 +26,7 @@ const Layout = ({children}) => {
         <Navbar/>
       </div>
       <div className="flex flex-grow overflow-hidden">
-        <div className={`md:block fixed md:static z-20 transition-all ${isCollapsed ? '-left-280': 'left-0'}`}>
+        <div className={`lap:block fixed lap:static z-20 transition-all ${isCollapsed ? '-left-280': 'left-0'}`}>
           <Sidebar menuItems={menuItems} socialItems={socialItems} externalItems={externalItems}/>
         </div>
         <div className="flex-grow w-full h-full bg-background-cerberus-flat bg-no-repeat bg-85% bg-center

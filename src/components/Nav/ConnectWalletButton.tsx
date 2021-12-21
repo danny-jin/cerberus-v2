@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { CaretDownIcon, ArrowUpIcon } from '../CustomSvg';
-import { useWeb3Context } from '../../hooks/web3Context';
-import { NetworkID } from '../../core/interfaces/network';
+import { useWeb3Context } from '../../core/hooks/web3Context';
+import { NetworkID } from '../../core/interfaces/base';
 import { RootState } from '../../core/store/store';
 
-const ConnectWalletButton = () => {
+const ConnectWalletButton = (props: any) => {
 
   const {connect, disconnect, connected, chainID} = useWeb3Context();
   const isCollapsed = useSelector((state: RootState) => state.app.isCollapsed);
@@ -64,11 +64,11 @@ const ConnectWalletButton = () => {
     <div
       onMouseEnter={e => (pendingTransactions && pendingTransactions.length > 0 ? handleClick(e) : null)}
       onMouseLeave={e => (pendingTransactions && pendingTransactions.length > 0 ? handleClick(e) : null)}
-      className="wallet-menu"
+      className={`wallet-menu`}
       id="wallet-menu"
     >
       <Button
-        className={`flex items-center`}
+        className={`flex items-center ${props.className}`}
         variant="contained"
         color="secondary"
         size="large"

@@ -27,8 +27,7 @@ function Linear({message}) {
           dispatch(close(message));
           return 0;
         }
-        const diff = oldProgress - 5;
-        return diff;
+        return oldProgress - 5;
       });
     }, 333);
 
@@ -49,7 +48,7 @@ function Message() {
   const messages = useSelector((state: RootState) => state.message);
   const dispatch = useDispatch();
   // Returns a function that can closes a message
-  const handleClose = function (message) {
+  const handleClose = (message) => {
     return function () {
       dispatch(close(message));
     };

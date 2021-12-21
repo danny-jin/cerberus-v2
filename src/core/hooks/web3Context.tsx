@@ -4,8 +4,8 @@ import { IFrameEthereumProvider } from '@ledgerhq/iframe-provider';
 import React, { useState, ReactElement, useContext, useEffect, useMemo, useCallback } from 'react';
 import Web3Modal from 'web3modal';
 
-import { EnvironmentHelper } from '../core/utils/environmentHelper';
-import { NodeHelper } from '../core/utils/nodeHelper';
+import { EnvironmentHelper } from '../utils/environmentHelper';
+import { NodeHelper } from '../utils/nodeHelper';
 
 /**
  * kept as function to mimic `getMainnetURI()`
@@ -88,7 +88,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({child
 
   const [provider, setProvider] = useState<JsonRpcProvider>(new StaticJsonRpcProvider(uri));
 
-  const [web3Modal, setWeb3Modal] = useState<Web3Modal>(
+  const [web3Modal] = useState<Web3Modal>(
     new Web3Modal({
       cacheProvider: true, // optional
       providerOptions: {
@@ -106,9 +106,10 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({child
   );
 
   const hasCachedProvider = (): Boolean => {
-    if (!web3Modal) return false;
-    if (!web3Modal.cachedProvider) return false;
-    return true;
+    if (!web3Modal) {
+      return false;
+    }
+    return web3Modal.cachedProvider != null;
   };
 
   // NOTE (appleseed): none of these listeners are needed for Backend API Providers
@@ -119,7 +120,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({child
       if (!rawProvider.on) {
         return;
       }
-      rawProvider.on('accountsChanged', async (accounts: string[]) => {
+      rawProvider.on('accountsChanged', async () => {
         setTimeout(() => window.location.reload(), 1);
       });
 

@@ -15,3 +15,5 @@ export { PairContract__factory } from './factories/PairContract__factory';
 export { BondCalculatorContract__factory } from './factories/BondCalculatorContract__factory';
 export { BondContract__factory } from './factories/BondContract__factory';
 export { StakingHelper__factory } from './factories/StakingHelper__factory';
+
+export type { RedeemHelper } from "./RedeemHelper";

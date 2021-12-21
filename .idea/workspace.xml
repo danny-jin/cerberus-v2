@@ -4,36 +4,61 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="689992e4-636f-4e14-b3eb-bfbc758ff103" name="Default Changelist" comment="#issue 003 - implement stake and calculator&#10;fix: file system issue">
-      <change afterPath="$PROJECT_DIR$/src/abis/StakingHelper.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/ArrowUp.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/CaretDown.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Message/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/TabPanel/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/store/slices/messageSlice.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/store/thunks/stakeThunk.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/typechain/StakingHelper.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/typechain/factories/StakingHelper__factory.ts" afterDir="false" />
+    <list default="true" id="6004e887-1721-4683-a6ce-5dcfc0b6683d" name="Default Changelist" comment="#issue 004 - implement bond[WIP]">
+      <change afterPath="$PROJECT_DIR$/src/abis/BondDogEthContract.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/abis/EthContract.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/abis/FlokiBondContract.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/abis/OhmDaiCalcContract.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/abis/OhmDaiContract.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/abis/OhmEthContract.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/abis/RedeemHelper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/abis/ReserveDogEthContract.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/abis/ShibBondContract.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Bond/AdvancedSettings.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Bond/BondDetail.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Bond/BondHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Bond/BondItem.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Bond/BondLogo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Bond/BondPurchase.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Bond/BondRedeem.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/DogWeth.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Floki.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Setting.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Shiba.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Weth.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/hooks/base.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/hooks/useBonds.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/store/slices/bondSlice.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/typechain/RedeemHelper.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Bond.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Bond.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Calculator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Calculator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Close.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Close.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Discord.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Discord.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Docs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Docs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Expand.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Expand.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Medium.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Medium.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Stake.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Stake.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Twitter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Twitter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Message/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Message/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RebaseTimer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RebaseTimer/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/data/base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/data/base.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/interfaces/base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/interfaces/base.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/store/slices/pendingTxSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/store/slices/pendingTxSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/interfaces/network.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/interfaces/network.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/lib/bond.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/lib/bond.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/store/slices/messageSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/store/slices/messageSlice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/store/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/themes/light.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/themes/light.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/utils/base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/utils/base.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/utils/bond.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/utils/bond.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/utils/environmentHelper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/utils/environmentHelper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/utils/network.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/utils/price.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/utils/price.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useTreasury.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/hooks/useTreasury.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/web3Context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/hooks/web3Context.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Bond/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Calculator/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Calculator/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Dashboard/Graph.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Dashboard/Graph.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Stake/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Stake/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/style/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/index.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/typechain/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/typechain/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,23 +91,35 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/public/index.html" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/pages/Stake/index.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Expand.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/utils/environmentHelper.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/utils/bond.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Calculator.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/Nav/index.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/App.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/hooks/web3Context.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/style/index.scss" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/tailwind.config.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Stake.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/Graph.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/index.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/Chart/Chart.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/pages/Calculator/index.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Expand.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Bond/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/RebaseTimer/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/utils/base.ts" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/node_modules/@material-ui/core/Typography/Typography.d.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/Graph.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/index.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Calculator.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Stake.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/style/index.scss" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/public/index.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/utils/theme.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tailwind.config.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/lib/bond.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/store/slices/bondSlice.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/App.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Stake/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Bond/BondHeader.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Bond/BondPurchase.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Bond/BondRedeem.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/utils/price.ts" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="eyz47um4" />
@@ -99,7 +136,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="jsx.switch.disabled" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/core" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="E:\Project\cerberusDao\cerberus-v2\node_modules\typescript\lib" />
@@ -107,11 +145,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\core" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\components\CustomSvg\Icons" />
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\core\store\slices" />
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\typechain\factories" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\components\Bond" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\core\utils" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\typechain" />
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\abis" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\core\store\thunks" />
@@ -123,7 +161,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="689992e4-636f-4e14-b3eb-bfbc758ff103" name="Default Changelist" comment="" />
+      <changelist id="6004e887-1721-4683-a6ce-5dcfc0b6683d" name="Default Changelist" comment="" />
       <created>1639379115929</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -153,6 +191,11 @@
       <workItem from="1639672814343" duration="11098000" />
       <workItem from="1639743444528" duration="4370000" />
       <workItem from="1639747997595" duration="1835000" />
+      <workItem from="1639758699532" duration="38475000" />
+      <workItem from="1639921418341" duration="21641000" />
+      <workItem from="1639974183107" duration="24519000" />
+      <workItem from="1640047502522" duration="310000" />
+      <workItem from="1640047848267" duration="17198000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1639405494097</created>
@@ -241,7 +284,8 @@
     <MESSAGE value="fix: tailwind config" />
     <MESSAGE value="#issue 003 - implement stake[WIP]" />
     <MESSAGE value="#issue 003 - implement stake and calculator&#10;complete: calculator" />
-    <option name="LAST_COMMIT_MESSAGE" value="#issue 003 - implement stake and calculator&#10;complete: calculator" />
+    <MESSAGE value="#issue 004 - implement bond[WIP]" />
+    <option name="LAST_COMMIT_MESSAGE" value="#issue 004 - implement bond[WIP]" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
