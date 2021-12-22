@@ -4,7 +4,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 
 import BondLogo from './BondLogo';
 import AdvancedSettings from './AdvancedSettings';
-import { CloseIcon, SettingIcon } from '../CustomSvg';
+import { CloseIcon, SettingIcon } from '../../components/CustomSvg';
 import { useEscape } from '../../core/hooks/base';
 
 function BondHeader({bond, slippage, recipientAddress, onRecipientAddressChange, onSlippageChange}) {

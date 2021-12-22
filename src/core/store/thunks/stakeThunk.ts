@@ -5,13 +5,12 @@ import { fetchAccountSuccess, getBalances } from '../slices/accountSlice';
 import { clearPendingTx, fetchPendingTxs, getStakingTypeText } from '../slices/pendingTxSlice';
 import { error, info } from '../slices/messageSlice';
 import { IActionValueAsyncThunk, IChangeApprovalAsyncThunk, IJsonRpcError } from '../../interfaces/base';
+import { addressGroup } from '../../data/address';
 
 import { IERC20, OlympusStaking, StakingHelper } from '../../../typechain';
 import { abi as IERC20Abi } from '../../../abis/IERC20.json';
 import { abi as OlympusStakingAbi } from '../../../abis/OlympusStaking.json';
 import { abi as StakingHelperABI } from '../../../abis/StakingHelper.json';
-
-import { addressGroup } from '../../data/address';
 
 interface IUAData {
   address: string;

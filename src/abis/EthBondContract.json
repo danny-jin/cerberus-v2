@@ -9,7 +9,7 @@
         },
         {
           "internalType": "address",
-          "name": "_principal",
+          "name": "_principle",
           "type": "address"
         },
         {
@@ -24,7 +24,7 @@
         },
         {
           "internalType": "address",
-          "name": "_bondCalculator",
+          "name": "_feed",
           "type": "address"
         }
       ],
@@ -242,12 +242,12 @@
     },
     {
       "inputs": [],
-      "name": "bondCalculator",
+      "name": "assetPrice",
       "outputs": [
         {
-          "internalType": "address",
+          "internalType": "int256",
           "name": "",
-          "type": "address"
+          "type": "int256"
         }
       ],
       "stateMutability": "view",
@@ -405,11 +405,6 @@
         },
         {
           "internalType": "uint256",
-          "name": "_fee",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
           "name": "_maxDebt",
           "type": "uint256"
         },
@@ -422,19 +417,6 @@
       "name": "initializeBondTerms",
       "outputs": [],
       "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "isLiquidityBond",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -535,7 +517,7 @@
     },
     {
       "inputs": [],
-      "name": "principal",
+      "name": "principle",
       "outputs": [
         {
           "internalType": "address",
@@ -647,7 +629,7 @@
     {
       "inputs": [
         {
-          "internalType": "enum MockOlympusBondDepository.PARAMETER",
+          "internalType": "enum OlympusBondDepository.PARAMETER",
           "name": "_parameter",
           "type": "uint8"
         },
@@ -741,11 +723,6 @@
         {
           "internalType": "uint256",
           "name": "maxPayout",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "fee",
           "type": "uint256"
         },
         {

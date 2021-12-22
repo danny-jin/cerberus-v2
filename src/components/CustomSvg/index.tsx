@@ -31,3 +31,4 @@ export { default as ShibaIcon } from './Icons/Shiba';
 export { default as WethIcon } from './Icons/Weth';
 export { default as FlokiIcon } from './Icons/Floki';
 export { default as SettingIcon } from './Icons/Setting';
+export { default as LoadingIcon } from './Icons/Loading';

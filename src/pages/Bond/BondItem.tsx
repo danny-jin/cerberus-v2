@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useEffect } from 'react';
 
 import BondLogo from './BondLogo';
-import { ArrowUpIcon } from '../CustomSvg';
+import { ArrowUpIcon } from '../../components/CustomSvg';
 import { RootState } from '../../core/store/store';
 import { calcBondDetails } from '../../core/store/slices/bondSlice';
 import { useWeb3Context } from '../../core/hooks/web3Context';
@@ -18,18 +18,6 @@ const BondItem = ({bond, isMobile}, key) => {
   const [secondsToRefresh, setSecondsToRefresh] = useState(SECONDS_TO_REFRESH);
 
   const isBondLoading = useSelector((state: RootState) => state.bonding.loading ?? true);
-
-  const treasuryBalance = useSelector(() => {
-    if (!isBondLoading) {
-      if (bond.name === 'shib') {
-        return bond.purchased * 100000000;
-      } else if (bond.name === 'floki') {
-        return bond.purchased * 100000000000000000;
-      } else {
-        return bond.purchased;
-      }
-    }
-  });
 
   useEffect(() => {
     let interval = null;
@@ -72,7 +60,7 @@ const BondItem = ({bond, isMobile}, key) => {
           <Typography className="bond-price font-semibold">
             <>{isBondLoading ? <Skeleton width="50px" className="h-20 w-50"/> :
               <>{!bond.isAvailable[chainID] ? (<>--</>) : (
-                `${formatCurrency(bond.bondPrice)}`)}
+                `${formatCurrency(bond.bondPrice, 4)}`)}
               </>
             }</>
           </Typography>
@@ -94,7 +82,7 @@ const BondItem = ({bond, isMobile}, key) => {
                 currency: 'USD',
                 maximumFractionDigits: 0,
                 minimumFractionDigits: 0,
-              }).format(treasuryBalance)
+              }).format(bond.purchased)
             )}
           </Typography>
         </div>
@@ -133,7 +121,7 @@ const BondItem = ({bond, isMobile}, key) => {
           <Typography className="font-semibold">
             <>{isBondLoading ? <Skeleton width="50px"/> :
               <>{!bond.isAvailable[chainID] ? (<>--</>) : (
-                `${formatCurrency(bond.price)}`)}
+                `${formatCurrency(bond.bondPrice, 4)}`)}
               </>
             }</>
           </Typography>
@@ -157,7 +145,7 @@ const BondItem = ({bond, isMobile}, key) => {
                 currency: 'USD',
                 maximumFractionDigits: 0,
                 minimumFractionDigits: 0,
-              }).format(treasuryBalance)
+              }).format(bond.purchased)
             )}
           </Typography>
         </div>

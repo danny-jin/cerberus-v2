@@ -3,7 +3,7 @@ import { Button, FormControl, InputAdornment, InputLabel, OutlinedInput, Slide, 
 import { Skeleton } from '@material-ui/lab';
 import React, { useCallback, useEffect, useState } from 'react';
 
-import ConnectWalletButton from '../Nav/ConnectWalletButton';
+import ConnectWalletButton from '../../components/Nav/ConnectWalletButton';
 import { useWeb3Context } from '../../core/hooks/web3Context';
 import { useDebounce } from '../../core/hooks/base';
 import { BaseInfo, BaseInfoKey } from '../../core/interfaces/base';
@@ -142,21 +142,20 @@ function BondPurchase({bond, slippage, recipientAddress}) {
 
   useEffect(() => {
     const infos = defaultNetworkBaseInfos;
+    console.log('bond: ', bond);
     infos.forEach((info: BaseInfo) => {
       switch (info.key) {
         case BaseInfoKey.OwnerBalance:
           if (bond.balance) {
-            info.value = `${Number(formatNumber(bond.balance, 4))}${bond.displayUnits}`;
+            info.value = `${Number(formatNumber(bond.balance, 4))} ${bond.displayUnits}`;
           }
           break;
         case BaseInfoKey.NextRewardAmount:
-          if (bond.bondQuote) {
-            info.value = `${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.bondQuote, 4)))}3DOG`;
-          }
+          info.value = `${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.bondQuote, 4)))} 3DOG`;
           break;
         case BaseInfoKey.ThreeDogsBalance:
           if (bond.maxBondPrice) {
-            info.value = `${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.maxBondPrice, 4)))}3DOG`;
+            info.value = `${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.maxBondPrice, 4)))} 3DOG`;
           }
           break;
         case BaseInfoKey.Roi:
@@ -166,7 +165,7 @@ function BondPurchase({bond, slippage, recipientAddress}) {
           break;
         case BaseInfoKey.DebtRate:
           if (bond.debtRatio) {
-            info.value = `${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.debtRatio * 10000000, 4)))}%`;
+            info.value = `${Number(formatNumber(bond.debtRatio / 10000000, 2))}%`;
           }
           break;
         case BaseInfoKey.FiveDaysRate:
@@ -268,10 +267,10 @@ function BondPurchase({bond, slippage, recipientAddress}) {
                 <div className="flex justify-between mt-5 items-center" key={index}>
                   <Typography className="font-normal">{info.name}</Typography>
                   <div>
-                    {!info.value ? (
+                    {!info.value || isBondLoading ? (
                       <Skeleton width="100px"/>
                     ) : (
-                      <Typography variant="h5" color="primary" className="text-center">
+                      <Typography variant="h6" color="primary" className="text-center">
                         {info.value}
                       </Typography>
                     )}

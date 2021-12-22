@@ -97,8 +97,8 @@ export const calculateUserBondDetails = createAsyncThunk(
     bondMaturationBlock = +bondDetails.vesting + +bondDetails.lastBlock;
     pendingPayout = await bondContract.pendingPayoutFor(address);
 
-    let allowance = BigNumber.from(0);
-    let balance = BigNumber.from(0);
+    let allowance: BigNumber;
+    let balance: BigNumber;
     allowance = await reserveContract.allowance(address, bond.getAddressForBond(networkID));
     balance = await reserveContract.balanceOf(address);
 

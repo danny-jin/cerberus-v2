@@ -1,7 +1,7 @@
 import { Typography, Modal, FormControl, OutlinedInput, InputLabel, InputAdornment, Backdrop } from '@material-ui/core';
-
-import { CloseIcon } from '../CustomSvg';
 import React from 'react';
+
+import { CloseIcon } from '../../components/CustomSvg';
 
 function AdvancedSettings({
   open,

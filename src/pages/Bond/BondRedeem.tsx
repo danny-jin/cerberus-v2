@@ -3,7 +3,7 @@ import { Skeleton } from '@material-ui/lab';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 
-import ConnectWalletButton from '../Nav/ConnectWalletButton';
+import ConnectWalletButton from '../../components/Nav/ConnectWalletButton';
 import { RootState } from '../../core/store/store';
 import { redeemBond } from '../../core/store/slices/bondSlice';
 import { isPendingTxn, txnButtonText } from '../../core/store/slices/pendingTxSlice';

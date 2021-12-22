@@ -1,19 +1,20 @@
-import { StaticJsonRpcProvider, JsonRpcSigner } from '@ethersproject/providers';
-import { ethers, BigNumberish } from 'ethers';
+import { JsonRpcSigner, StaticJsonRpcProvider } from '@ethersproject/providers';
+import { BigNumberish, ethers } from 'ethers';
 
-import { ShibaIcon, DogWethIcon, WethIcon, FlokiIcon } from '../../components/CustomSvg';
-import { getDogPrice, getEthPrice, getShibPrice, getFlokiPrice } from './price';
+import { DogWethIcon, FlokiIcon, ShibaIcon, WethIcon } from '../../components/CustomSvg';
 import { NetworkID } from '../interfaces/base';
-import { CustomBond, BondType } from '../lib/bond';
+import { TokenType } from '../interfaces/token';
+import { BondType, CustomBond } from '../lib/bond';
+import { getDogPrice, getEthPrice, getTokenPriceFromChainLink } from './price';
 import { addressGroup } from '../data/address';
 
 import { BondCalculatorContract, RedeemHelper } from '../../typechain';
 import { abi as BondCalculatorContractAbi } from '../../abis/BondCalculatorContract.json';
-import { abi as BondDogEthContract } from '../../abis/OhmEthContract.json';
-import { abi as ReserveDogEthContract } from '../../abis/ReserveDogEthContract.json';
-import { abi as ShibBondContract } from '../../abis/ShibBondContract.json';
-import { abi as FlokiBondContract } from '../../abis/FlokiBondContract.json';
-import { abi as EthBondContract } from '../../abis/EthContract.json';
+import { abi as BondDogEthContractAbi } from '../../abis/BondDogEthContract.json';
+import { abi as ReserveDogEthContractAbi } from '../../abis/ReserveDogEthContract.json';
+import { abi as ShibBondContractAbi } from '../../abis/ShibBondContract.json';
+import { abi as FlokiBondContractAbi } from '../../abis/FlokiBondContract.json';
+import { abi as EthBondContractAbi } from '../../abis/EthBondContract.json';
 import { abi as IERC20Abi } from '../../abis/IERC20.json';
 import { abi as RedeemHelperABI } from '../../abis/RedeemHelper.json';
 
@@ -27,7 +28,7 @@ export function getBondCalculatorContract(networkID: NetworkID, provider: Static
 
 export function getSpecialBondCalculatorContract(networkID: NetworkID, provider: StaticJsonRpcProvider) {
   return new ethers.Contract(
-    addressGroup[networkID].SPECIALBONDINGCALC_ADDRESS as string,
+    addressGroup[networkID].SPECIAL_BONDING_CALCULATOR_ADDRESS as string,
     BondCalculatorContractAbi,
     provider,
   ) as BondCalculatorContract;
@@ -43,15 +44,32 @@ export function getRedeemHelperContract({networkID, provider,}: {
   ) as RedeemHelper;
 }
 
+export function contractForRedeemHelper({networkID, provider}: {
+  networkID: number;
+  provider: StaticJsonRpcProvider | JsonRpcSigner;
+}) {
+  return new ethers.Contract(
+    addressGroup[networkID].REDEEM_HELPER_ADDRESS as string,
+    RedeemHelperABI,
+    provider,
+  ) as RedeemHelper;
+}
+
 export const shib = new CustomBond({
   name: 'shib',
   displayName: 'SHIB',
+  tokenType: TokenType.Shiba,
+  shibaEthAggregatorAddress: '0x8dD1CD88F43aF196ae478e91b9F5E4Ac69A97C61',
+  ethUsdAggregatorAddress: '0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419',
+  decimals: 18,
+  aggregatorDecimals: 18,
+  ethUsdAggregatorDecimals: 8,
   lpUrl: '',
   bondType: BondType.StableAsset,
   bondToken: 'SHIB',
   isAvailable: {[NetworkID.Mainnet]: true, [NetworkID.Testnet]: true},
   bondIconSvg: ShibaIcon,
-  bondContractABI: ShibBondContract,
+  bondContractABI: ShibBondContractAbi,
   reserveContract: IERC20Abi, // The Standard IERC20Abi since they're normal tokens
   networkBondAddressGroup: {
     [NetworkID.Mainnet]: {
@@ -64,24 +82,27 @@ export const shib = new CustomBond({
     },
   },
   customTreasuryBalanceFunction: async function (this: CustomBond, networkID, provider) {
-    let shibPrice: BigNumberish = await getShibPrice();
-    shibPrice = Number(shibPrice.toString()) / Math.pow(10, 8);
+    let shibPrice = await getTokenPriceFromChainLink(provider, this);
     const token = this.getContractForReserve(networkID, provider);
     let shibAmount: BigNumberish = await token.balanceOf(addressGroup[networkID].TREASURY_ADDRESS);
-    shibAmount = Number(shibAmount.toString()) / Math.pow(10, 18);
-    return shibAmount * shibPrice;
+    shibAmount = Number(shibAmount.toString()) / Math.pow(10, this.decimals);
+    return shibAmount * Number(shibPrice);
   },
 });
 
 export const floki = new CustomBond({
   name: 'floki',
   displayName: 'FLOKI',
+  tokenType: TokenType.Floki,
+  decimals: 9,
+  aggregatorDecimals: 8,
+  chainLinkAggregatorAddress: '0xfBAFc1F5b1b37CC0763780453d1eA635520708f2',
   lpUrl: '',
   bondType: BondType.StableAsset,
   bondToken: 'FLOKI',
   isAvailable: {[NetworkID.Mainnet]: true, [NetworkID.Testnet]: true},
   bondIconSvg: FlokiIcon,
-  bondContractABI: FlokiBondContract,
+  bondContractABI: FlokiBondContractAbi,
   reserveContract: IERC20Abi, // The Standard IERC20Abi since they're normal tokens
   networkBondAddressGroup: {
     [NetworkID.Mainnet]: {
@@ -94,24 +115,27 @@ export const floki = new CustomBond({
     },
   },
   customTreasuryBalanceFunction: async function (this: CustomBond, networkID, provider) {
-    let flokiPrice: BigNumberish = await getFlokiPrice();
-    flokiPrice = Number(flokiPrice.toString()) / Math.pow(10, 8);
+    let flokiPrice = await getTokenPriceFromChainLink(provider, this);
     const token = this.getContractForReserve(networkID, provider);
     let flokiAmount: BigNumberish = await token.balanceOf(addressGroup[networkID].TREASURY_ADDRESS);
-    flokiAmount = Number(flokiAmount.toString()) / Math.pow(10, 18);
-    return flokiAmount * flokiPrice;
+    flokiAmount = Number(flokiAmount.toString()) / Math.pow(10, this.decimals);
+    return flokiAmount * Number(flokiPrice);
   },
 });
 
 export const eth = new CustomBond({
   name: 'eth',
   displayName: 'wETH',
+  tokenType: TokenType.Weth,
+  decimals: 18,
+  aggregatorDecimals: 8,
+  chainLinkAggregatorAddress: '0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419',
   lpUrl: '',
   bondType: BondType.StableAsset,
   bondToken: 'wETH',
   isAvailable: {[NetworkID.Mainnet]: true, [NetworkID.Testnet]: false},
   bondIconSvg: WethIcon,
-  bondContractABI: EthBondContract,
+  bondContractABI: EthBondContractAbi,
   reserveContract: IERC20Abi, // The Standard IERC20Abi since they're normal tokens
   networkBondAddressGroup: {
     [NetworkID.Mainnet]: {
@@ -124,22 +148,26 @@ export const eth = new CustomBond({
     },
   },
   customTreasuryBalanceFunction: async function (this: CustomBond, networkID, provider) {
-    let ethPrice = await getEthPrice();
+    let ethPrice = await getTokenPriceFromChainLink(provider, this);
     const token = this.getContractForReserve(networkID, provider);
     let ethAmount: BigNumberish = await token.balanceOf(addressGroup[networkID].TREASURY_ADDRESS);
-    ethAmount = Number(ethAmount.toString()) / Math.pow(10, 18);
-    return ethAmount * ethPrice;
+    ethAmount = Number(ethAmount.toString()) / Math.pow(10, this.decimals);
+    return ethAmount * Number(ethPrice);
   },
 });
 
 export const dog_eth = new CustomBond({
   name: 'dog_eth_lp',
   displayName: '3DOG-wETH LP',
+  tokenType: TokenType.ThreeDogEthLp,
+  decimals: 18,
+  threeDogDecimals: 9,
+  ethDecimals: 18,
   bondToken: 'wETH',
   isAvailable: {[NetworkID.Mainnet]: true, [NetworkID.Testnet]: true},
   bondIconSvg: DogWethIcon,
-  bondContractABI: BondDogEthContract,
-  reserveContract: ReserveDogEthContract,
+  bondContractABI: BondDogEthContractAbi,
+  reserveContract: ReserveDogEthContractAbi,
   networkBondAddressGroup: {
     [NetworkID.Mainnet]: {
       bondAddress: '0xd2E0BD64B3e6fbc4d09f9a11e5852bf9A46A6731',
@@ -157,15 +185,15 @@ export const dog_eth = new CustomBond({
     if (networkID === NetworkID.Mainnet) {
       const token = this.getContractForReserve(networkID, provider);
       const tokenAmount = await token.balanceOf(addressGroup[networkID].TREASURY_ADDRESS);
-      const lpTokenSupply = await token.totalSupply()
-      let reserves = await token.getReserves()
-      let reserves0 = Number(reserves[0].toString())
-      let reserves1 = Number(reserves[1].toString())
-      let dPrice = await getDogPrice()
-      let wethPrice = await getEthPrice()
-      let lpValue = (dPrice * (reserves0 / Math.pow(10, 9))) + ((wethPrice * reserves1 / Math.pow(10, 18)))
-      let lpTokenValue = lpValue / Number(lpTokenSupply.toString()) * Math.pow(10, 18)
-      const lpSupply = Number(tokenAmount.toString()) / Math.pow(10, 18)
+      const lpTokenSupply = await token.totalSupply();
+      let reserves = await token.getReserves();
+      let reserves0 = Number(reserves[0].toString());
+      let reserves1 = Number(reserves[1].toString());
+      let dPrice = await getDogPrice();
+      let wethPrice = await getEthPrice(provider);
+      let lpValue = (dPrice * (reserves0 / Math.pow(10, this.threeDogDecimals))) + ((wethPrice * reserves1 / Math.pow(10, this.ethDecimals)));
+      let lpTokenValue = lpValue / Number(lpTokenSupply.toString()) * Math.pow(10, this.decimals);
+      const lpSupply = Number(tokenAmount.toString()) / Math.pow(10, this.decimals);
       return lpTokenValue * lpSupply;
 
     } else {
@@ -175,7 +203,7 @@ export const dog_eth = new CustomBond({
       const tokenAmount = await token.balanceOf(addressGroup[networkID].TREASURY_ADDRESS);
       const valuation = await bondCalculator.valuation(tokenAddress, tokenAmount);
       const markdown = await bondCalculator.markdown(tokenAddress);
-      return (Number(valuation.toString()) / Math.pow(10, 9)) * (Number(markdown.toString()) / Math.pow(10, 18));
+      return (Number(valuation.toString()) / Math.pow(10, this.threeDogDecimals)) * (Number(markdown.toString()) / Math.pow(10, this.ethDecimals));
     }
   },
 });

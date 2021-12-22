@@ -3,7 +3,7 @@ import { ethers } from 'ethers';
 
 import { apolloClient } from '../../apollo/client';
 import { IBaseAsyncThunk } from '../../interfaces/base';
-import { getTokenPrice } from '../../utils/price';
+import { getDogPrice } from '../../utils/price';
 import { boundObject } from '../../utils/base';
 import { protocolMetricsQuery } from '../../data/query';
 import { addressGroup } from '../../data/address';
@@ -48,7 +48,7 @@ const initialState = {
 const getMarketPrice = createAsyncThunk('app/getMarketPrice', async () => {
   let marketPrice: number;
   try {
-    marketPrice = await getTokenPrice('cerberus');
+    marketPrice = await getDogPrice();
   } catch (e) {
     console.log('failed to get market price.');
   }
@@ -124,12 +124,9 @@ export const loadMarketPrice = createAsyncThunk(
   async ({networkID, provider}: IBaseAsyncThunk, {dispatch, getState}) => {
     const state: any = getState();
     let marketPrice;
-    // check if we already have loaded market price
-    if (state.app.marketPriceLoading === false && state.app.marketPrice) {
-      // go get marketPrice from app.state
+    if (state.app.marketPrice) {
       marketPrice = state.app.marketPrice;
     } else {
-      // we don't have marketPrice in app.state, so go get it
       try {
         const originalPromiseResult = await dispatch(getMarketPrice()).unwrap();
         marketPrice = originalPromiseResult?.marketPrice;
@@ -167,7 +164,7 @@ const appSlice = createSlice({
         state.loading = false;
         console.error(error.name, error.message, error.stack);
       })
-      .addCase(loadMarketPrice.pending, (state, action) => {
+      .addCase(loadMarketPrice.pending, (state) => {
         state.loading = true;
       })
       .addCase(loadMarketPrice.fulfilled, (state, action) => {

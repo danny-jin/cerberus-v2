@@ -6,7 +6,8 @@ import {
   IBondAssetAsyncThunk,
   ICalcBondDetailsAsyncThunk,
   IJsonRPCError,
-  IRedeemBondAsyncThunk,
+  IRedeemAllBondsAsyncThunk,
+  IRedeemBondAsyncThunk
 } from '../../interfaces/base';
 import { IBondDetails } from '../../lib/bond';
 import { RootState } from '../store';
@@ -14,11 +15,12 @@ import { calculateUserBondDetails, getBalances } from './accountSlice';
 import { loadMarketPrice } from './appSlice';
 import { error, info } from './messageSlice';
 import { clearPendingTx, fetchPendingTxs } from './pendingTxSlice';
-import { getSpecialBondCalculatorContract } from '../../utils/bond'
-import { getDogPrice, getEthPrice, getFlokiPrice, getShibPrice } from '../../utils/price';
+import { contractForRedeemHelper, getSpecialBondCalculatorContract } from '../../utils/bond'
+import { getEthPrice, getTokenPriceFromChainLink } from '../../utils/price';
 import { addressGroup } from '../../data/address';
 import { abi as OlympusStakingAbi } from '../../../abis/OlympusStaking.json';
 import { OlympusStaking } from '../../../typechain';
+import { TokenType } from '../../interfaces/token';
 
 export const changeApproval = createAsyncThunk(
   'bond/changeApproval',
@@ -67,7 +69,6 @@ export const calcBondDetails = createAsyncThunk(
   'bond/calcBondDetails',
   async ({bond, value, provider, networkID}: ICalcBondDetailsAsyncThunk, {dispatch}): Promise<IBondDetails> => {
     if (!value || value === '') {
-      console.log('value is null');
       value = '0';
     }
     const amountInWei = ethers.utils.parseEther(value);
@@ -81,10 +82,15 @@ export const calcBondDetails = createAsyncThunk(
 
     const terms = await bondContract.terms();
     const maxBondPrice = await bondContract.maxPayout();
-    let shibPrice = await getShibPrice()
-    let flokiPrice = await getFlokiPrice()
+    let tokenPrice;
+    if (bond.tokenType === TokenType.ThreeDogEthLp) {
+      tokenPrice = await getEthPrice(provider);
+    } else {
+      tokenPrice = await getTokenPriceFromChainLink(provider, bond);
+    }
     let debtRatio: BigNumberish = await bondContract.standardizedDebtRatio();
     debtRatio = Number(debtRatio.toString()) / Math.pow(10, 9);
+
     let marketPrice: number = 0;
     try {
       const originalPromiseResult = await dispatch(
@@ -98,41 +104,31 @@ export const calcBondDetails = createAsyncThunk(
 
     try {
       // TODO (appleseed): improve this logic
-      if (bond.name === 'shib') {
+      if (bond.tokenType === TokenType.Shiba || bond.tokenType === TokenType.Floki) {
         bondPrice = await bondContract.bondPriceInUSD();
-        const first = (marketPrice - (Number(bondPrice.toString()) * Math.pow(10, -18)) * shibPrice)
+        const first = (marketPrice - (Number(bondPrice.toString()) / Math.pow(10, bond.decimals)) * tokenPrice);
         bondDiscount = first / marketPrice;
-      } else if (bond.name === 'floki') {
-        bondPrice = await bondContract.bondPriceInUSD();
-        const first = (marketPrice - (Number(bondPrice.toString()) * Math.pow(10, -9)) * flokiPrice)
-        bondDiscount = first / marketPrice;
-      } else if (bond.name === 'dog_eth_lp') {
+      } else if (bond.tokenType === TokenType.ThreeDogEthLp) {
         bondPrice = await bondContract.bondPrice();
-        const token = bond.getContractForReserve(networkID, provider)
-        let reserves = await token.getReserves()
-        let reserves0 = Number(reserves[0].toString())
-        let reserves1 = Number(reserves[1].toString())
-        let dPrice = await getDogPrice()
-        let wethPrice = await getEthPrice()
-        console.log(dPrice)
-        let lpValue = (dPrice * (reserves0 * Math.pow(10, -9))) + ((wethPrice * reserves1 * Math.pow(10, -18)))
-        let val = await specialBondCalcContract.valuation(bond.getAddressForReserve(networkID), 1)
-        const lpTokenSupply = await token.totalSupply()
-        let lpTokenValue = lpValue / Number(lpTokenSupply.toString()) * Math.pow(10, 18)
+        const token = bond.getContractForReserve(networkID, provider);
+        let reserves = await token.getReserves();
+        let reserves0 = Number(reserves[0].toString());
+        let reserves1 = Number(reserves[1].toString());
+        let lpValue = (marketPrice * (reserves0 / Math.pow(10, bond.threeDogDecimals))) + ((tokenPrice * reserves1 / Math.pow(10, bond.ethDecimals)));
+        let val = await specialBondCalcContract.valuation(bond.getAddressForReserve(networkID), 1);
+        const lpTokenSupply = await token.totalSupply();
+        let lpTokenValue = lpValue / Number(lpTokenSupply.toString()) * Math.pow(10, bond.decimals);
 
-        let num = (Number(bondPrice.toString()) * lpTokenValue) / (Number(val.toString()) * Math.pow(10, 11)) * Math.pow(10, 18)
-        bondPrice = BigNumber.from(num.toString())
-        const first = (marketPrice - (Number(bondPrice.toString()) * Math.pow(10, -18)))
-        const second = marketPrice;
-        console.log(bondPrice)
-        bondDiscount = first / second;
-      } else {
+        let num = (Number(bondPrice.toString()) * lpTokenValue) / (Number(val.toString()) * Math.pow(10, 11)) * Math.pow(10, bond.decimals);
+        bondPrice = BigNumber.from(num.toString());
+        const first = (marketPrice - (Number(bondPrice.toString()) / Math.pow(10, bond.decimals)));
+        bondDiscount = first / marketPrice;
+      } else if (bond.tokenType === TokenType.Weth) {
         bondPrice = await bondContract.bondPrice();
-        let wethPrice = await getEthPrice()
         let val = await specialBondCalcContract.valuation(bond.getAddressForReserve(networkID), 1)
-        let dynamic = ((Number(bondPrice.toString()) * (wethPrice * Math.pow(10, 18))) / Number(val.toString())) * Math.pow(10, -11)
+        let dynamic = ((Number(bondPrice.toString()) * (tokenPrice * Math.pow(10, bond.decimals))) / Number(val.toString())) / Math.pow(10, 11)
         bondPrice = BigNumber.from(dynamic.toString())
-        bondDiscount = (marketPrice * Math.pow(10, 18) - Number(bondPrice.toString())) / Number(bondPrice.toString()); // 1 - bondPrice / (bondPrice * Math.pow(10, 9));
+        bondDiscount = (marketPrice * Math.pow(10, bond.decimals) - Number(bondPrice.toString())) / Number(bondPrice.toString());
       }
     } catch (e) {
       console.log('error getting bondPriceInUSD', e);
@@ -154,7 +150,6 @@ export const calcBondDetails = createAsyncThunk(
         bondQuote = Number(bondQuote.toString()) / Math.pow(10, 9);
       }
     } else {
-      // RFV = DAI
       bondQuote = await bondContract.payoutFor(amountInWei);
       if (!amountInWei.isZero() && Number(bondQuote.toString()) < 10000000) {
         bondQuote = BigNumber.from(0);
@@ -181,7 +176,7 @@ export const calcBondDetails = createAsyncThunk(
 
     // Calculate bonds purchased
     let purchased = await bond.getTreasuryBalance(networkID, provider);
-    if (bond.name === 'shib') {
+    if (bond.tokenType === TokenType.Shiba || bond.tokenType === TokenType.Floki) {
       return {
         bond: bond.name,
         bondDiscount,
@@ -190,19 +185,7 @@ export const calcBondDetails = createAsyncThunk(
         purchased,
         vestingTerm: Number(terms.vestingTerm.toString()),
         maxBondPrice: Number(maxBondPrice.toString()) / Math.pow(10, 9),
-        bondPrice: Number(bondPrice.toString()) / Math.pow(10, 18) * shibPrice,
-        marketPrice: marketPrice,
-      };
-    } else if (bond.name === 'floki') {
-      return {
-        bond: bond.name,
-        bondDiscount,
-        debtRatio: Number(debtRatio.toString()),
-        bondQuote: Number(bondQuote.toString()),
-        purchased,
-        vestingTerm: Number(terms.vestingTerm.toString()),
-        maxBondPrice: Number(maxBondPrice.toString()) / Math.pow(10, 9),
-        bondPrice: Number(bondPrice.toString()) / Math.pow(10, 9) * flokiPrice,
+        bondPrice: Number(bondPrice.toString()) / Math.pow(10, bond.decimals) * tokenPrice,
         marketPrice: marketPrice,
       };
     } else {
@@ -214,7 +197,7 @@ export const calcBondDetails = createAsyncThunk(
         purchased,
         vestingTerm: Number(terms.vestingTerm.toString()),
         maxBondPrice: Number(maxBondPrice.toString()) / Math.pow(10, 9),
-        bondPrice: Number(bondPrice.toString()) / Math.pow(10, 18),
+        bondPrice: Number(bondPrice.toString()) / Math.pow(10, bond.decimals),
         marketPrice: marketPrice,
       };
     }
@@ -322,6 +305,47 @@ export const redeemBond = createAsyncThunk(
     } catch (e: unknown) {
       uaData.approved = false;
       dispatch(error((e as IJsonRPCError).message));
+    }
+  },
+);
+
+export const redeemAllBonds = createAsyncThunk(
+  'bond/redeemAllBonds',
+  async ({bonds, address, networkID, provider, autostake}: IRedeemAllBondsAsyncThunk, {dispatch}) => {
+    if (!provider) {
+      dispatch(error('Please connect your wallet!'));
+      return;
+    }
+
+    const signer = provider.getSigner();
+    const redeemHelperContract = contractForRedeemHelper({networkID, provider: signer});
+
+    let redeemAllTx;
+
+    try {
+      redeemAllTx = await redeemHelperContract.redeemAll(address, autostake);
+      const pendingTxnType = 'redeem_all_bonds' + (autostake === true ? '_autostake' : '');
+
+      await dispatch(
+        fetchPendingTxs({txHash: redeemAllTx.hash, text: 'Redeeming All Bonds', type: pendingTxnType}),
+      );
+
+      await redeemAllTx.wait();
+
+      if (bonds) {
+        for await (let bond of bonds) {
+          dispatch(calculateUserBondDetails({address, bond, networkID, provider}));
+
+        }
+      }
+
+      dispatch(getBalances({address, networkID, provider}));
+    } catch (e: unknown) {
+      dispatch(error((e as IJsonRPCError).message));
+    } finally {
+      if (redeemAllTx) {
+        dispatch(clearPendingTx(redeemAllTx.hash));
+      }
     }
   },
 );
