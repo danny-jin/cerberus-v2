@@ -40,9 +40,11 @@ const BondItem = ({bond, isMobile}, key) => {
   if (!isMobile) {
     return (
       <div className="md:grid grid-cols-12 hidden" key={key}>
-        <div className="col-span-4 p-15 flex justify-start items-center">
+        <div className="col-span-2 py-15 flex justify-end items-center">
           <BondLogo bond={bond}/>
-          <div className="text-15 ml-20 align-middle">
+        </div>
+        <div className="col-span-2 p-15 pr-0 flex justify-start items-center">
+          <div className="text-15">
             <Typography className="font-semibold">{bond.displayName}</Typography>
             {bond.isLp && (
               <div>
@@ -98,8 +100,9 @@ const BondItem = ({bond, isMobile}, key) => {
         </div>
       </div>)
   } else {
-    return(
-      <div className="msm:block md:hidden rounded-lg border-goldsand border-3 w-full px-30 py-20 mb-30 text-white" key={key}>
+    return (
+      <div className="msm:block md:hidden rounded-lg border-goldsand border-3 w-full px-30 py-20 mb-30 text-white"
+           key={key}>
         <div className="col-span-3 flex items-center">
           <BondLogo bond={bond}/>
           <div className="text-15 align-middle">

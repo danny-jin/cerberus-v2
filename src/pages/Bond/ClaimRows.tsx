@@ -70,7 +70,7 @@ export function ClaimBondTableData({ userBond }) {
   );
 }
 
-export function ClaimBondCardData({ userBond }) {
+export function ClaimBondCardData({ userBond, className }) {
   const dispatch = useDispatch();
   const { address, chainID, provider } = useWeb3Context();
   const { bonds } = useBonds(chainID);
@@ -96,7 +96,7 @@ export function ClaimBondCardData({ userBond }) {
   }
 
   return (
-    <div id={`${bondName}--claim`} className="m-auto mb-30">
+    <div id={`${bondName}`} className={`m-auto mb-30 ${className}`}>
       <div className="flex justify-center items-center mb-15">
         <BondLogo bond={bond} />
         <div>

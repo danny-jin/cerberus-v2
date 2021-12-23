@@ -72,15 +72,13 @@ export const calcBondDetails = createAsyncThunk(
       value = '0';
     }
     const amountInWei = ethers.utils.parseEther(value);
-
     let bondPrice = BigNumber.from(0);
     let bondDiscount = 0;
     let valuation = 0;
     let bondQuote: BigNumberish;
     const bondContract = bond.getContractForBond(networkID, provider);
-    const specialBondCalcContract = getSpecialBondCalculatorContract(networkID, provider);
-
     const terms = await bondContract.terms();
+    const specialBondCalcContract = getSpecialBondCalculatorContract(networkID, provider);
     const maxBondPrice = await bondContract.maxPayout();
     let tokenPrice;
     if (bond.tokenType === TokenType.ThreeDogEthLp) {

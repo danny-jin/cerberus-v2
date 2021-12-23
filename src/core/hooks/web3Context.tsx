@@ -200,7 +200,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({child
     [connect, disconnect, hasCachedProvider, provider, connected, address, chainID, web3Modal, uri],
   );
 
-  useEffect(() => {
+  // useEffect(useEffect() => {
     // logs non-functioning nodes && returns an array of working mainnet nodes
     // NodeHelper.checkAllNodesStatus().then((validNodes: any) => {
     //   validNodes = validNodes.filter((url: boolean | string) => url !== false);
@@ -211,7 +211,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({child
     //     }, 1);
     //   }
     // });
-  }, []);
+  // }, []);
 
   // @ts-ignore
   return <Web3Context.Provider value={{onChainProvider}}>{children}</Web3Context.Provider>;

@@ -14,7 +14,7 @@ import { shorten } from 'core/utils/base';
 import { LANDING_URL } from '../../core/data/base';
 
 const Sidebar = (props: SidebarProps) => {
-  const { address, chainID } = useWeb3Context();
+  const {address, chainID} = useWeb3Context();
   const {bonds} = useBonds(chainID);
 
   const IconSVG = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> };
@@ -59,24 +59,25 @@ const Sidebar = (props: SidebarProps) => {
           }
         </div>
         <div className="mb-40 ml-30">
-          <div className="text-left text-white pl-35 mt-10">
-            <Typography variant="body2">Bond discounts</Typography>
-            {bonds.map((bond, i) => (
-              <Link component={NavLink} to={`/bonds/${bond.name}`} key={i} className="no-underline">
-                {!bond.bondDiscount ? (
-                  <Skeleton variant="text" className="w-150"/>
-                ) : (
-                  <Typography variant="body2">
-                    {bond.displayName}
-
-                    <span className="float-left ml-35">
-                            {!bond.isAvailable[chainID]
-                              ? 'Sold Out'
-                              : `${bond.bondDiscount && formatNumber(bond.bondDiscount * 100, 2)}%`}
-                          </span>
-                  </Typography>
-                )}
-              </Link>
+          <div className="text-left text-white px-35 mt-10">
+            <Typography variant="body2" className="pb-5">Bond discounts</Typography>
+            {bonds.map((bond, index) => (
+              <div className="py-5" key={index}>
+                <Link component={NavLink} to={`/bonds/${bond.name}`} className="no-underline">
+                  {!bond.bondDiscount ? (
+                    <Skeleton variant="text" className="w-150"/>
+                  ) : (
+                    <div className="flex justify-between">
+                      <Typography variant="body2">{bond.displayName}</Typography>
+                      <Typography className="float-left ml-35" variant="body2">
+                        {!bond.isAvailable[chainID]
+                          ? 'Sold Out'
+                          : `${bond.bondDiscount && formatNumber(bond.bondDiscount * 100, 2)}%`}
+                      </Typography>
+                    </div>
+                  )}
+                </Link>
+              </div>
             ))}
           </div>
         </div>

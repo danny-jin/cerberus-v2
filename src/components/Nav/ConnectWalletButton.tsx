@@ -10,11 +10,11 @@ import { RootState } from '../../core/store/store';
 const ConnectWalletButton = (props: any) => {
 
   const {connect, disconnect, connected, chainID} = useWeb3Context();
-  const isCollapsed = useSelector((state: RootState) => state.app.isCollapsed);
   const [anchorEl, setAnchorEl] = useState(null);
   const [isConnected, setConnected] = useState(connected);
   const [isHovering, setIsHovering] = useState(false);
 
+  const isCollapsed = useSelector((state: RootState) => state.app.isCollapsed);
   const pendingTransactions = useSelector((state: RootState) => {
     return state.pendingTx;
   });
@@ -81,7 +81,7 @@ const ConnectWalletButton = (props: any) => {
         {buttonText}
         {pendingTransactions.length > 0 && (
           <Slide direction="left" in={isHovering} {...{timeout: 333}}>
-            <SvgIcon className="absolute right-5" component={CaretDownIcon} htmlColor={'#49A1F2'}/>
+            <CaretDownIcon className="absolute right-5 fill-pictonBlue" />
           </Slide>
         )}
       </Button>

@@ -104,10 +104,13 @@ const Bond = () => {
                 )
               })}
           </div>
-          <div className={`grid grid-rows-${bonds.length} text-white my-10`}>
-            <div className="md:grid grid-cols-12 hidden">
-              <div className="flex items-center col-span-4 justify-center">
-                <Typography variant="h6" className="col-span-4 text-center text-white-600 p-15">Bond</Typography>
+          <div className={`grid grid-rows-${bonds.length} text-white mb-10`}>
+            <div className="md:grid grid-cols-12 hidden flex items-end">
+              <div className="flex items-center col-span-2 justify-center">
+                <Typography variant="h6" className="col-span-2 text-center text-white-600 p-15"></Typography>
+              </div>
+              <div className="flex items-center col-span-2 justify-start">
+                <Typography variant="h6" className="col-span-2 text-center text-white-600 p-15">Bond</Typography>
               </div>
               <div className="flex items-center">
                 <Typography variant="h6" className="text-white-600 p-15">Price</Typography>

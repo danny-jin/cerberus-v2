@@ -52,7 +52,7 @@ function BondPurchase({bond, slippage, recipientAddress}) {
   const {provider, address, chainID} = useWeb3Context();
   const [networkBaseInfos, setNetworkBaseInfos] = useState(defaultNetworkBaseInfos);
   const [secondsToRefresh, setSecondsToRefresh] = useState(SECONDS_TO_REFRESH);
-  const [quantity, setQuantity] = useState(null);
+  const [quantity, setQuantity] = useState('');
 
   const currentBlock = useSelector((state: RootState) => {
     return state.app.currentBlock;
@@ -71,7 +71,7 @@ function BondPurchase({bond, slippage, recipientAddress}) {
   const onBond = async () => {
     if (quantity === null) {
       dispatch(error('Please enter a value!'));
-    } else if (isNaN(quantity)) {
+    } else if (isNaN(Number(quantity))) {
       dispatch(error('Please enter a valid value!'));
     } else if (bond.interestDue > 0 || bond.pendingPayout > 0) {
       const shouldProceed = window.confirm(
@@ -105,7 +105,7 @@ function BondPurchase({bond, slippage, recipientAddress}) {
   }
 
   const clearInput = () => {
-    setQuantity(0);
+    setQuantity('0');
   };
 
   const hasAllowance = useCallback(() => {
@@ -142,7 +142,6 @@ function BondPurchase({bond, slippage, recipientAddress}) {
 
   useEffect(() => {
     const infos = defaultNetworkBaseInfos;
-    console.log('bond: ', bond);
     infos.forEach((info: BaseInfo) => {
       switch (info.key) {
         case BaseInfoKey.OwnerBalance:
@@ -195,19 +194,20 @@ function BondPurchase({bond, slippage, recipientAddress}) {
                   <div className="my-10">
                     <em>
                       <Typography variant="body1" align="center" color="textSecondary">
-                        First time bonding <b>{bond.displayName}</b>? <br/> Please approve CebrerusDAO to use your{' '}
+                        First time bonding <b>{bond.displayName}</b>? <br/> Please approve CerberusDAO to use your{' '}
                         <b>{bond.displayName}</b> for bonding.
                       </Typography>
                     </em>
                   </div>
                 ) : (
                   <FormControl className="w-full min-w-1/2 max-w-410 m-5" variant="outlined" color="primary">
-                    <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
+                    <InputLabel htmlFor="outlined-adornment-" className="bg-black">Amount</InputLabel>
                     <OutlinedInput
                       id="outlined-adornment-amount"
                       type="number"
                       value={quantity}
                       onChange={e => setQuantity(e.target.value)}
+                      className="border border-white"
                       labelWidth={55}
                       endAdornment={
                         <InputAdornment position="end">

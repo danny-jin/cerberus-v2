@@ -10,7 +10,6 @@ import {
   Table,
   Zoom,
 } from '@material-ui/core';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 
@@ -27,7 +26,6 @@ function ClaimBonds({activeBonds}) {
   const {bonds} = useBonds(chainID);
 
   const [numberOfBonds, setNumberOfBonds] = useState(0);
-  const isSmallScreen = useMediaQuery('(max-width: 733px)'); // change to breakpoint query
 
   const pendingTransactions = useSelector((state: RootState) => state.pendingTx);
 
@@ -58,32 +56,28 @@ function ClaimBonds({activeBonds}) {
               <Typography variant="h5" className="font-semibold">Your Bonds (1,1)</Typography>
             </div>
             <div>
-              {!isSmallScreen && (
-                <TableContainer>
-                  <Table aria-label="Claimable bonds">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell className="text-center">Bond</TableCell>
-                        <TableCell className="text-center">Claimable</TableCell>
-                        <TableCell className="text-center">Pending</TableCell>
-                        <TableCell className="text-right">Fully Vested</TableCell>
-                        <TableCell className="text-right"/>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {Object.entries(activeBonds).map((bond, i) => (
-                        <ClaimBondTableData key={i} userBond={bond}/>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              )}
-
-              {isSmallScreen &&
-              Object.entries(activeBonds).map((bond, i) => <ClaimBondCardData key={i} userBond={bond}/>)}
-
+              <TableContainer className="md: block hidden">
+                <Table aria-label="Claimable bonds">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell className="text-center">Bond</TableCell>
+                      <TableCell className="text-center">Claimable</TableCell>
+                      <TableCell className="text-center">Pending</TableCell>
+                      <TableCell className="text-right">Fully Vested</TableCell>
+                      <TableCell className="text-right"/>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {Object.entries(activeBonds).map((bond, i) => (
+                      <ClaimBondTableData key={i} userBond={bond}/>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+              {Object.entries(activeBonds).map((bond, i) =>
+                <ClaimBondCardData key={i} userBond={bond} className="md:hidden block"/>)}
               <div
-                className={`flex justify-center w-full my-15 ${isSmallScreen ? 'small' : ''}`}
+                className={`flex w-full my-15 md:flex-row flex-col justify-center items-center md:flex-nowrap md: items-start`}
               >
                 {numberOfBonds > 1 && (
                   <>
