@@ -46,7 +46,7 @@ module.exports = {
       codgray2: '#141414',
       goldsand: '#E8B580',
       slategray: '#768299',
-      pictonBlue:'#49A1F2',
+      pictonblue:'#49A1F2',
     },
     spacing: {
       '2': '2px',

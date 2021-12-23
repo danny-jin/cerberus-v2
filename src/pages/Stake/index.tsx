@@ -251,7 +251,7 @@ const Stake = () => {
                 </Tabs>
               </div>
               <div className="flex flex-col md:flex-row items-center mt-10 my-20">
-                <div className="flex flex-grow justify-center">
+                <div className="flex w-full md:flex-grow justify-center">
                   {
                     address && !isAllowanceDataLoading ? (
                       (!hasAllowance('ohm') && isUnStaked === 0) || (!hasAllowance('sOhm') && isUnStaked === 1) ? (
@@ -273,7 +273,7 @@ const Stake = () => {
                           </Typography>
                         </div>
                       ) : (
-                        <FormControl className="w-full max-w-540 m-5" variant="outlined" color="primary">
+                        <FormControl className="w-full md:max-w-540 m-5" variant="outlined" color="primary">
                           <InputLabel htmlFor="amount-input"/>
                           <OutlinedInput
                             id="amount-input"

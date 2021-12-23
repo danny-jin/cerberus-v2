@@ -1,8 +1,8 @@
-import { Box, Button, SvgIcon, Typography, Popper, Paper, Divider, Link, Slide, Fade } from '@material-ui/core';
+import { Box, Button, SvgIcon, Typography, Popper, Paper, Divider, Link, Fade, Slide } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { CaretDownIcon, ArrowUpIcon } from '../CustomSvg';
+import { ArrowUpIcon, CaretDownIcon } from '../CustomSvg';
 import { useWeb3Context } from '../../core/hooks/web3Context';
 import { NetworkID } from '../../core/interfaces/base';
 import { RootState } from '../../core/store/store';
@@ -68,20 +68,20 @@ const ConnectWalletButton = (props: any) => {
       id="wallet-menu"
     >
       <Button
-        className={`flex items-center ${props.className}`}
+        className={`flex items-center m-5 ${props.className} ${pendingTransactions.length > 0 ? 'text-pictonblue' : ''}`}
         variant="contained"
         color="secondary"
         size="large"
-        style={pendingTransactions.length > 0 ? {color: '#49A1F2'} : {}}
         onClick={connectWallet}
         onMouseOver={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
-        key={1}
       >
         {buttonText}
         {pendingTransactions.length > 0 && (
           <Slide direction="left" in={isHovering} {...{timeout: 333}}>
-            <CaretDownIcon className="absolute right-5 fill-pictonBlue" />
+            <Paper elevation={5}>
+              <CaretDownIcon className="absolute right-5 fill-pictonblue"/>
+            </Paper>
           </Slide>
         )}
       </Button>

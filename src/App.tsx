@@ -41,7 +41,7 @@ const App: React.FC = () => {
   const loadApp = useCallback(
     loadProvider => {
       dispatch(loadAppDetails({networkID: chainID, provider: loadProvider}));
-      bonds.map(bond => {
+      bonds.forEach(bond => {
         dispatch(calcBondDetails({bond, value: null, provider: loadProvider, networkID: chainID}));
       });
     },
@@ -51,7 +51,7 @@ const App: React.FC = () => {
   const loadAccount = useCallback(
     loadProvider => {
       dispatch(loadAccountDetails({networkID: chainID, address, provider: loadProvider}));
-      bonds.map(bond => {
+      bonds.forEach(bond => {
         dispatch(calculateUserBondDetails({address, bond, provider, networkID: chainID}));
       });
     },

@@ -1,47 +1,10 @@
-import { LinearProgress, Snackbar, makeStyles } from '@material-ui/core';
+import { Snackbar } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import AlertTitle from '@material-ui/lab/AlertTitle';
-import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import store, { RootState } from '../../core/store/store';
 import { close, handleObsolete } from '../../core/store/slices/messageSlice';
-
-const useStyles = makeStyles({
-  root: {
-    width: '100%',
-    marginTop: '10px',
-  },
-});
-
-function Linear({message}) {
-  const [progress, setProgress] = useState(100);
-  const classes = useStyles();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress(oldProgress => {
-        if (oldProgress === 0) {
-          clearInterval(timer);
-          dispatch(close(message));
-          return 0;
-        }
-        return oldProgress - 5;
-      });
-    }, 333);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  return (
-    <div className={classes.root}>
-      <LinearProgress variant="determinate" value={progress}/>
-    </div>
-  );
-}
 
 // A component that displays error messages
 function Message() {
@@ -69,7 +32,6 @@ function Message() {
               >
                 <AlertTitle>{message.title}</AlertTitle>
                 {message.text}
-                <Linear message={message}/>
               </Alert>
             </Snackbar>
           );

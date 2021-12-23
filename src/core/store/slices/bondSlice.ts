@@ -72,7 +72,7 @@ export const calcBondDetails = createAsyncThunk(
       value = '0';
     }
     const amountInWei = ethers.utils.parseEther(value);
-    let bondPrice = BigNumber.from(0);
+    let bondPrice;
     let bondDiscount = 0;
     let valuation = 0;
     let bondQuote: BigNumberish;
@@ -129,7 +129,7 @@ export const calcBondDetails = createAsyncThunk(
         bondDiscount = (marketPrice * Math.pow(10, bond.decimals) - Number(bondPrice.toString())) / Number(bondPrice.toString());
       }
     } catch (e) {
-      console.log('error getting bondPriceInUSD', e);
+      console.log('error:', e);
     }
 
     if (Number(value) === 0) {

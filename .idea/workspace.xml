@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6004e887-1721-4683-a6ce-5dcfc0b6683d" name="Default Changelist" comment="#issue 004 - implement bond[WIP]">
+    <list default="true" id="6004e887-1721-4683-a6ce-5dcfc0b6683d" name="Default Changelist" comment="#issue 004 - implement bond&#10;feat: &#10;update:">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Message/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Message/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/hooks/web3Context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/hooks/web3Context.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/store/slices/bondSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/store/slices/bondSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Bond/BondItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/BondItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Bond/BondPurchase.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/BondPurchase.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Bond/ClaimBonds.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/ClaimBonds.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Bond/ClaimRows.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/ClaimRows.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Bond/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/utils/base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/utils/base.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/utils/environmentHelper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/utils/environmentHelper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/utils/nodeHelper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/utils/nodeHelper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Stake/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Stake/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +101,7 @@
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jsx.switch.disabled" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/typechain/factories" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="E:\Project\cerberusDao\cerberus-v2\node_modules\typescript\lib" />
@@ -109,11 +109,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Project\cerberusDao\cerberus-v2" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\typechain\factories" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\typechain" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\abis" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\components\CustomSvg\Icons" />
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\assets\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\pages\Bond" />
@@ -162,7 +162,8 @@
       <workItem from="1640047502522" duration="310000" />
       <workItem from="1640047848267" duration="40978000" />
       <workItem from="1640149867593" duration="18064000" />
-      <workItem from="1640178586637" duration="26132000" />
+      <workItem from="1640178586637" duration="30847000" />
+      <workItem from="1640239904189" duration="3325000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1639405494097</created>
@@ -227,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640189719282</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="#issue 004 - implement bond[WIP]">
+      <created>1640226260524</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1640226260524</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
