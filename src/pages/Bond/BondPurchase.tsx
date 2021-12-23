@@ -6,7 +6,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import ConnectWalletButton from '../../components/Nav/ConnectWalletButton';
 import { useWeb3Context } from '../../core/hooks/web3Context';
 import { useDebounce } from '../../core/hooks/base';
-import { BaseInfo, BaseInfoKey } from '../../core/interfaces/base';
 import { RootState } from '../../core/store/store';
 import { bondAsset, calcBondDetails, changeApproval } from '../../core/store/slices/bondSlice';
 import { isPendingTxn, txnButtonText } from '../../core/store/slices/pendingTxSlice';
@@ -14,43 +13,9 @@ import { error } from '../../core/store/slices/messageSlice';
 import { prettifySeconds, secondsUntilBlock, shorten, formatNumber } from '../../core/utils/base';
 import { SECONDS_TO_REFRESH } from '../../core/data/base';
 
-const defaultNetworkBaseInfos: BaseInfo[] = [
-  {
-    name: 'Your Balance',
-    value: null,
-    key: BaseInfoKey.OwnerBalance
-  },
-  {
-    name: 'You Will Get',
-    value: null,
-    key: BaseInfoKey.NextRewardAmount
-  },
-  {
-    name: 'Max You Can Buy',
-    value: null,
-    key: BaseInfoKey.ThreeDogsBalance,
-  }, {
-    name: 'ROI',
-    value: null,
-    key: BaseInfoKey.Roi
-  },
-  {
-    name: 'Debt Ratio',
-    value: null,
-    key: BaseInfoKey.DebtRate
-  },
-  {
-    name: 'Vesting Term',
-    value: null,
-    key: BaseInfoKey.FiveDaysRate,
-  },
-
-]
-
-function BondPurchase({bond, slippage, recipientAddress}) {
+const BondPurchase = ({bond, slippage, recipientAddress}) => {
   const dispatch = useDispatch();
   const {provider, address, chainID} = useWeb3Context();
-  const [networkBaseInfos, setNetworkBaseInfos] = useState(defaultNetworkBaseInfos);
   const [secondsToRefresh, setSecondsToRefresh] = useState(SECONDS_TO_REFRESH);
   const [quantity, setQuantity] = useState('');
 
@@ -124,7 +89,7 @@ function BondPurchase({bond, slippage, recipientAddress}) {
 
   useEffect(() => {
     dispatch(calcBondDetails({bond, value: quantity, provider, networkID: chainID}));
-  }, [bondDetailsDebounce]);
+  }, [bondDetailsDebounce, bond]);
 
   useEffect(() => {
     let interval = null;
@@ -139,45 +104,6 @@ function BondPurchase({bond, slippage, recipientAddress}) {
     }
     return () => clearInterval(interval);
   }, [secondsToRefresh, quantity]);
-
-  useEffect(() => {
-    const infos = defaultNetworkBaseInfos;
-    infos.forEach((info: BaseInfo) => {
-      switch (info.key) {
-        case BaseInfoKey.OwnerBalance:
-          if (bond.balance) {
-            info.value = `${Number(formatNumber(bond.balance, 4))} ${bond.displayUnits}`;
-          }
-          break;
-        case BaseInfoKey.NextRewardAmount:
-          info.value = `${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.bondQuote, 4)))} 3DOG`;
-          break;
-        case BaseInfoKey.ThreeDogsBalance:
-          if (bond.maxBondPrice) {
-            info.value = `${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.maxBondPrice, 4)))} 3DOG`;
-          }
-          break;
-        case BaseInfoKey.Roi:
-          if (bond.bondDiscount) {
-            info.value = `${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.bondDiscount * 100, 2)))}%`;
-          }
-          break;
-        case BaseInfoKey.DebtRate:
-          if (bond.debtRatio) {
-            info.value = `${Number(formatNumber(bond.debtRatio / 10000000, 2))}%`;
-          }
-          break;
-        case BaseInfoKey.FiveDaysRate:
-          if (bond.vestingTerm) {
-            info.value = vestingPeriod();
-          }
-          break;
-        default:
-          break;
-      }
-    });
-    setNetworkBaseInfos([...infos]);
-  }, [bond]);
 
   return (
     <div className="flex flex-col w-full">
@@ -261,23 +187,67 @@ function BondPurchase({bond, slippage, recipientAddress}) {
 
       <Slide direction="left" in={true} mountOnEnter unmountOnExit {...{timeout: 533}}>
         <div className="mt-10 px-10">
-          {
-            networkBaseInfos.map((info: BaseInfo, index) => {
-              return (
-                <div className="flex justify-between mt-5 items-center" key={index}>
-                  <Typography className="font-normal">{info.name}</Typography>
-                  <div>
-                    {!info.value || isBondLoading ? (
-                      <Skeleton width="100px"/>
-                    ) : (
-                      <Typography variant="h6" color="primary" className="text-center">
-                        {info.value}
-                      </Typography>
-                    )}
-                  </div>
-                </div>
-              )
-            })}
+          <div className="flex justify-between mt-5 items-center">
+            <Typography className="font-normal">Your Balance</Typography>
+            {!bond.balance || isBondLoading ? (
+              <Skeleton width="100px"/>
+            ) : (
+              <Typography variant="h6" color="primary" className="text-center">
+                {`${Number(formatNumber(bond.balance, 4))} ${bond.displayUnits}`}
+              </Typography>
+            )}
+          </div>
+          <div className="flex justify-between mt-5 items-center">
+            <Typography className="font-normal">You Will Get</Typography>
+            {isBondLoading ? (
+              <Skeleton width="100px"/>
+            ) : (
+              <Typography variant="h6" color="primary" className="text-center">
+                {`${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.bondQuote || 0, 4)))} 3DOG`}
+              </Typography>
+            )}
+          </div>
+          <div className="flex justify-between mt-5 items-center">
+            <Typography className="font-normal">Max You Can Buy</Typography>
+            {!bond.maxBondPrice || isBondLoading ? (
+              <Skeleton width="100px"/>
+            ) : (
+              <Typography variant="h6" color="primary" className="text-center">
+                {`${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.maxBondPrice, 4)))} 3DOG`}
+              </Typography>
+            )}
+          </div>
+          <div className="flex justify-between mt-5 items-center">
+            <Typography className="font-normal">ROI</Typography>
+            {!bond.bondDiscount || isBondLoading ? (
+              <Skeleton width="100px"/>
+            ) : (
+              <Typography variant="h6" color="primary" className="text-center">
+                {`${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.bondDiscount * 100, 2)))}%`}
+              </Typography>
+            )}
+          </div>
+          <div className="flex justify-between mt-5 items-center">
+            <Typography className="font-normal">Debt Ratio</Typography>
+            {!bond.debtRatio || isBondLoading ? (
+              <Skeleton width="100px"/>
+            ) : (
+              <Typography variant="h6" color="primary" className="text-center">
+                {`${Number(formatNumber(bond.debtRatio / 10000000, 2))}%`}
+              </Typography>
+            )}
+          </div>
+          <div className="flex justify-between mt-5 items-center">
+            <Typography className="font-normal">Vesting Term</Typography>
+            {!bond.vestingTerm || isBondLoading ? (
+              <Skeleton width="100px"/>
+            ) : (
+              <Typography variant="h6" color="primary" className="text-center">
+                {vestingPeriod()}
+              </Typography>
+            )}
+          </div>
+
           {recipientAddress !== address && (
             <div className="flex justify-between my-10">
               <Typography>Recipient</Typography>
@@ -290,4 +260,4 @@ function BondPurchase({bond, slippage, recipientAddress}) {
   );
 }
 
-export default BondPurchase;
+export default  React.memo(BondPurchase);

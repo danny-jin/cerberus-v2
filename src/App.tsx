@@ -42,7 +42,7 @@ const App: React.FC = () => {
     loadProvider => {
       dispatch(loadAppDetails({networkID: chainID, provider: loadProvider}));
       bonds.forEach(bond => {
-        dispatch(calcBondDetails({bond, value: null, provider: loadProvider, networkID: chainID}));
+        dispatch(calcBondDetails({bond, value: '', provider: loadProvider, networkID: chainID}));
       });
     },
     [connected],

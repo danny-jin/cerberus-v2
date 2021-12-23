@@ -7,15 +7,9 @@
     <list default="true" id="6004e887-1721-4683-a6ce-5dcfc0b6683d" name="Default Changelist" comment="#issue 004 - implement bond&#10;feat: &#10;update:">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Message/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Message/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/hooks/web3Context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/hooks/web3Context.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/store/slices/bondSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/store/slices/bondSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/utils/base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/utils/base.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/utils/environmentHelper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/utils/environmentHelper.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/utils/nodeHelper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/utils/nodeHelper.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Stake/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Stake/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nav/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Bond/BondPurchase.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/BondPurchase.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,6 +158,8 @@
       <workItem from="1640149867593" duration="18064000" />
       <workItem from="1640178586637" duration="30847000" />
       <workItem from="1640239904189" duration="3325000" />
+      <workItem from="1640261458747" duration="2169000" />
+      <workItem from="1640264931280" duration="7559000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1639405494097</created>

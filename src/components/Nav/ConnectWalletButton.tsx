@@ -86,11 +86,11 @@ const ConnectWalletButton = (props: any) => {
         )}
       </Button>
 
-      <Popper open={open} anchorEl={anchorEl} placement="bottom-end" transition>
+      <Popper open={open} anchorEl={anchorEl} placement="bottom-end" className="z-20" transition>
         {({TransitionProps}) => {
           return (
             <Fade {...TransitionProps} timeout={100}>
-              <Paper className="ohm-menu" elevation={1}>
+              <Paper elevation={1}>
                 {pendingTransactions.map((x, i) => (
                   <div key={i} className="w-full">
                     <Link key={x.txHash} href={getEtherScanUrl(x.txHash)} target="_blank" rel="noreferrer">
