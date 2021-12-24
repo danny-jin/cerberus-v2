@@ -4,36 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="689992e4-636f-4e14-b3eb-bfbc758ff103" name="Default Changelist" comment="#issue 003 - implement stake and calculator&#10;fix: file system issue">
-      <change afterPath="$PROJECT_DIR$/src/abis/StakingHelper.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/ArrowUp.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/CaretDown.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Message/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/TabPanel/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/store/slices/messageSlice.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/store/thunks/stakeThunk.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/typechain/StakingHelper.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/typechain/factories/StakingHelper__factory.ts" afterDir="false" />
+    <list default="true" id="6004e887-1721-4683-a6ce-5dcfc0b6683d" name="Default Changelist" comment="#issue 004 - implement bond">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Bond.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Bond.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Calculator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Calculator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Close.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Close.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Discord.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Discord.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Docs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Docs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Expand.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Expand.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Medium.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Medium.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Stake.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Stake.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Twitter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/Icons/Twitter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CustomSvg/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomSvg/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/interfaces/base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/interfaces/base.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/store/slices/pendingTxSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/store/slices/pendingTxSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/store/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/store/slices/bondSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/store/slices/bondSlice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Stake/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Stake/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/style/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/typechain/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/typechain/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Bond/BondLogo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/BondLogo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Bond/BondRedeem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/BondRedeem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Bond/ClaimBonds.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/ClaimBonds.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Bond/ClaimRows.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/ClaimRows.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Bond/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,23 +45,41 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/public/index.html" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/pages/Stake/index.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/store/slices/bondSlice.ts" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/Nav/index.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/App.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/hooks/web3Context.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/style/index.scss" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/tailwind.config.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/Chart/Chart.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/pages/Calculator/index.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Expand.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Chart/Chart.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Bond/BondDetail.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/RebaseTimer/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Bond/ClaimBonds.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Sidebar/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Stake/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/public/index.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/utils/price.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/style/index.scss" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/node_modules/@material-ui/core/Typography/Typography.d.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/Graph.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/lib/bond.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Bond/ClaimRows.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/utils/environmentHelper.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Bond/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/utils/base.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/utils/bond.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/utils/theme.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Expand.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/index.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Calculator.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/Graph.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/App.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Bond/BondItem.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Bond/BondHeader.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tailwind.config.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Bond/BondPurchase.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Bond/BondLogo.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Stake.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Bond/BondRedeem.tsx" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="eyz47um4" />
@@ -98,7 +95,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="jsx.switch.disabled" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -107,13 +106,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\components\CustomSvg\Icons" />
-      <recent name="E:\Project\cerberusDao\cerberus-v2\src\core\store\slices" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\typechain\factories" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\typechain" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\abis" />
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\components\CustomSvg\Icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Project\cerberusDao\cerberus-v2\src\pages\Bond" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\core\store\thunks" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\core\store" />
       <recent name="E:\Project\cerberusDao\cerberus-v2\src\components" />
@@ -123,7 +123,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="689992e4-636f-4e14-b3eb-bfbc758ff103" name="Default Changelist" comment="" />
+      <changelist id="6004e887-1721-4683-a6ce-5dcfc0b6683d" name="Default Changelist" comment="" />
       <created>1639379115929</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -153,6 +153,18 @@
       <workItem from="1639672814343" duration="11098000" />
       <workItem from="1639743444528" duration="4370000" />
       <workItem from="1639747997595" duration="1835000" />
+      <workItem from="1639758699532" duration="38475000" />
+      <workItem from="1639921418341" duration="21641000" />
+      <workItem from="1639974183107" duration="24519000" />
+      <workItem from="1640047502522" duration="310000" />
+      <workItem from="1640047848267" duration="40978000" />
+      <workItem from="1640149867593" duration="18064000" />
+      <workItem from="1640178586637" duration="30847000" />
+      <workItem from="1640239904189" duration="3325000" />
+      <workItem from="1640261458747" duration="2169000" />
+      <workItem from="1640264931280" duration="7744000" />
+      <workItem from="1640311052463" duration="2941000" />
+      <workItem from="1640318398396" duration="446000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1639405494097</created>
@@ -203,7 +215,35 @@
       <option name="project" value="LOCAL" />
       <updated>1639663999569</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="#issue 004 - implement bond[WIP]">
+      <created>1640076718214</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1640076718214</updated>
+    </task>
+    <task id="LOCAL-00009" summary="#issue 004 - implement bond[WIP]">
+      <created>1640189719282</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1640189719282</updated>
+    </task>
+    <task id="LOCAL-00010" summary="#issue 004 - implement bond[WIP]">
+      <created>1640226260524</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1640226260524</updated>
+    </task>
+    <task id="LOCAL-00011" summary="#issue 004 - implement bond">
+      <created>1640272697368</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1640272697368</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,19 +254,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="issue-002-implement-dashboard" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -241,7 +269,9 @@
     <MESSAGE value="fix: tailwind config" />
     <MESSAGE value="#issue 003 - implement stake[WIP]" />
     <MESSAGE value="#issue 003 - implement stake and calculator&#10;complete: calculator" />
-    <option name="LAST_COMMIT_MESSAGE" value="#issue 003 - implement stake and calculator&#10;complete: calculator" />
+    <MESSAGE value="#issue 004 - implement bond[WIP]" />
+    <MESSAGE value="#issue 004 - implement bond" />
+    <option name="LAST_COMMIT_MESSAGE" value="#issue 004 - implement bond" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

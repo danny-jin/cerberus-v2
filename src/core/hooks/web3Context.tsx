@@ -1,11 +1,11 @@
 import { StaticJsonRpcProvider, JsonRpcProvider, Web3Provider } from '@ethersproject/providers';
 import WalletConnectProvider from '@walletconnect/web3-provider';
 import { IFrameEthereumProvider } from '@ledgerhq/iframe-provider';
-import React, { useState, ReactElement, useContext, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, ReactElement, useContext, useMemo, useCallback } from 'react';
 import Web3Modal from 'web3modal';
 
-import { EnvironmentHelper } from '../core/utils/environmentHelper';
-import { NodeHelper } from '../core/utils/nodeHelper';
+import { EnvironmentHelper } from '../utils/environmentHelper';
+import { NodeHelper } from '../utils/nodeHelper';
 
 /**
  * kept as function to mimic `getMainnetURI()`
@@ -83,12 +83,11 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({child
   // ... you also need to set getTestnetURI() as the default uri state below
   const [chainID, setChainID] = useState(1);
   const [address, setAddress] = useState('');
-
   const [uri, setUri] = useState(getMainnetURI());
 
   const [provider, setProvider] = useState<JsonRpcProvider>(new StaticJsonRpcProvider(uri));
 
-  const [web3Modal, setWeb3Modal] = useState<Web3Modal>(
+  const [web3Modal] = useState<Web3Modal>(
     new Web3Modal({
       cacheProvider: true, // optional
       providerOptions: {
@@ -106,9 +105,12 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({child
   );
 
   const hasCachedProvider = (): Boolean => {
-    if (!web3Modal) return false;
-    if (!web3Modal.cachedProvider) return false;
-    return true;
+    if (!web3Modal) {
+      return false;
+    }
+    // @ts-ignore
+    return web3Modal.cachedProvider;
+
   };
 
   // NOTE (appleseed): none of these listeners are needed for Backend API Providers
@@ -119,7 +121,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({child
       if (!rawProvider.on) {
         return;
       }
-      rawProvider.on('accountsChanged', async (accounts: string[]) => {
+      rawProvider.on('accountsChanged', async () => {
         setTimeout(() => window.location.reload(), 1);
       });
 
@@ -185,7 +187,6 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({child
   }, [provider, web3Modal, connected]);
 
   const disconnect = useCallback(async () => {
-    console.log('disconnecting');
     web3Modal.clearCachedProvider();
     setConnected(false);
 
@@ -198,19 +199,6 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({child
     () => ({connect, disconnect, hasCachedProvider, provider, connected, address, chainID, web3Modal, uri}),
     [connect, disconnect, hasCachedProvider, provider, connected, address, chainID, web3Modal, uri],
   );
-
-  useEffect(() => {
-    // logs non-functioning nodes && returns an array of working mainnet nodes
-    // NodeHelper.checkAllNodesStatus().then((validNodes: any) => {
-    //   validNodes = validNodes.filter((url: boolean | string) => url !== false);
-    //   if (!validNodes.includes(uri) && NodeHelper.retryOnInvalid()) {
-    //     // force new provider...
-    //     setTimeout(() => {
-    //       window.location.reload();
-    //     }, 1);
-    //   }
-    // });
-  }, []);
 
   // @ts-ignore
   return <Web3Context.Provider value={{onChainProvider}}>{children}</Web3Context.Provider>;

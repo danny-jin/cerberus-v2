@@ -16,7 +16,7 @@ import { ethers } from 'ethers';
 import TabPanel from '../../components/TabPanel';
 import RebaseTimer from '../../components/RebaseTimer';
 import InfoTooltip from '../../components/InfoTooltip';
-import { useWeb3Context } from '../../hooks/web3Context';
+import { useWeb3Context } from '../../core/hooks/web3Context';
 import { changeApproval, changeStake } from '../../core/store/thunks/stakeThunk';
 import { error } from '../../core/store/slices/messageSlice';
 import { isPendingTxn, txnButtonText } from '../../core/store/slices/pendingTxSlice';
@@ -198,7 +198,7 @@ const Stake = () => {
           <Typography variant="h5" color="primary" className="font-semibold">Single Stake (🐶,🐶,🐶)</Typography>
         </div>
         <div className="flex">
-          <RebaseTimer></RebaseTimer>
+          <RebaseTimer/>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full mt-20 mb-40">
           {
@@ -246,12 +246,12 @@ const Stake = () => {
                   onChange={toggleStake}
                   aria-label="stake tabs"
                 >
-                  <Tab label="Stake" id="simple-tab-0"/>
-                  <Tab label="UnStake" id="simple-tab-1"/>
+                    <Tab label="Stake" id="simple-tab-0"/>
+                    <Tab label="UnStake" id="simple-tab-1"/>
                 </Tabs>
               </div>
               <div className="flex flex-col md:flex-row items-center mt-10 my-20">
-                <div className="flex flex-grow justify-center">
+                <div className="flex w-full md:flex-grow justify-center">
                   {
                     address && !isAllowanceDataLoading ? (
                       (!hasAllowance('ohm') && isUnStaked === 0) || (!hasAllowance('sOhm') && isUnStaked === 1) ? (
@@ -273,8 +273,8 @@ const Stake = () => {
                           </Typography>
                         </div>
                       ) : (
-                        <FormControl className="w-full max-w-540 m-5" variant="outlined" color="primary">
-                          <InputLabel htmlFor="amount-input"></InputLabel>
+                        <FormControl className="w-full md:max-w-540 m-5" variant="outlined" color="primary">
+                          <InputLabel htmlFor="amount-input"/>
                           <OutlinedInput
                             id="amount-input"
                             type="number"

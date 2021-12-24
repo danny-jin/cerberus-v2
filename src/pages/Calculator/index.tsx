@@ -2,7 +2,6 @@ import { InputAdornment, OutlinedInput, Slider, Typography } from '@material-ui/
 import { useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 
-import { useWeb3Context } from '../../hooks/web3Context';
 import { BaseInfo, BaseInfoKey } from '../../core/interfaces/base';
 import { RootState } from '../../core/store/store';
 import { formatNumber } from '../../core/utils/base';
@@ -29,7 +28,6 @@ const defaultNetworkBaseInfos: BaseInfo[] = [
 
 const Calculator = () => {
 
-  const {address, connect, disconnect, connected, chainID} = useWeb3Context();
   const [networkBaseInfos, setNetworkBaseInfos] = useState(defaultNetworkBaseInfos);
 
   const isAppLoading = useSelector((state: RootState) => state.app.loading);

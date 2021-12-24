@@ -1,6 +1,6 @@
 /**
  * Access `process.env` in an environment helper
- * Usage: `EnvHelper.env`
+ * Usage: `EnvironmentHelper.env`
  * - Other static methods can be added as needed per
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static
  */
@@ -9,7 +9,7 @@ export class EnvironmentHelper {
    * @returns `process.env`
    */
   static env = process.env;
-  static alchemyTestnetURI = `https://eth-rinkeby.alchemyapi.io/v2/${EnvironmentHelper.env.REACT_APP_TESTNET_ALCHEMY}`;
+  static alchemyTestnetURI = 'https://eth-rinkeby.alchemyapi.io/v2/2Y6oF6luXfRHgCUwdbJmDpkaqUdUtYoH';
   static whitespaceRegex = /\s+/;
 
   /**
@@ -21,11 +21,7 @@ export class EnvironmentHelper {
   }
 
   static isNotEmpty(envVariable: string) {
-    if (envVariable.length > 10) {
-      return true;
-    } else {
-      return false;
-    }
+    return envVariable.length > 10;
   }
 
   /**
@@ -96,27 +92,28 @@ export class EnvironmentHelper {
    * @returns array of API urls
    */
   static getAPIUris() {
-    let allNodeUris = EnvironmentHelper.getSelfHostedNode();
-    if (EnvironmentHelper.env.NODE_ENV === "development" && allNodeUris.length === 0) {
+    let ALL_URIs = EnvironmentHelper.getSelfHostedNode();
+    if (ALL_URIs.length === 0) {
       // push in the common ethers key in development
-      allNodeUris.push("https://eth-mainnet.alchemyapi.io/v2/_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC");
+      ALL_URIs.push('https://eth-mainnet.alchemyapi.io/v2/_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC');
     }
-    if (allNodeUris.length === 0) console.error("API keys must be set in the .env");
-    return allNodeUris;
+    if (ALL_URIs.length === 0) console.error('API keys must be set in the .env');
+    return ALL_URIs;
   }
 
   static getFallbackURIs() {
-    const allNodeUris = [...EnvironmentHelper.getAlchemyAPIKeyList(), ...EnvironmentHelper.getInfuraIdList()];
-    return allNodeUris;
+    return [...EnvironmentHelper.getAlchemyAPIKeyList(), ...EnvironmentHelper.getInfuraIdList()];
   }
 
   static getGeoapifyAPIKey() {
-    var apiKey = EnvironmentHelper.env.REACT_APP_GEOAPIFY_API_KEY;
+    const apiKey = EnvironmentHelper.env.REACT_APP_GEOAPIFY_API_KEY;
     if (!apiKey) {
-      console.warn("Missing REACT_APP_GEOAPIFY_API_KEY environment variable");
+      console.warn('Missing REACT_APP_GEOAPIFY_API_KEY environment variable');
       return null;
     }
 
     return apiKey;
   }
 }
+
+

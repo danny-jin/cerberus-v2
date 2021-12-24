@@ -1,7 +1,7 @@
 import { useTheme } from '@material-ui/core/styles';
 
 import Chart from '../../components/Chart/Chart';
-import { useTreasuryMetrics, useTreasuryRebase } from '../../hooks/useTreasury';
+import { useTreasuryMetrics, useTreasuryRebase } from '../../core/hooks/useTreasury';
 import { formatCurrency, formatNumber } from '../../core/utils/base';
 import {
   chartBulletPoints,

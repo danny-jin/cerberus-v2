@@ -3,7 +3,7 @@ import { ethers } from 'ethers';
 import { minutesAgo } from './base';
 import { EnvironmentHelper } from './environmentHelper';
 
-interface CurrentStats {
+interface ICurrentStats {
   failedConnectionCount: number;
   lastFailedConnectionAt: number;
 }
@@ -43,7 +43,7 @@ export class NodeHelper {
     }
   }
 
-  static _updateConnectionStatsForProvider(currentStats: CurrentStats) {
+  static _updateConnectionStatsForProvider(currentStats: ICurrentStats) {
     const failedAt = new Date().getTime();
     const failedConnectionCount = currentStats.failedConnectionCount || 0;
     if (
@@ -85,7 +85,7 @@ export class NodeHelper {
   /**
    * adds a bad connection stat to NodeHelper._storage for a given node
    * if greater than `_maxFailedConnections` previous failures in last `_failedConnectionsMinuteLimit` minutes will remove node from list
-   * @param provider an Ethers provider
+   * @param providerUrl
    */
   static logBadConnectionWithTimer(providerUrl: string) {
     const providerKey: string = '-nodeHelper:' + providerUrl;
@@ -143,8 +143,7 @@ export class NodeHelper {
   static checkAllNodesStatus = async () => {
     return await Promise.all(
       NodeHelper.getNodesUris().map(async URI => {
-        let workingUrl = await NodeHelper.checkNodeStatus(URI);
-        return workingUrl;
+        return await NodeHelper.checkNodeStatus(URI);
       }),
     );
   };
@@ -184,14 +183,14 @@ export class NodeHelper {
         body: body,
       });
       if (!resp.ok) {
-        throw Error('failed node connection');
+        console.error('failed node connection');
       } else {
         // response came back but is it healthy?
         let jsonResponse = await resp.json();
         if (NodeHelper.validityCheck({nodeMethod, resultVal: jsonResponse.result})) {
           liveURL = url;
         } else {
-          throw Error('no suitable peers');
+          console.error('no suitable peers');
         }
       }
     } catch {
@@ -215,15 +214,9 @@ export class NodeHelper {
   static validityCheck = ({nodeMethod, resultVal}: { nodeMethod: string; resultVal: string | boolean }) => {
     switch (nodeMethod) {
       case 'net_peerCount':
-        if (resultVal === ethers.utils.hexValue(0)) {
-          return false;
-        } else {
-          return true;
-        }
-        break;
+        return resultVal !== ethers.utils.hexValue(0);
       case 'eth_syncing':
         return resultVal === false;
-        break;
       default:
         return false;
     }

@@ -1,20 +1,20 @@
-import { Box, Button, SvgIcon, Typography, Popper, Paper, Divider, Link, Slide, Fade } from '@material-ui/core';
+import { Box, Button, SvgIcon, Typography, Popper, Paper, Divider, Link, Fade, Slide } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { CaretDownIcon, ArrowUpIcon } from '../CustomSvg';
-import { useWeb3Context } from '../../hooks/web3Context';
-import { NetworkID } from '../../core/interfaces/network';
+import { ArrowUpIcon, CaretDownIcon } from '../CustomSvg';
+import { useWeb3Context } from '../../core/hooks/web3Context';
+import { NetworkID } from '../../core/interfaces/base';
 import { RootState } from '../../core/store/store';
 
-const ConnectWalletButton = () => {
+const ConnectWalletButton = (props: any) => {
 
   const {connect, disconnect, connected, chainID} = useWeb3Context();
-  const isCollapsed = useSelector((state: RootState) => state.app.isCollapsed);
   const [anchorEl, setAnchorEl] = useState(null);
   const [isConnected, setConnected] = useState(connected);
   const [isHovering, setIsHovering] = useState(false);
 
+  const isCollapsed = useSelector((state: RootState) => state.app.isCollapsed);
   const pendingTransactions = useSelector((state: RootState) => {
     return state.pendingTx;
   });
@@ -64,33 +64,33 @@ const ConnectWalletButton = () => {
     <div
       onMouseEnter={e => (pendingTransactions && pendingTransactions.length > 0 ? handleClick(e) : null)}
       onMouseLeave={e => (pendingTransactions && pendingTransactions.length > 0 ? handleClick(e) : null)}
-      className="wallet-menu"
+      className={`wallet-menu`}
       id="wallet-menu"
     >
       <Button
-        className={`flex items-center`}
+        className={`flex items-center m-5 ${props.className} ${pendingTransactions.length > 0 ? 'text-pictonblue' : ''}`}
         variant="contained"
         color="secondary"
         size="large"
-        style={pendingTransactions.length > 0 ? {color: '#49A1F2'} : {}}
         onClick={connectWallet}
         onMouseOver={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
-        key={1}
       >
         {buttonText}
         {pendingTransactions.length > 0 && (
           <Slide direction="left" in={isHovering} {...{timeout: 333}}>
-            <SvgIcon className="absolute right-5" component={CaretDownIcon} htmlColor={'#49A1F2'}/>
+            <Paper elevation={5}>
+              <CaretDownIcon className="absolute right-5 fill-pictonblue"/>
+            </Paper>
           </Slide>
         )}
       </Button>
 
-      <Popper open={open} anchorEl={anchorEl} placement="bottom-end" transition>
+      <Popper open={open} anchorEl={anchorEl} placement="bottom-end" className="z-20" transition>
         {({TransitionProps}) => {
           return (
             <Fade {...TransitionProps} timeout={100}>
-              <Paper className="ohm-menu" elevation={1}>
+              <Paper elevation={1}>
                 {pendingTransactions.map((x, i) => (
                   <div key={i} className="w-full">
                     <Link key={x.txHash} href={getEtherScanUrl(x.txHash)} target="_blank" rel="noreferrer">

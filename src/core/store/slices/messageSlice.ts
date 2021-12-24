@@ -17,7 +17,7 @@ interface MessagesState {
 }
 
 // Adds a message to the store
-const createMessage = function (state: MessagesState, severity: string, title: string, text: string) {
+const createMessage = (state: MessagesState, severity: string, title: string, text: string) => {
   let message: Message = {
     id: nb_messages++,
     severity,

@@ -5,9 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { RootState } from '../../core/store/store';
 import { loadAppDetails } from '../../core/store/slices/appSlice';
-import { useWeb3Context } from '../../hooks/web3Context';
-import { secondsUntilBlock } from '../../core/utils/network';
-import { prettifySeconds } from '../../core/utils/base';
+import { useWeb3Context } from '../../core/hooks/web3Context';
+import { prettifySeconds, secondsUntilBlock } from '../../core/utils/base';
 
 const RebaseTimer = () => {
   const dispatch = useDispatch();
@@ -72,7 +71,7 @@ const RebaseTimer = () => {
             <strong>rebasing</strong>
           )
         ) : (
-          <Skeleton className="w-155"></Skeleton>
+          <Skeleton className="w-155"/>
         )
       }
     </div>

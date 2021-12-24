@@ -1,3 +1,5 @@
+import { BLOCK_RATE_SECONDS } from '../data/base';
+
 export function boundObject(state: any, payload: any) {
   if (payload) {
     const keys = Object.keys(payload);
@@ -26,8 +28,7 @@ export function formatNumber(number = 0, precision = 0) {
 
   const poppedNumber = array.pop() || '0';
   array.push(poppedNumber.substring(0, precision));
-  const result = array.join('.');
-  return result;
+  return array.join('.');
 }
 
 export const minutesAgo = (x: number) => {
@@ -44,16 +45,33 @@ export function prettifySeconds(seconds: number, resolution?: string) {
   const m = Math.floor((seconds % 3600) / 60);
 
   if (resolution === 'day') {
-    return d + (d == 1 ? ' day' : ' days');
+    return d + (d === 1 ? ' day' : ' days');
   }
-  const dDisplay = d > 0 ? d + (d == 1 ? ' day, ' : ' days, ') : '';
-  const hDisplay = h > 0 ? h + (h == 1 ? ' hr, ' : ' hrs, ') : '';
-  const mDisplay = m > 0 ? m + (m == 1 ? ' min' : ' mins') : '';
+  const dDisplay = d > 0 ? d + (d === 1 ? ' day, ' : ' days, ') : '';
+  const hDisplay = h > 0 ? h + (h === 1 ? ' hr, ' : ' hrs, ') : '';
+  const mDisplay = m > 0 ? m + (m === 1 ? ' min' : ' mins') : '';
   let result = dDisplay + hDisplay + mDisplay;
   if (mDisplay === '') {
     result = result.slice(0, result.length - 2);
   }
   return result;
+}
+
+export function secondsUntilBlock(startBlock: number, endBlock: number): number {
+  const blocksAway = endBlock - startBlock;
+  return blocksAway * BLOCK_RATE_SECONDS;
+}
+
+export function prettyVestingPeriod(currentBlock: number, vestingBlock: number): string {
+  if (vestingBlock === 0) {
+    return '';
+  }
+
+  const seconds = secondsUntilBlock(currentBlock, vestingBlock);
+  if (seconds < 0) {
+    return 'Fully Vested';
+  }
+  return prettifySeconds(seconds);
 }
 
 export function shorten(str: string) {

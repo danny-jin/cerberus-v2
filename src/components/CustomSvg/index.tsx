@@ -6,7 +6,6 @@ import { getThemeValue } from '../../core/utils/theme';
 
 export const CustomSvg = styled.svg<SvgProps>`
   fill: ${({theme, color}) => getThemeValue(`colors.${color}`, color)(theme)};
-  hoverFill: ${({theme, color}) => getThemeValue(`colors.${color}`, color)(theme)};
   flex-shrink: 0;
   ${space}
 `;
@@ -27,3 +26,9 @@ export { default as ExpandIcon } from './Icons/Expand';
 export { default as CloseIcon } from './Icons/Close';
 export { default as ArrowUpIcon } from './Icons/ArrowUp';
 export { default as CaretDownIcon } from './Icons/CaretDown';
+export { default as DogWethIcon } from './Icons/DogWeth';
+export { default as ShibaIcon } from './Icons/Shiba';
+export { default as WethIcon } from './Icons/Weth';
+export { default as FlokiIcon } from './Icons/Floki';
+export { default as SettingIcon } from './Icons/Setting';
+export { default as LoadingIcon } from './Icons/Loading';
