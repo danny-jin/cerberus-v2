@@ -10,7 +10,7 @@ function BondLogo({bond}) {
     style = {height: '32px', width: '62px'};
   }
   return (
-    <div className="flex justify-center items-center w-90">
+    <div className="flex justify-center items-center w-70">
       <SvgIcon component={bond.bondIconSvg} viewBox={viewBox} style={style}/>
     </div>
   );

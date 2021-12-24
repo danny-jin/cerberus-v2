@@ -73,8 +73,8 @@ const Bond = () => {
   }, [appData, accountData]);
 
   return (
-    <div>
-      {!isAccountLoading && !isEmpty(accountBonds) && <ClaimBonds activeBonds={accountBonds} />}
+    <div className="flex flex-col items-center justify-center">
+      {!isAccountLoading && !isEmpty(accountBonds) && <div className="w-full md:w-835 mb-20"><ClaimBonds activeBonds={accountBonds} /></div>}
       <div className="flex md:justify-center items-center w-full h-full md:flex-row flex-col">
         <div className="rounded-lg border-goldsand border-3 w-full md:w-835 px-30 py-20 md:mb-0 mb-30">
           <div className="w-full min-h-35">

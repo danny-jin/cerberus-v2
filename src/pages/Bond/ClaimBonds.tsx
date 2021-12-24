@@ -27,7 +27,9 @@ function ClaimBonds({activeBonds}) {
 
   const [numberOfBonds, setNumberOfBonds] = useState(0);
 
-  const pendingTransactions = useSelector((state: RootState) => state.pendingTx);
+  const pendingTransactions = useSelector((state: RootState) => {
+    return state.pendingTx;
+  });
 
   const pendingClaim = () => {
     return isPendingTxn(pendingTransactions, 'redeem_all_bonds') ||
@@ -51,12 +53,12 @@ function ClaimBonds({activeBonds}) {
     <>
       {numberOfBonds > 0 && (
         <Zoom in={true}>
-          <Paper className="rounded-lg border-goldsand border-3 w-full md:w-835 px-30 py-20 md:mb-0 mb-30">
+          <Paper className="rounded-lg border-goldsand border-3 bg-transparent w-full md:w-835 px-30 py-20 md:mb-0 mb-30">
             <div className="w-full min-h-35 mb-10">
               <Typography variant="h5" className="font-semibold">Your Bonds (1,1)</Typography>
             </div>
             <div>
-              <TableContainer className="md: block hidden">
+              <TableContainer className="md:block hidden">
                 <Table aria-label="Claimable bonds">
                   <TableHead>
                     <TableRow>

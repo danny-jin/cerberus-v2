@@ -208,12 +208,7 @@ export const bondAsset = createAsyncThunk(
     const depositorAddress = address;
     const acceptedSlippage = 0.2; // 0.5% as default
     // parseUnits takes String => BigNumber
-    let valueInWei
-    if (bond.name === 'floki') {
-      valueInWei = ethers.utils.parseUnits(value.toString(), 'gwei');
-    } else {
-      valueInWei = ethers.utils.parseUnits(value.toString(), 'ether');
-    }
+    const valueInWei = ethers.utils.parseUnits(value.toString(), bond.decimals);
     const signer = provider.getSigner();
     const bondContract = bond.getContractForBond(networkID, signer);
     const calculatePremium = await bondContract.bondPrice();
@@ -251,6 +246,10 @@ export const bondAsset = createAsyncThunk(
           error('You may be trying to bond more than your balance! Error code: 32603. Message: ds-math-sub-underflow'),
         );
       } else dispatch(error(rpcError.message));
+    } finally {
+      if (bondTx) {
+        dispatch(clearPendingTx(bondTx.hash));
+      }
     }
   },
 );
@@ -303,6 +302,10 @@ export const redeemBond = createAsyncThunk(
     } catch (e: unknown) {
       uaData.approved = false;
       dispatch(error((e as IJsonRPCError).message));
+    } finally {
+      if (redeemTx) {
+        dispatch(clearPendingTx(redeemTx.hash));
+      }
     }
   },
 );

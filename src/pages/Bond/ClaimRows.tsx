@@ -39,7 +39,7 @@ export function ClaimBondTableData({ userBond }) {
 
   return (
     <TableRow id={`${bondName}--claim`}>
-      <TableCell className="text-left">
+      <TableCell className="flex text-left">
         <BondLogo bond={bond} />
         <div className="w-3/5 ml-5 flex flex-col justify-center items-start text-left">
           <Typography variant="body1" className="leading-5">
@@ -97,7 +97,7 @@ export function ClaimBondCardData({ userBond, className }) {
 
   return (
     <div id={`${bondName}`} className={`m-auto mb-30 ${className}`}>
-      <div className="flex justify-center items-center mb-15">
+      <div className="flex md:justify-center items-center mb-15">
         <BondLogo bond={bond} />
         <div>
           <Typography>{bond.displayName ? formatNumber(bond.displayName, 4) : <Skeleton width={100} className="ml-5 align-middle text-15" />}</Typography>
@@ -122,7 +122,7 @@ export function ClaimBondCardData({ userBond, className }) {
         <Button
           variant="outlined"
           color="primary"
-          className="w-full"
+          className="w-full mb-10"
           disabled={isPendingTxn(pendingTransactions, "redeem_bond_" + bondName)}
           onClick={() => onRedeem({ autostake: false })}
         >

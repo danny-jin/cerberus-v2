@@ -74,17 +74,17 @@ function BondRedeem({bond}) {
     infos.forEach((info: BaseInfo) => {
       switch (info.key) {
         case BaseInfoKey.PendingRewardAmount:
-          if (bond.balance) {
+          if (bond.interestDue) {
             info.value = `${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.interestDue, 4)))} 3DOG`;
           }
           break;
         case BaseInfoKey.ClaimRewardAmount:
-          if (bond.bondQuote) {
+          if (bond.pendingPayout) {
             info.value = `${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.pendingPayout, 4)))} 3DOG`;
           }
           break;
         case BaseInfoKey.RestVestingTime:
-          if (bond.maxBondPrice) {
+          if (bond.bondMaturationBlock) {
             info.value = prettyVestingPeriod(currentBlock, bond.bondMaturationBlock);
           }
           break;
@@ -95,7 +95,7 @@ function BondRedeem({bond}) {
           break;
         case BaseInfoKey.DebtRate:
           if (bond.debtRatio) {
-            info.value = `${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.debtRatio * 10000000, 4)))}%`;
+            info.value = `${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.debtRatio / 10000000, 4)))}%`;
           }
           break;
         case BaseInfoKey.VestingTerm:

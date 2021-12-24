@@ -30,7 +30,7 @@ const Layout = ({children}) => {
           <Sidebar menuItems={menuItems} socialItems={socialItems} externalItems={externalItems}/>
         </div>
         <div className="flex-grow w-full h-full bg-background-cerberus-flat bg-no-repeat bg-85% bg-center
-        pt-55 md:pt-85 px-10 pb-10 overflow-y-auto scrollbar-hide">{children}</div>
+        pt-75 md:pt-95 px-10 pb-10 overflow-y-auto scrollbar-hide">{children}</div>
       </div>
     </div>
 

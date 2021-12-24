@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6004e887-1721-4683-a6ce-5dcfc0b6683d" name="Default Changelist" comment="#issue 004 - implement bond&#10;feat: &#10;update:">
+    <list default="true" id="6004e887-1721-4683-a6ce-5dcfc0b6683d" name="Default Changelist" comment="#issue 004 - implement bond">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nav/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Bond/BondPurchase.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/BondPurchase.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/store/slices/bondSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/store/slices/bondSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Bond/BondLogo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/BondLogo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Bond/BondRedeem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/BondRedeem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Bond/ClaimBonds.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/ClaimBonds.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Bond/ClaimRows.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/ClaimRows.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Bond/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +162,9 @@
       <workItem from="1640178586637" duration="30847000" />
       <workItem from="1640239904189" duration="3325000" />
       <workItem from="1640261458747" duration="2169000" />
-      <workItem from="1640264931280" duration="7559000" />
+      <workItem from="1640264931280" duration="7744000" />
+      <workItem from="1640311052463" duration="2941000" />
+      <workItem from="1640318398396" duration="446000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1639405494097</created>
@@ -231,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640226260524</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="#issue 004 - implement bond">
+      <created>1640272697368</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1640272697368</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,7 +270,8 @@
     <MESSAGE value="#issue 003 - implement stake[WIP]" />
     <MESSAGE value="#issue 003 - implement stake and calculator&#10;complete: calculator" />
     <MESSAGE value="#issue 004 - implement bond[WIP]" />
-    <option name="LAST_COMMIT_MESSAGE" value="#issue 004 - implement bond[WIP]" />
+    <MESSAGE value="#issue 004 - implement bond" />
+    <option name="LAST_COMMIT_MESSAGE" value="#issue 004 - implement bond" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
