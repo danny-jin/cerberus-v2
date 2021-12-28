@@ -2,6 +2,7 @@ import { Skeleton } from '@material-ui/lab';
 import { Backdrop, Fade, Grid, Tab, Tabs, Typography } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { isNaN } from 'formik';
 
 import BondRedeem from './BondRedeem';
 import BondPurchase from './BondPurchase';
@@ -56,7 +57,7 @@ const BondDetail = ({bond}) => {
                     Bond Price
                   </Typography>
                   <Typography className="text-center text-25 font-extrabold">
-                    {isBondLoading ? <Skeleton className="w-50"/> : formatCurrency(bond.bondPrice, 3)}
+                    {isBondLoading || isNaN(bond.bondPrice) || bond.bondPrice === undefined ? <Skeleton className="w-50"/> : formatCurrency(bond.bondPrice, 3)}
                   </Typography>
                 </div>
                 <div>
@@ -64,7 +65,7 @@ const BondDetail = ({bond}) => {
                     Market Price
                   </Typography>
                   <Typography className="text-center text-25 font-extrabold">
-                    {isBondLoading ? <Skeleton className="w-50"/> : formatCurrency(bond.marketPrice, 3)}
+                    {isBondLoading || isNaN(bond.marketPrice) || bond.marketPrice === undefined ? <Skeleton className="w-50"/> : formatCurrency(bond.marketPrice, 3)}
                   </Typography>
                 </div>
               </div>

@@ -4,15 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6004e887-1721-4683-a6ce-5dcfc0b6683d" name="Default Changelist" comment="#issue 004 - implement bond">
+    <list default="true" id="6004e887-1721-4683-a6ce-5dcfc0b6683d" name="Default Changelist" comment="feat: dashboard fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/store/slices/bondSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/store/slices/bondSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layout/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Bond/BondLogo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/BondLogo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/utils/base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/utils/base.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Bond/BondDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/BondDetail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Bond/BondItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/BondItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Bond/BondPurchase.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/BondPurchase.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Bond/BondRedeem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/BondRedeem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Bond/ClaimBonds.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/ClaimBonds.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Bond/ClaimRows.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/ClaimRows.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Bond/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/index.tsx" afterDir="false" />
+    </list>
+    <list id="b127e8f6-1b2f-48cf-86b5-e755658b268d" name="IDE" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,41 +48,65 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/core/store/slices/bondSlice.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Bond/BondDetail.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/Nav/index.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/pages/Calculator/index.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/Chart/Chart.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/pages/Bond/BondDetail.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/components/RebaseTimer/index.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/pages/Bond/ClaimBonds.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/Sidebar/index.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/pages/Stake/index.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/index.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/public/index.html" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/core/utils/price.ts" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/style/index.scss" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/node_modules/@material-ui/core/Typography/Typography.d.ts" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/core/lib/bond.ts" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/pages/Bond/ClaimRows.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/core/utils/environmentHelper.ts" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/pages/Bond/index.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/core/utils/base.ts" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/core/utils/bond.ts" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/core/utils/theme.ts" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Expand.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/index.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Calculator.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Bond/BondLogo.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/Graph.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/App.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/pages/Bond/BondItem.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/pages/Bond/BondHeader.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/index.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tailwind.config.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/pages/Bond/BondPurchase.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/pages/Bond/BondLogo.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Stake.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/store/slices/appSlice.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Chart/Chart.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/utils/environmentHelper.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/utils/theme.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/public/index.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/App.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Dashboard/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Stake/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/style/index.scss" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Nav/ConnectWalletButton.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/pages/Bond/BondRedeem.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Expand.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Bond/ClaimBonds.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Calculator.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Bond/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/utils/base.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/Sidebar/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Bond/BondItem.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/components/CustomSvg/Icons/Stake.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/lib/bond.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/utils/bond.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/node_modules/@material-ui/core/Typography/Typography.d.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/pages/Bond/BondHeader.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/core/store/slices/bondSlice.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/index.tsx" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/.idea/workspace.xml">
+      <ranges>
+        <range start1="6" end1="7" start2="6" end2="7" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
+        <range start1="9" end1="11" start2="9" end2="13" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
+        <range start1="12" end1="15" start2="14" end2="18" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
+        <range start1="47" end1="48" start2="50" end2="51" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
+        <range start1="50" end1="52" start2="53" end2="53" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
+        <range start1="53" end1="58" start2="54" end2="54" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
+        <range start1="59" end1="63" start2="55" end2="55" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
+        <range start1="64" end1="64" start2="56" end2="62" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
+        <range start1="65" end1="68" start2="63" end2="63" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
+        <range start1="69" end1="69" start2="64" end2="72" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
+        <range start1="70" end1="71" start2="73" end2="74" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
+        <range start1="72" end1="74" start2="75" end2="78" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
+        <range start1="75" end1="75" start2="79" end2="83" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
+        <range start1="76" end1="82" start2="84" end2="109" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
+        <range start1="167" end1="167" start2="194" end2="196" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
+        <range start1="245" end1="246" start2="274" end2="282" changelist="b127e8f6-1b2f-48cf-86b5-e755658b268d" />
+        <range start1="273" end1="274" start2="309" end2="311" changelist="b127e8f6-1b2f-48cf-86b5-e755658b268d" />
+      </ranges>
+    </file>
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="eyz47um4" />
@@ -165,6 +192,8 @@
       <workItem from="1640264931280" duration="7744000" />
       <workItem from="1640311052463" duration="2941000" />
       <workItem from="1640318398396" duration="446000" />
+      <workItem from="1640661506383" duration="4912000" />
+      <workItem from="1640666530077" duration="1884000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1639405494097</created>

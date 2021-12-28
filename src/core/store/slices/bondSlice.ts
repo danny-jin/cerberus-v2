@@ -116,16 +116,15 @@ export const calcBondDetails = createAsyncThunk(
         let val = await specialBondCalcContract.valuation(bond.getAddressForReserve(networkID), 1);
         const lpTokenSupply = await token.totalSupply();
         let lpTokenValue = lpValue / Number(lpTokenSupply.toString()) * Math.pow(10, bond.decimals);
-
-        let num = (Number(bondPrice.toString()) * lpTokenValue) / (Number(val.toString()) * Math.pow(10, 11)) * Math.pow(10, bond.decimals);
-        bondPrice = BigNumber.from(num.toString());
+        let num =Math.ceil((Number(bondPrice.toString()) * lpTokenValue) / (Number(val.toString()) * Math.pow(10, 11)) * Math.pow(10, bond.decimals));
+        bondPrice = BigNumber.from(num);
         const first = (marketPrice - (Number(bondPrice.toString()) / Math.pow(10, bond.decimals)));
         bondDiscount = first / marketPrice;
       } else if (bond.tokenType === TokenType.Weth) {
         bondPrice = await bondContract.bondPrice();
-        let val = await specialBondCalcContract.valuation(bond.getAddressForReserve(networkID), 1)
-        let dynamic = ((Number(bondPrice.toString()) * (tokenPrice * Math.pow(10, bond.decimals))) / Number(val.toString())) / Math.pow(10, 11)
-        bondPrice = BigNumber.from(dynamic.toString())
+        let val = await specialBondCalcContract.valuation(bond.getAddressForReserve(networkID), 1);
+        let dynamic = Math.ceil(((Number(bondPrice.toString()) * (tokenPrice * Math.pow(10, bond.decimals))) / Number(val.toString())) / Math.pow(10, 11));
+        bondPrice = BigNumber.from(dynamic);
         bondDiscount = (marketPrice * Math.pow(10, bond.decimals) - Number(bondPrice.toString())) / Number(bondPrice.toString());
       }
     } catch (e) {

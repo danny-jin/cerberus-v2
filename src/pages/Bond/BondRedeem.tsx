@@ -1,63 +1,24 @@
 import { Button, Typography, Slide } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import { useSelector, useDispatch } from 'react-redux';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { isNaN } from 'formik';
 
 import ConnectWalletButton from '../../components/Nav/ConnectWalletButton';
 import { RootState } from '../../core/store/store';
 import { redeemBond } from '../../core/store/slices/bondSlice';
 import { isPendingTxn, txnButtonText } from '../../core/store/slices/pendingTxSlice';
 import { useWeb3Context } from '../../core/hooks/web3Context';
-import { BaseInfo, BaseInfoKey } from '../../core/interfaces/base';
 import { formatNumber, prettifySeconds, secondsUntilBlock, prettyVestingPeriod } from '../../core/utils/base';
-
-const defaultNetworkBaseInfos: BaseInfo[] = [
-  {
-    name: 'Pending Rewards',
-    value: null,
-    key: BaseInfoKey.PendingRewardAmount
-  },
-  {
-    name: 'Claimable Rewards',
-    value: null,
-    key: BaseInfoKey.ClaimRewardAmount
-  },
-  {
-    name: 'Time until fully vested',
-    value: null,
-    key: BaseInfoKey.RestVestingTime,
-  }, {
-    name: 'ROI',
-    value: null,
-    key: BaseInfoKey.Roi
-  },
-  {
-    name: 'Debt Ratio',
-    value: null,
-    key: BaseInfoKey.DebtRate
-  },
-  {
-    name: 'Vesting Term',
-    value: null,
-    key: BaseInfoKey.VestingTerm,
-  },
-
-]
 
 function BondRedeem({bond}) {
   const dispatch = useDispatch();
   const {provider, address, chainID} = useWeb3Context();
-  const [networkBaseInfos, setNetworkBaseInfos] = useState(defaultNetworkBaseInfos);
 
-  const currentBlock = useSelector((state: RootState) => {
-    return state.app.currentBlock;
-  });
-  const pendingTransactions = useSelector((state: RootState) => {
-    return state.pendingTx;
-  });
-  const bondingState = useSelector((state: RootState) => {
-    return state.bonding && state.bonding[bond.name];
-  });
+  const isBondLoading = useSelector((state: RootState) => state.bonding.loading ?? true);
+  const currentBlock = useSelector((state: RootState) => state.app.currentBlock);
+  const pendingTransactions = useSelector((state: RootState) => state.pendingTx);
+  const bondingState = useSelector((state: RootState) => state.bonding && state.bonding[bond.name]);
 
   const onRedeem = async ({autostake}) => {
     await dispatch(redeemBond({address, bond, networkID: chainID, provider, autostake}));
@@ -68,47 +29,6 @@ function BondRedeem({bond}) {
     const seconds = secondsUntilBlock(currentBlock, vestingBlock);
     return prettifySeconds(seconds, 'day');
   };
-
-  useEffect(() => {
-    const infos = defaultNetworkBaseInfos;
-    infos.forEach((info: BaseInfo) => {
-      switch (info.key) {
-        case BaseInfoKey.PendingRewardAmount:
-          if (bond.interestDue) {
-            info.value = `${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.interestDue, 4)))} 3DOG`;
-          }
-          break;
-        case BaseInfoKey.ClaimRewardAmount:
-          if (bond.pendingPayout) {
-            info.value = `${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.pendingPayout, 4)))} 3DOG`;
-          }
-          break;
-        case BaseInfoKey.RestVestingTime:
-          if (bond.bondMaturationBlock) {
-            info.value = prettyVestingPeriod(currentBlock, bond.bondMaturationBlock);
-          }
-          break;
-        case BaseInfoKey.Roi:
-          if (bond.bondDiscount) {
-            info.value = `${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.bondDiscount * 100, 2)))}%`;
-          }
-          break;
-        case BaseInfoKey.DebtRate:
-          if (bond.debtRatio) {
-            info.value = `${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.debtRatio / 10000000, 4)))}%`;
-          }
-          break;
-        case BaseInfoKey.VestingTerm:
-          if (bond.vestingTerm) {
-            info.value = vestingPeriod();
-          }
-          break;
-        default:
-          break;
-      }
-    });
-    setNetworkBaseInfos([...infos]);
-  }, [bond]);
 
   return (
     <div className="flex flex-col">
@@ -149,23 +69,78 @@ function BondRedeem({bond}) {
       </div>
       <Slide direction="right" in={true} mountOnEnter unmountOnExit {...{timeout: 533}}>
         <div className="mt-10">
-          {
-            networkBaseInfos.map((info: BaseInfo, index) => {
-              return (
-                <div className="flex justify-between mt-5" key={index}>
-                  <Typography>{info.name}</Typography>
-                  <div>
-                    {!info.value ? (
-                      <Skeleton width="100px"/>
-                    ) : (
-                      <Typography variant="h5" color="primary" className="text-center">
-                        {info.value}
-                      </Typography>
-                    )}
-                  </div>
-                </div>
-              )
-            })}
+          <div className="flex items-center justify-between h-25 mb-5">
+            <Typography>Pending Rewards</Typography>
+            <div>
+              {isBondLoading || isNaN(bond.interestDue) || bond.interestDue === undefined ? (
+                <Skeleton width="100px"/>
+              ) : (
+                <Typography variant="h5" color="primary" className="text-center">
+                  {`${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.interestDue, 4)))} 3DOG`}
+                </Typography>
+              )}
+            </div>
+          </div>
+          <div className="flex items-center justify-between h-25 mb-5">
+            <Typography>Claimable Rewards</Typography>
+            <div>
+              {isBondLoading || isNaN(bond.pendingPayout) || bond.pendingPayout === undefined ? (
+                <Skeleton width="100px"/>
+              ) : (
+                <Typography variant="h5" color="primary" className="text-center">
+                  {`${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.pendingPayout, 4)))} 3DOG`}
+                </Typography>
+              )}
+            </div>
+          </div>
+          <div className="flex items-center justify-between h-25 mb-5">
+            <Typography>Time until fully vested</Typography>
+            <div>
+              {isBondLoading || isNaN(bond.bondMaturationBlock) || bond.bondMaturationBlock === undefined ? (
+                <Skeleton width="100px"/>
+              ) : (
+                <Typography variant="h5" color="primary" className="text-center">
+                  {prettyVestingPeriod(currentBlock, bond.bondMaturationBlock)}
+                </Typography>
+              )}
+            </div>
+          </div>
+          <div className="flex items-center justify-between h-25 mb-5">
+            <Typography>ROI</Typography>
+            <div>
+              {isBondLoading || isNaN(bond.bondDiscount) || bond.bondDiscount === undefined ? (
+                <Skeleton width="100px"/>
+              ) : (
+                <Typography variant="h5" color="primary" className="text-center">
+                  {`${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.bondDiscount * 100, 2)))}%`}
+                </Typography>
+              )}
+            </div>
+          </div>
+          <div className="flex items-center justify-between h-25 mb-5">
+            <Typography>Debt Ratio</Typography>
+            <div>
+              {isBondLoading || isNaN(bond.debtRatio) || bond.debtRatio === undefined ? (
+                <Skeleton width="100px"/>
+              ) : (
+                <Typography variant="h5" color="primary" className="text-center">
+                  {`${new Intl.NumberFormat('en-US').format(Number(formatNumber(bond.debtRatio / 10000000, 4)))}%`}
+                </Typography>
+              )}
+            </div>
+          </div>
+          <div className="flex items-center justify-between h-25 mb-5">
+            <Typography>Vesting Term</Typography>
+            <div>
+              {isBondLoading || isNaN(bond.vestingTerm) || bond.vestingTerm === undefined ? (
+                <Skeleton width="100px"/>
+              ) : (
+                <Typography variant="h5" color="primary" className="text-center">
+                  {vestingPeriod()}
+                </Typography>
+              )}
+            </div>
+          </div>
         </div>
       </Slide>
     </div>

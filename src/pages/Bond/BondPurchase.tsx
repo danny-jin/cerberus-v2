@@ -1,7 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { Button, FormControl, InputAdornment, InputLabel, OutlinedInput, Slide, Typography, } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { isNaN } from 'formik';
 
 import ConnectWalletButton from '../../components/Nav/ConnectWalletButton';
 import { useWeb3Context } from '../../core/hooks/web3Context';
@@ -187,9 +188,9 @@ const BondPurchase = ({bond, slippage, recipientAddress}) => {
 
       <Slide direction="left" in={true} mountOnEnter unmountOnExit {...{timeout: 533}}>
         <div className="mt-10 px-10">
-          <div className="flex justify-between mt-5 items-center">
+          <div className="flex items-center justify-between h-25 mb-5">
             <Typography className="font-normal">Your Balance</Typography>
-            {!bond.balance || isBondLoading ? (
+            {isBondLoading || isNaN(bond.balance) || bond.balance === undefined ? (
               <Skeleton width="100px"/>
             ) : (
               <Typography variant="h6" color="primary" className="text-center">
@@ -197,9 +198,9 @@ const BondPurchase = ({bond, slippage, recipientAddress}) => {
               </Typography>
             )}
           </div>
-          <div className="flex justify-between mt-5 items-center">
+          <div className="flex items-center justify-between h-25 mb-5">
             <Typography className="font-normal">You Will Get</Typography>
-            {isBondLoading ? (
+            {isBondLoading || isNaN(bond.bondQuote) || bond.bondQuote === undefined ? (
               <Skeleton width="100px"/>
             ) : (
               <Typography variant="h6" color="primary" className="text-center">
@@ -207,9 +208,9 @@ const BondPurchase = ({bond, slippage, recipientAddress}) => {
               </Typography>
             )}
           </div>
-          <div className="flex justify-between mt-5 items-center">
+          <div className="flex items-center justify-between h-25 mb-5">
             <Typography className="font-normal">Max You Can Buy</Typography>
-            {!bond.maxBondPrice || isBondLoading ? (
+            {isBondLoading || isNaN(bond.maxBondPrice) || bond.maxBondPrice === undefined ? (
               <Skeleton width="100px"/>
             ) : (
               <Typography variant="h6" color="primary" className="text-center">
@@ -217,9 +218,9 @@ const BondPurchase = ({bond, slippage, recipientAddress}) => {
               </Typography>
             )}
           </div>
-          <div className="flex justify-between mt-5 items-center">
+          <div className="flex items-center justify-between h-25 mb-5">
             <Typography className="font-normal">ROI</Typography>
-            {!bond.bondDiscount || isBondLoading ? (
+            {isBondLoading || isNaN(bond.bondDiscount) || bond.bondDiscount === undefined ? (
               <Skeleton width="100px"/>
             ) : (
               <Typography variant="h6" color="primary" className="text-center">
@@ -227,9 +228,9 @@ const BondPurchase = ({bond, slippage, recipientAddress}) => {
               </Typography>
             )}
           </div>
-          <div className="flex justify-between mt-5 items-center">
+          <div className="flex items-center justify-between h-25 mb-5">
             <Typography className="font-normal">Debt Ratio</Typography>
-            {!bond.debtRatio || isBondLoading ? (
+            {isBondLoading || isNaN(bond.debtRatio) || bond.debtRatio === undefined ? (
               <Skeleton width="100px"/>
             ) : (
               <Typography variant="h6" color="primary" className="text-center">
@@ -237,9 +238,9 @@ const BondPurchase = ({bond, slippage, recipientAddress}) => {
               </Typography>
             )}
           </div>
-          <div className="flex justify-between mt-5 items-center">
+          <div className="flex items-center justify-between h-25 mb-5">
             <Typography className="font-normal">Vesting Term</Typography>
-            {!bond.vestingTerm || isBondLoading ? (
+            {isBondLoading || isNaN(bond.vestingTerm) || bond.vestingTerm === undefined ? (
               <Skeleton width="100px"/>
             ) : (
               <Typography variant="h6" color="primary" className="text-center">

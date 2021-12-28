@@ -3,6 +3,7 @@ import { Skeleton } from '@material-ui/lab';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useEffect } from 'react';
+import { isNaN } from 'formik';
 
 import BondLogo from './BondLogo';
 import { ArrowUpIcon } from '../../components/CustomSvg';
@@ -60,7 +61,7 @@ const BondItem = ({bond, isMobile}, key) => {
         </div>
         <div className="p-15 flex justify-start items-center">
           <Typography className="bond-price font-semibold">
-            <>{isBondLoading ? <Skeleton width="50px" className="h-20 w-50"/> :
+            <>{isBondLoading || isNaN(bond.bondPrice) || bond.bondPrice === undefined ? <Skeleton width="50px" className="h-20 w-50"/> :
               <>{!bond.isAvailable[chainID] ? (<>--</>) : (
                 `${formatCurrency(bond.bondPrice, 4)}`)}
               </>
@@ -69,14 +70,14 @@ const BondItem = ({bond, isMobile}, key) => {
         </div>
         <div className="col-span-3 p-15 ml-20 flex justify-start items-center">
           <Typography variant="h6" className="font-semibold">
-            {isBondLoading ? <Skeleton className="h-20 w-50"/> :
+            {isBondLoading || isNaN(bond.bondDiscount) || bond.bondDiscount === undefined ? <Skeleton className="h-20 w-50"/> :
               <>{!bond.isAvailable[chainID] ?
-                <>--</> : `${bond.bondDiscount && formatNumber(bond.bondDiscount * 100, 2)}%`}</>}
+                <>--</> : `${formatNumber(bond.bondDiscount * 100, 2)}%`}</>}
           </Typography>
         </div>
         <div className="col-span-2 p-15 flex justify-end items-center">
           <Typography variant="h6" className="font-semibold">
-            {isBondLoading ? (
+            {isBondLoading || isNaN(bond.purchased) || bond.purchased === undefined ? (
               <Skeleton width="80px"/>
             ) : (
               new Intl.NumberFormat('en-US', {
@@ -122,7 +123,7 @@ const BondItem = ({bond, isMobile}, key) => {
         <div className="flex justify-between items-center my-10">
           <Typography className="font-semibold">Price</Typography>
           <Typography className="font-semibold">
-            <>{isBondLoading ? <Skeleton width="50px"/> :
+            <>{isBondLoading || isNaN(bond.bondPrice) || bond.bondPrice === undefined ? <Skeleton width="50px"/> :
               <>{!bond.isAvailable[chainID] ? (<>--</>) : (
                 `${formatCurrency(bond.bondPrice, 4)}`)}
               </>
@@ -132,7 +133,7 @@ const BondItem = ({bond, isMobile}, key) => {
         <div className="flex justify-between items-center my-10">
           <Typography className="font-semibold">ROI</Typography>
           <Typography className="font-semibold">
-            {isBondLoading ? <Skeleton
+            {isBondLoading || isNaN(bond.bondDiscount) || bond.bondDiscount === undefined ? <Skeleton
               width="50px"/> : <>{!bond.isAvailable[chainID] ? <>--</> : `${bond.bondDiscount && formatNumber(bond.bondDiscount * 100, 2)}%`}</>}
 
           </Typography>
@@ -140,7 +141,7 @@ const BondItem = ({bond, isMobile}, key) => {
         <div className="flex justify-between items-center my-10">
           <Typography className="font-semibold">Purchased</Typography>
           <Typography variant="h6" className="font-semibold">
-            {isBondLoading ? (
+            {isBondLoading || isNaN(bond.purchased) || bond.purchased === undefined ? (
               <Skeleton width="80px"/>
             ) : (
               new Intl.NumberFormat('en-US', {
