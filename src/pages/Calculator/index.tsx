@@ -1,34 +1,13 @@
 import { InputAdornment, OutlinedInput, Slider, Typography } from '@material-ui/core';
+import { Skeleton } from '@material-ui/lab';
 import { useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
+import { isNaN } from 'formik';
 
-import { BaseInfo, BaseInfoKey } from '../../core/interfaces/base';
 import { RootState } from '../../core/store/store';
 import { formatNumber } from '../../core/utils/base';
-import InfoTooltip from '../../components/InfoTooltip';
-import { Skeleton } from '@material-ui/lab';
-
-const defaultNetworkBaseInfos: BaseInfo[] = [
-  {
-    name: '3DOG Price',
-    value: null,
-    key: BaseInfoKey.ThreeDogPrice
-  },
-  {
-    name: 'Current APY',
-    value: null,
-    key: BaseInfoKey.Apy
-  },
-  {
-    name: '3DOGs Balancce',
-    value: null,
-    key: BaseInfoKey.ThreeDogsBalance,
-  }
-]
 
 const Calculator = () => {
-
-  const [networkBaseInfos, setNetworkBaseInfos] = useState(defaultNetworkBaseInfos);
 
   const isAppLoading = useSelector((state: RootState) => state.app.loading);
   const marketPrice = useSelector((state: RootState) => state.app.marketPrice);
@@ -86,32 +65,6 @@ const Calculator = () => {
     setPotentialReturn(formatNumber(newPotentialReturn, 2));
   }, [days, rewardYield, futureMarketPrice, sOhmAmount]);
 
-  useEffect(() => {
-    const infos = defaultNetworkBaseInfos;
-    infos.forEach((info: BaseInfo) => {
-      switch (info.key) {
-        case BaseInfoKey.ThreeDogPrice:
-          if (formattedMarketPrice) {
-            info.value = formattedMarketPrice;
-          }
-          break;
-        case BaseInfoKey.Apy:
-          if (formattedStakingApy) {
-            info.value = `${new Intl.NumberFormat('en-US').format(Number(formattedStakingApy))}%`;
-          }
-          break;
-        case BaseInfoKey.ThreeDogsBalance:
-          if (formattedsOhmBalance) {
-            info.value = new Intl.NumberFormat('en-US').format(Number(formattedsOhmBalance));
-          }
-          break;
-        default:
-          break;
-      }
-    });
-    setNetworkBaseInfos([...infos]);
-  }, [marketPrice, stakingApy, sOhmBalance]);
-
   return (
     <div className="flex justify-center w-full min-h-full">
       <div className="rounded-2xl border-goldsand border-3 w-full md:w-800 p-15 sm:p-30">
@@ -120,29 +73,41 @@ const Calculator = () => {
           <Typography variant="body2" color="primary" className="font-bold leading-2 mb-5">Estimate your returns</Typography>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {
-            networkBaseInfos.map((info: BaseInfo, index) => {
-              return (
-                index < 3 && (
-                  <div className="flex flex-col justify-between items-start md:items-center mt-20" key={index}>
-                    <div className="flex items-center ">
-                      <Typography variant="h5"
-                                  className="text-center font-bold text-white-600">{info.name}</Typography>
-                      {info?.hasTooltip &&
-                      <div className="ml-5">
-                        <InfoTooltip message={info?.message || ''}/>
-                      </div>
-                      }
-                    </div>
-                    {!info.value ?
-                      <Skeleton className="w-full h-30 my-25"/> :
-                      <Typography variant="h5" color="primary"
-                                  className="text-center font-bold my-25">{info.value}</Typography>
-                    }
-                  </div>)
-              )
-            })
-          }
+          <div className="flex flex-col justify-between items-start md:items-center mt-20">
+            <div className="flex items-center ">
+              <Typography variant="h5"
+                          className="text-center font-bold text-white-600">3DOG Price</Typography>
+            </div>
+            {isAppLoading || isNaN(formattedMarketPrice) || formattedMarketPrice === undefined ?
+              <Skeleton className="w-full h-30 my-25"/> :
+              <Typography variant="h5" color="primary"
+                          className="text-center font-bold my-25">{formattedMarketPrice}</Typography>
+            }
+          </div>
+          <div className="flex flex-col justify-between items-start md:items-center mt-20">
+            <div className="flex items-center ">
+              <Typography variant="h5"
+                          className="text-center font-bold text-white-600">Current APY</Typography>
+
+            </div>
+            {isAppLoading || isNaN(formattedStakingApy) || formattedStakingApy === undefined ?
+              <Skeleton className="w-full h-30 my-25"/> :
+              <Typography variant="h5" color="primary"
+                          className="text-center font-bold my-25">{`${new Intl.NumberFormat('en-US').format(Number(formattedStakingApy))}%`}</Typography>
+            }
+          </div>
+          <div className="flex flex-col justify-between items-start md:items-center mt-20">
+            <div className="flex items-center ">
+              <Typography variant="h5"
+                          className="text-center font-bold text-white-600">3DOGs Balance</Typography>
+
+            </div>
+            {isAppLoading || isNaN(formattedsOhmBalance) || formattedsOhmBalance === undefined ?
+              <Skeleton className="w-full h-30 my-25"/> :
+              <Typography variant="h5" color="primary"
+                          className="text-center font-bold my-25">{new Intl.NumberFormat('en-US').format(Number(formattedsOhmBalance))}</Typography>
+            }
+          </div>
         </div>
         <div>
           <div>

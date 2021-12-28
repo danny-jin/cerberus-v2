@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6004e887-1721-4683-a6ce-5dcfc0b6683d" name="Default Changelist" comment="feat: dashboard fixed">
+    <list default="true" id="6004e887-1721-4683-a6ce-5dcfc0b6683d" name="Default Changelist" comment="fix: bond page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/store/slices/bondSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/store/slices/bondSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/utils/base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/utils/base.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Bond/BondDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/BondDetail.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Bond/BondItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/BondItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Bond/BondPurchase.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/BondPurchase.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Bond/BondRedeem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Bond/BondRedeem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Calculator/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Calculator/index.tsx" afterDir="false" />
     </list>
     <list id="b127e8f6-1b2f-48cf-86b5-e755658b268d" name="IDE" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,29 +78,6 @@
     <setting file="file://$PROJECT_DIR$/src/pages/Bond/BondHeader.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/core/store/slices/bondSlice.ts" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/index.tsx" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/.idea/workspace.xml">
-      <ranges>
-        <range start1="6" end1="7" start2="6" end2="7" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
-        <range start1="9" end1="11" start2="9" end2="13" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
-        <range start1="12" end1="15" start2="14" end2="18" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
-        <range start1="47" end1="48" start2="50" end2="51" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
-        <range start1="50" end1="52" start2="53" end2="53" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
-        <range start1="53" end1="58" start2="54" end2="54" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
-        <range start1="59" end1="63" start2="55" end2="55" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
-        <range start1="64" end1="64" start2="56" end2="62" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
-        <range start1="65" end1="68" start2="63" end2="63" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
-        <range start1="69" end1="69" start2="64" end2="72" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
-        <range start1="70" end1="71" start2="73" end2="74" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
-        <range start1="72" end1="74" start2="75" end2="78" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
-        <range start1="75" end1="75" start2="79" end2="83" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
-        <range start1="76" end1="82" start2="84" end2="109" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
-        <range start1="167" end1="167" start2="194" end2="196" changelist="6004e887-1721-4683-a6ce-5dcfc0b6683d" />
-        <range start1="245" end1="246" start2="274" end2="282" changelist="b127e8f6-1b2f-48cf-86b5-e755658b268d" />
-        <range start1="273" end1="274" start2="309" end2="311" changelist="b127e8f6-1b2f-48cf-86b5-e755658b268d" />
-      </ranges>
-    </file>
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="eyz47um4" />
@@ -193,7 +164,8 @@
       <workItem from="1640311052463" duration="2941000" />
       <workItem from="1640318398396" duration="446000" />
       <workItem from="1640661506383" duration="4912000" />
-      <workItem from="1640666530077" duration="1884000" />
+      <workItem from="1640666530077" duration="3116000" />
+      <workItem from="1640673742651" duration="1378000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1639405494097</created>
@@ -272,7 +244,21 @@
       <option name="project" value="LOCAL" />
       <updated>1640272697368</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="feat: dashboard fixed">
+      <created>1640663993091</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1640663993091</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix: bond page">
+      <created>1640668541085</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1640668541085</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,7 +286,9 @@
     <MESSAGE value="#issue 003 - implement stake and calculator&#10;complete: calculator" />
     <MESSAGE value="#issue 004 - implement bond[WIP]" />
     <MESSAGE value="#issue 004 - implement bond" />
-    <option name="LAST_COMMIT_MESSAGE" value="#issue 004 - implement bond" />
+    <MESSAGE value="feat: dashboard fixed" />
+    <MESSAGE value="fix: bond page" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: bond page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
