@@ -90,14 +90,20 @@ const BondItem = ({bond, isMobile}, key) => {
           </Typography>
         </div>
         <div className="col-span-2 p-15">
-          <Link to={`/bonds/${bond.name}`}>
-            <button
+          {/* <Link to={`/bonds/${bond.name}`}> */}
+            {/* <button
               className={`rounded-lg ${!bond.isAvailable[chainID] ? 'border-white-600 text-white-600 w-110' : 'border-goldsand'}  border-2 text-center py-2 px-20`}>
               <Typography variant="h6" className="font-semibold">
                 {!bond.isAvailable[chainID] ? 'Sold Out' : `Bond`}
               </Typography>
-            </button>
-          </Link>
+            </button> */}
+            <button
+              className={`rounded-lg ${!bond.isAvailable[chainID] ? 'border-white-600 text-white-600 w-110' : 'border-goldsand'}  border-2 text-center py-2 px-20`}>
+              <Typography variant="h6" className="font-semibold">
+                {'Sold Out'}
+              </Typography>
+            </button> 
+          {/* </Link> */}
         </div>
       </div>)
   } else {
@@ -154,11 +160,11 @@ const BondItem = ({bond, isMobile}, key) => {
           </Typography>
         </div>
         <Link to={`/bonds/${bond.name}`}>
-          <button
+          {/* <button
             className={`rounded-lg ${!bond.isAvailable[chainID] ? 'border-white-600 text-white-600' : 'border-goldsand'} w-full border-2 text-center py-5 px-20`}>
             <Typography variant="h5"
                         className="font-semibold">{!bond.isAvailable[chainID] ? 'Sold Out' : `Bond ${bond.displayName}`}</Typography>
-          </button>
+          </button> */}
         </Link>
       </div>)
   }
